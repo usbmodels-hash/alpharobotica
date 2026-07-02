@@ -103,7 +103,7 @@
     <script>
 (function(){
   var VG={hotel:['clean','room','fnb','trans'],restaurante:['fnb','clean','trans'],hospital:['clean','room','trans'],senior:['clean','room','fnb','trans'],retail:['clean','trans'],oficinas:['clean'],gym:['clean','trans'],aeropuerto:['clean','trans'],almacen:['trans','clean'],fabrica:['trans','clean'],universidad:['clean']};
-  var GL={clean:'reduce cleaning',room:'speed up deliveries',fnb:'strengthen table service',trans:'move internal loads'};
+  var GL={clean:'reduce cleaning costs',room:'speed up deliveries',fnb:'strengthen table service',trans:'move internal loads'};
   var v=document.getElementById('f-vert'),g=document.getElementById('f-goal');
   if(!v||!g)return;
   function fill(){var keys=VG[v.value]||['clean'];g.innerHTML='';keys.forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=GL[k];g.appendChild(o);});}
