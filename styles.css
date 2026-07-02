@@ -2779,6 +2779,9 @@ html:has(#contacto:target) .section{
   color:rgba(255,255,255,.72);
 }
 .hero-carousel .finder select{
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
   width:100%;
   min-height:48px;
   border-radius:14px;
@@ -2786,7 +2789,7 @@ html:has(#contacto:target) .section{
   background:#fff;
   color:var(--navy);
   font:800 15px var(--fh);
-  padding:0 14px;
+  padding:0 38px 0 14px;
 }
 .hero-carousel .finder button{
   width:100%;
