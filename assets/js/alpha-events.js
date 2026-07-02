@@ -1,4 +1,4 @@
-/* alpha-events.js · v1
+/* alpha-events.js · v2
  * Eventos de funnel para Plausible (cookieless, first-party via /stats proxy).
  * Sin dependencias. No-op silencioso si Plausible no está cargado.
  * Eventos: hero_madlib_select, hero_madlib_submit, config_start,
@@ -71,7 +71,11 @@
       if (!form || form.tagName !== 'FORM') return;
       var hasEmail = !!form.querySelector('input[type="email"]');
       if (!hasEmail) return;
-      if (isConfigurador) {
+      var fn = form.querySelector('input[name="form-name"]');
+      var formName = fn ? fn.value : (form.getAttribute('name') || '');
+      if (formName === 'lead-magnet-guia-costes') {
+        track('lead_magnet_submit');
+      } else if (isConfigurador) {
         track('config_gate_submit');
       } else {
         // Formulario de diagnóstico (home u otras páginas)
