@@ -1,0 +1,1 @@
+document.querySelectorAll('.ar-testimonials').forEach(c=>{const t=c.querySelector('[data-track]');c.querySelector('[data-next]').onclick=()=>t.scrollBy({left:380,behavior:'smooth'});c.querySelector('[data-prev]').onclick=()=>t.scrollBy({left:-380,behavior:'smooth'});});

@@ -1,0 +1,2 @@
+const VIDEO_CONFIG_C40 = { type: 'local', src: '/assets/videos/ES-C40.MP4', webm: '/assets/videos/ES-C40.webm', poster: '/assets/images/video-poster-c40.jpg', youtubeId: null, title: 'KEENON C40 — Robot de limpieza autónoma en acción', caption: 'Descubre cómo el KEENON C40 limpia de forma autónoma hoteles, hospitales y grandes superficies' };
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.video-shell video').forEach(v=>{v.addEventListener('play',()=>v.closest('.video-shell')?.classList.add('is-playing'));});});

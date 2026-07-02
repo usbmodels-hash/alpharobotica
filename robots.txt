@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /gracias
+Disallow: /gracias.html
+Disallow: /404.html
+Disallow: /components/
+
+Sitemap: https://alpharobotica.com/sitemap.xml

@@ -1,0 +1,2 @@
+const VIDEO_CONFIG_W3 = { type: 'local', src: '/assets/videos/EN-W3 PRODUCT VIDEO.MP4', webm: '/assets/videos/EN-W3-PRODUCT-VIDEO.webm', poster: '/assets/images/video-poster-w3.jpg', youtubeId: null, title: 'KEENON W3 — Robot de room service en acción', caption: 'Observa cómo el KEENON W3 realiza entregas autónomas en hoteles y residencias' };
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.video-shell video').forEach(v=>{v.addEventListener('play',()=>v.closest('.video-shell')?.classList.add('is-playing'));});});
