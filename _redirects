@@ -156,7 +156,6 @@
 /politica-cookies /cookies 301
 /politica-cookies/ /cookies 301
 /politica-de-cookies /cookies 301
-/en/* /en/404.html 404
 
 # Correcciones SEO 12/09/2026: destinos que daban 404
 # Empresa: variantes .html -> URL canonica (301 forzado porque el archivo existe)
@@ -166,3 +165,4 @@
 /guia-costes-limpieza /blog-cuanto-cuesta-robot-limpieza-autonomo-2026 301
 /guia-costes-limpieza/ /blog-cuanto-cuesta-robot-limpieza-autonomo-2026 301
 /guia-costes-limpieza.html /blog-cuanto-cuesta-robot-limpieza-autonomo-2026 301
+/en/* /en/404.html 404
