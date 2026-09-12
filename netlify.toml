@@ -333,6 +333,54 @@
   to = "/alpha-care.html"
   status = 200
 
+[[redirects]]
+  from = "/empresa"
+  to = "/empresa.html"
+  status = 200
+
+[[redirects]]
+  from = "/empresa/"
+  to = "/empresa.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/empresa"
+  to = "/en/empresa.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/empresa/"
+  to = "/en/empresa.html"
+  status = 200
+
+# Correcciones SEO 12/09/2026: destinos que daban 404
+[[redirects]]
+  from = "/empresa.html"
+  to = "/empresa"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/empresa.html"
+  to = "/en/empresa"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guia-costes-limpieza"
+  to = "/blog-cuanto-cuesta-robot-limpieza-autonomo-2026"
+  status = 301
+
+[[redirects]]
+  from = "/guia-costes-limpieza/"
+  to = "/blog-cuanto-cuesta-robot-limpieza-autonomo-2026"
+  status = 301
+
+[[redirects]]
+  from = "/guia-costes-limpieza.html"
+  to = "/blog-cuanto-cuesta-robot-limpieza-autonomo-2026"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]
