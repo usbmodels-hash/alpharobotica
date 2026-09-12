@@ -291,9 +291,9 @@
     T11: { n: 'DINERBOT T11', price: 8200, cls: 'media', deliv_h: 10, acc: 'Bandejas para pasillo estrecho' },
     T9: { n: 'DINERBOT T9', price: 7000, cls: 'ligera', deliv_h: 12, acc: 'Pila de carga y bandejas' },
     T8: { n: 'DINERBOT T8', price: 7000, cls: 'ligera', deliv_h: 10, acc: 'Pila de carga y bandejas' },
-    C30: { n: 'KLEENBOT C30', price: 8000, cls: 'ligera', m2h: 600, acc: 'Kit de consumibles 6 meses' },
-    C40: { n: 'KLEENBOT C40', price: 13000, cls: 'pesada', m2h: 1100, acc: 'Workstation, pila de carga y kit de consumibles' },
-    C55: { n: 'KLEENBOT C55', price: 18000, cls: 'pesada', m2h: 2376, acc: 'Workstation de agua y bateria extra' },
+    C30: { n: 'KLEENBOT C30', price: 8900, cls: 'ligera', m2h: 600, acc: 'Kit de consumibles 6 meses' },
+    C40: { n: 'KLEENBOT C40', price: 12500, cls: 'pesada', m2h: 1100, acc: 'Workstation, pila de carga y kit de consumibles' },
+    C55: { n: 'KLEENBOT C55', price: 18900, cls: 'pesada', m2h: 2376, acc: 'Workstation de agua y bateria extra' },
     S100: { n: 'CARRYBOT S100', price: 9500, cls: 'media', acc: 'Estanteria y bateria de cambio rapido' },
     S300: { n: 'CARRYBOT S300', price: 12000, cls: 'media', acc: 'Plataforma y modulo de cambio de bateria' }
   };
