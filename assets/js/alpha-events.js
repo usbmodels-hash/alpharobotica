@@ -85,7 +85,12 @@
 
     /* ---------- 2c · Vista de la página de gracias (tras envío correcto del formulario) ---------- */
     if (/^\/(en\/)?gracias\/?$/.test(window.location.pathname)) {
-      track('form_thanks_view');
+      var thanksSent = false;
+      var sendThanks = function () {
+        if (thanksSent || document.documentElement.dataset.cookieAnalytics !== 'granted') return;
+        thanksSent = true; track('form_thanks_view');
+      };
+      sendThanks(); window.addEventListener('alphaCookieConsentUpdated', sendThanks);
     }
 
     /* ---------- 3 · Formularios: gate del configurador y diagnóstico ---------- */
