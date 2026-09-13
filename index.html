@@ -76,34 +76,34 @@
 <section class="hero hero-carousel" id="inicio" aria-label="Alpha Robotics: robots KEENON para hoteles y hospitality">
   <div class="hero-slides" aria-hidden="true">
     <picture class="hero-slide is-active" data-slide="0">
-      <source media="(max-width:640px)" srcset="/assets/hero/hero-roomservice-675x900.avif" type="image/avif">
-      <source media="(max-width:640px)" srcset="/assets/hero/hero-roomservice-675x900.webp" type="image/webp">
-      <source srcset="/assets/hero/hero-roomservice-1600.avif" type="image/avif">
-      <img src="/assets/hero/hero-roomservice-1600.webp" alt="" loading="eager" fetchpriority="high" decoding="async" width="1600" height="900">
-    </picture>
-    <picture class="hero-slide" data-slide="1">
-      <source media="(max-width:640px)" srcset="/assets/hero/hero-hospitality-675x900.avif" type="image/avif">
-      <source media="(max-width:640px)" srcset="/assets/hero/hero-hospitality-675x900.webp" type="image/webp">
-      <source srcset="/assets/hero/hero-hospitality-1600.avif" type="image/avif">
-      <img src="/assets/hero/hero-hospitality-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
-    </picture>
-    <picture class="hero-slide" data-slide="2">
       <source media="(max-width:640px)" srcset="/assets/hero/hero-limpieza-675x900.avif" type="image/avif">
       <source media="(max-width:640px)" srcset="/assets/hero/hero-limpieza-675x900.webp" type="image/webp">
       <source srcset="/assets/hero/hero-limpieza-1600.avif" type="image/avif">
-      <img src="/assets/hero/hero-limpieza-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
+      <img src="/assets/hero/hero-limpieza-1600.webp" alt="" loading="eager" fetchpriority="high" decoding="async" width="1600" height="900">
     </picture>
-    <picture class="hero-slide" data-slide="3">
+    <picture class="hero-slide" data-slide="1">
       <source media="(max-width:640px)" srcset="/assets/hero/hero-sala-675x900.avif" type="image/avif">
       <source media="(max-width:640px)" srcset="/assets/hero/hero-sala-675x900.webp" type="image/webp">
       <source srcset="/assets/hero/hero-sala-1600.avif" type="image/avif">
       <img src="/assets/hero/hero-sala-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
     </picture>
-    <picture class="hero-slide" data-slide="4">
+    <picture class="hero-slide" data-slide="2">
       <source media="(max-width:640px)" srcset="/assets/hero/hero-heavyload-600x800.avif" type="image/avif">
       <source media="(max-width:640px)" srcset="/assets/hero/hero-heavyload-600x800.webp" type="image/webp">
       <source srcset="/assets/hero/hero-heavyload-1600.avif" type="image/avif">
       <img src="/assets/hero/hero-heavyload-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="800">
+    </picture>
+    <picture class="hero-slide" data-slide="3">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-roomservice-675x900.avif" type="image/avif">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-roomservice-675x900.webp" type="image/webp">
+      <source srcset="/assets/hero/hero-roomservice-1600.avif" type="image/avif">
+      <img src="/assets/hero/hero-roomservice-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
+    </picture>
+    <picture class="hero-slide" data-slide="4">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-hospitality-675x900.avif" type="image/avif">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-hospitality-675x900.webp" type="image/webp">
+      <source srcset="/assets/hero/hero-hospitality-1600.avif" type="image/avif">
+      <img src="/assets/hero/hero-hospitality-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
     </picture>
   </div>
   <div class="hero-overlay"></div>
@@ -130,7 +130,7 @@
 
 /* v4.153.6 — hero móvil: imagen visible + texto en el tercio inferior */
 /* v4.153.7 — diapositivas 2 (W3 en pasillo) y 6 (S100 Heavy Load): el sujeto está a la izquierda/centro de la foto → anclaje a la izquierda; en ≥641 px la 2 lleva velo más ligero */
-.hero.hero-carousel .hero-slide[data-slide="4"] img{object-position:0 center}
+.hero.hero-carousel .hero-slide[data-slide="2"] img{object-position:0 center}
 @media(max-width:900px){.hero.hero-carousel>.hero-overlay{background:linear-gradient(180deg,rgba(6,19,38,.42) 0%,rgba(6,19,38,.62) 45%,rgba(6,19,38,.88) 100%)}}
 @media(max-width:640px){
 .hero.hero-carousel{--hero-media-h:min(133.4vw,62vh);display:block;min-height:auto;padding:74px 18px 56px}
@@ -167,11 +167,11 @@
   </div>
   <div class="hero-controls" aria-label="Carrusel de soluciones">
     <div class="hero-dots" role="tablist" aria-label="Seleccionar slide">
-      <button class="is-active" type="button" data-dot="0" role="tab" aria-selected="true" aria-label="Ir a Room service"></button>
-      <button type="button" data-dot="1" role="tab" aria-selected="false" aria-label="Ir a innovación"></button>
-      <button type="button" data-dot="2" role="tab" aria-selected="false" aria-label="Ir a limpieza"></button>
-      <button type="button" data-dot="3" role="tab" aria-selected="false" aria-label="Ir a sala"></button>
-      <button type="button" data-dot="4" role="tab" aria-selected="false" aria-label="Ir a logística"></button>
+      <button class="is-active" type="button" data-dot="0" role="tab" aria-selected="true" aria-label="Ir a limpieza"></button>
+      <button type="button" data-dot="1" role="tab" aria-selected="false" aria-label="Ir a sala"></button>
+      <button type="button" data-dot="2" role="tab" aria-selected="false" aria-label="Ir a logística"></button>
+      <button type="button" data-dot="3" role="tab" aria-selected="false" aria-label="Ir a Room service"></button>
+      <button type="button" data-dot="4" role="tab" aria-selected="false" aria-label="Ir a innovación"></button>
     </div>
   </div>
   <a class="hero-chip" href="/room-service" data-chip>Butlerbot · Room service</a>
@@ -421,7 +421,7 @@
 </div>
 <div class="home-blog-cta reveal"><a class="btn secondary" href="/blog">Ver todas las guías →</a></div>
 </section>
-<footer class="footer"><div><div class="footer-brand-row"><img alt="Logotipo de Alpha Robotics, integrador KEENON en España" decoding="async" height="308" loading="eager" src="/assets/alpha-robotics-logo-white-v499.webp?v=499-white-logo" width="900"/><img alt="KEENON Robotics" class="keenon-footer-logo" decoding="async" height="76" loading="eager" src="/assets/keenon-logo-official.webp" width="282"/></div><p>Alpha Robotics integra robots KEENON en España para hoteles, hospitality y grandes superficies, con diagnóstico operativo, implantación, formación y soporte técnico local.</p><span class="lang-switch" aria-label="Selector de idioma"><a href="/" aria-current="true">ES</a><span>|</span><a href="/en/">EN</a></span></div><div><strong>Contacto</strong><a href="tel:+34659483652">+34 659 483 652</a><a href="/#diagnostico-gratuito">Solicitar diagnóstico gratuito</a></div><div><strong>Soluciones</strong><a href='/configurador'>Configurador de flota</a><a href="/alpha-care">Alpha Care</a><a href='/robots-para-restaurantes-negocios-locales'>Restauración / negocios locales</a><a href='/soluciones-enterprise-integracion-360'>Enterprise / integración 360º</a><a href='/modelos-adquisicion-robots'>Modelos de adquisición</a><a href='/limpieza-autonoma'>Limpieza autónoma</a><a href='/food-beverage'>Food &amp; Beverage</a><a href='/room-service'>Room Service</a><a href='/logistica-interna'>Logística interna</a><a href='/catalogo-keenon'>Catálogo KEENON</a></div><div><strong>Legal</strong><a href="/empresa">Empresa</a><a href='/aviso-legal'>Aviso legal</a><a href='/privacidad'>Privacidad</a><a href='/cookies'>Cookies</a><button class="footer-cookie-settings" type="button" data-cookie-settings>Configurar cookies</button><div class="social-links"><span class="social-label">Canales de KEENON Robotics:</span><a aria-label="KEENON Robotics en LinkedIn (canal del fabricante)" href="https://www.linkedin.com/company/keenonrobotics/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.62 0 4.29 2.38 4.29 5.48v6.26h-.04ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"></path></svg></a><a aria-label="KEENON Robotics en Instagram (canal del fabricante)" href="https://www.instagram.com/keenonrobotics_official/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07ZM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.78.3-1.45.71-2.11 1.37A5.85 5.85 0 0 0 .66 4.11c-.3.76-.5 1.64-.56 2.91C.03 8.33.02 8.74.02 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.78.71 1.45 1.37 2.11.66.66 1.33 1.07 2.11 1.37.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.78-.3 1.45-.71 2.11-1.37.66-.66 1.07-1.33 1.37-2.11.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.85 5.85 0 0 0-1.37-2.11A5.85 5.85 0 0 0 19.86.66c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32Zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.41-11.84a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"></path></svg></a><a aria-label="KEENON Robotics en YouTube (canal del fabricante)" href="https://www.youtube.com/@KEENONRobotics" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"></path></svg></a></div></div></footer><script defer="" src="/main.js?v=4146-i18n"></script><script defer src="./cookie-consent.js?v=4153-seo-gsc"></script><script defer src="/assets/js/contact-area-prefill.js?v=4113-utf8-keenon"></script><script defer src="/assets/js/hero-carousel.js?v=41538-hero-5slides"></script><script defer src="/assets/js/configurador.js?v=4138"></script><nav class="mobile-sticky-cta" aria-label="Acciones rápidas de contacto">
+<footer class="footer"><div><div class="footer-brand-row"><img alt="Logotipo de Alpha Robotics, integrador KEENON en España" decoding="async" height="308" loading="eager" src="/assets/alpha-robotics-logo-white-v499.webp?v=499-white-logo" width="900"/><img alt="KEENON Robotics" class="keenon-footer-logo" decoding="async" height="76" loading="eager" src="/assets/keenon-logo-official.webp" width="282"/></div><p>Alpha Robotics integra robots KEENON en España para hoteles, hospitality y grandes superficies, con diagnóstico operativo, implantación, formación y soporte técnico local.</p><span class="lang-switch" aria-label="Selector de idioma"><a href="/" aria-current="true">ES</a><span>|</span><a href="/en/">EN</a></span></div><div><strong>Contacto</strong><a href="tel:+34659483652">+34 659 483 652</a><a href="/#diagnostico-gratuito">Solicitar diagnóstico gratuito</a></div><div><strong>Soluciones</strong><a href='/configurador'>Configurador de flota</a><a href="/alpha-care">Alpha Care</a><a href='/robots-para-restaurantes-negocios-locales'>Restauración / negocios locales</a><a href='/soluciones-enterprise-integracion-360'>Enterprise / integración 360º</a><a href='/modelos-adquisicion-robots'>Modelos de adquisición</a><a href='/limpieza-autonoma'>Limpieza autónoma</a><a href='/food-beverage'>Food &amp; Beverage</a><a href='/room-service'>Room Service</a><a href='/logistica-interna'>Logística interna</a><a href='/catalogo-keenon'>Catálogo KEENON</a></div><div><strong>Legal</strong><a href="/empresa">Empresa</a><a href='/aviso-legal'>Aviso legal</a><a href='/privacidad'>Privacidad</a><a href='/cookies'>Cookies</a><button class="footer-cookie-settings" type="button" data-cookie-settings>Configurar cookies</button><div class="social-links"><span class="social-label">Canales de KEENON Robotics:</span><a aria-label="KEENON Robotics en LinkedIn (canal del fabricante)" href="https://www.linkedin.com/company/keenonrobotics/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.62 0 4.29 2.38 4.29 5.48v6.26h-.04ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"></path></svg></a><a aria-label="KEENON Robotics en Instagram (canal del fabricante)" href="https://www.instagram.com/keenonrobotics_official/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07ZM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.78.3-1.45.71-2.11 1.37A5.85 5.85 0 0 0 .66 4.11c-.3.76-.5 1.64-.56 2.91C.03 8.33.02 8.74.02 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.78.71 1.45 1.37 2.11.66.66 1.33 1.07 2.11 1.37.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.78-.3 1.45-.71 2.11-1.37.66-.66 1.07-1.33 1.37-2.11.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.85 5.85 0 0 0-1.37-2.11A5.85 5.85 0 0 0 19.86.66c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32Zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.41-11.84a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"></path></svg></a><a aria-label="KEENON Robotics en YouTube (canal del fabricante)" href="https://www.youtube.com/@KEENONRobotics" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"></path></svg></a></div></div></footer><script defer="" src="/main.js?v=4146-i18n"></script><script defer src="./cookie-consent.js?v=4153-seo-gsc"></script><script defer src="/assets/js/contact-area-prefill.js?v=4113-utf8-keenon"></script><script defer src="/assets/js/hero-carousel.js?v=41539-hero-orden"></script><script defer src="/assets/js/configurador.js?v=4138"></script><nav class="mobile-sticky-cta" aria-label="Acciones rápidas de contacto">
   <a class="mobile-sticky-cta__item" aria-label="Llamar a Alpha Robotics" href="tel:+34659483652"><span aria-hidden="true">Tel</span><strong>Llamar</strong></a>
   <a class="mobile-sticky-cta__item" aria-label="Escribir por WhatsApp a Alpha Robotics" href="https://wa.me/34659483652?text=Hola%2C%20quiero%20solicitar%20un%20diagn%C3%B3stico%20gratuito%20para%20automatizar%20mi%20operativa%20con%20robots%20KEENON" rel="noopener" target="_blank"><span aria-hidden="true">WA</span><strong>WhatsApp</strong></a>
   <a class="mobile-sticky-cta__item mobile-sticky-cta__primary" aria-label="Solicitar diagnóstico gratuito" href="/#diagnostico-gratuito"><span aria-hidden="true">Diag</span><strong>Diagnóstico</strong></a>
