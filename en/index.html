@@ -51,26 +51,38 @@
 <section class="hero hero-carousel" id="inicio" aria-label="Alpha Robotics: KEENON robots for hotels and hospitality">
   <div class="hero-slides" aria-hidden="true">
     <picture class="hero-slide is-active" data-slide="0">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-roomservice-675x900.avif" type="image/avif">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-roomservice-675x900.webp" type="image/webp">
       <source srcset="/assets/hero/hero-roomservice-1600.avif" type="image/avif">
       <img src="/assets/hero/hero-roomservice-1600.webp" alt="" loading="eager" fetchpriority="high" decoding="async" width="1600" height="900">
     </picture>
     <picture class="hero-slide" data-slide="1">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-innovacion-675x900.avif" type="image/avif">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-innovacion-675x900.webp" type="image/webp">
       <source srcset="/assets/hero/hero-innovacion-1600.avif" type="image/avif">
       <img src="/assets/hero/hero-innovacion-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
     </picture>
     <picture class="hero-slide" data-slide="2">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-hospitality-675x900.avif" type="image/avif">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-hospitality-675x900.webp" type="image/webp">
       <source srcset="/assets/hero/hero-hospitality-1600.avif" type="image/avif">
       <img src="/assets/hero/hero-hospitality-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
     </picture>
     <picture class="hero-slide" data-slide="3">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-limpieza-675x900.avif" type="image/avif">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-limpieza-675x900.webp" type="image/webp">
       <source srcset="/assets/hero/hero-limpieza-1600.avif" type="image/avif">
       <img src="/assets/hero/hero-limpieza-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
     </picture>
     <picture class="hero-slide" data-slide="4">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-sala-675x900.avif" type="image/avif">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-sala-675x900.webp" type="image/webp">
       <source srcset="/assets/hero/hero-sala-1600.avif" type="image/avif">
       <img src="/assets/hero/hero-sala-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
     </picture>
     <picture class="hero-slide" data-slide="5">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-logistica-675x900.avif" type="image/avif">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-logistica-675x900.webp" type="image/webp">
       <source srcset="/assets/hero/hero-logistica-1600.avif" type="image/avif">
       <img src="/assets/hero/hero-logistica-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
     </picture>
@@ -96,6 +108,22 @@
 .hero-carousel .finder.finder-convo .finder-foot .btn.secondary{background:rgba(255,255,255,.10);color:#fff;border-color:rgba(255,255,255,.35)}
 @media(max-width:640px){.finder-convo .finder-foot{flex-direction:column;align-items:stretch}.hero-carousel .finder.finder-convo .finder-foot .btn{width:100%}.hero-carousel .hero-primary-cta .btn{width:100%}}
 @media(max-width:640px){.hero-carousel .hero-inner{display:flex;flex-direction:column}.hero-carousel .hero-inner .hero-primary-cta{order:1;margin:18px 0 4px}.hero-carousel .hero-inner .hero-sub{order:2;margin:14px 0 22px}.hero-carousel .hero-inner .finder{order:3}}
+
+/* v4.153.6 — hero móvil: imagen visible + texto en el tercio inferior */
+@media(max-width:900px){.hero.hero-carousel>.hero-overlay{background:linear-gradient(180deg,rgba(6,19,38,.42) 0%,rgba(6,19,38,.62) 45%,rgba(6,19,38,.88) 100%)}}
+@media(max-width:640px){
+.hero.hero-carousel{--hero-media-h:min(133.4vw,62vh);display:block;min-height:auto;padding:74px 18px 56px}
+.hero.hero-carousel>.hero-slides{position:relative;inset:auto;width:auto;height:var(--hero-media-h);margin:0 -18px;z-index:0}
+.hero.hero-carousel>.hero-slides::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(6,19,38,.18) 0%,rgba(6,19,38,0) 14%,rgba(6,19,38,0) 52%,rgba(6,19,38,.38) 68%,rgba(6,19,38,.86) 82%,var(--navy) 100%)}
+.hero.hero-carousel>.hero-overlay{display:none}
+.hero.hero-carousel>.hero-inner{width:100%;margin-top:-112px}
+.hero.hero-carousel .eyebrow{font-size:11px}
+.hero.hero-carousel h1{font-size:clamp(36px,10.2vw,42px);line-height:1.04}
+.hero.hero-carousel>.hero-controls{left:auto;right:14px;top:86px;bottom:auto;justify-content:flex-end}
+.hero.hero-carousel .hero-dots{padding:8px 10px;gap:8px;background:rgba(6,19,38,.48)}
+.hero.hero-carousel .hero-dots button{width:10px;height:10px;min-width:10px;min-height:10px}
+.hero.hero-carousel>.hero-chip{left:14px;right:auto;top:86px;bottom:auto;min-height:38px;padding:0 13px;font-size:12px;max-width:calc(100vw - 162px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+}
 </style>
 <form class="finder finder-convo" id="finder" action="/en/configurador" method="get" aria-label="Configure your solution and open the configurator">
       <p class="finder-kicker">Or explore a configuration on your own</p>
@@ -377,7 +405,7 @@
 <script defer src="/main.js?v=4146-i18n"></script>
 <script defer src="/cookie-consent.js?v=4153-seo-gsc"></script>
 <script defer src="/assets/js/contact-area-prefill.js?v=4113-utf8-keenon"></script>
-<script defer src="/assets/js/hero-carousel.js?v=4115-en-fase1"></script>
+<script defer src="/assets/js/hero-carousel.js?v=41536-hero-movil"></script>
 <script defer src="/assets/js/configurador.js?v=4138"></script>
 <nav class="mobile-sticky-cta" aria-label="Quick contact actions"><a class="mobile-sticky-cta__item" aria-label="Call Alpha Robotics" href="tel:+34659483652"><span aria-hidden="true">Tel</span><strong>Call</strong></a><a class="mobile-sticky-cta__item" aria-label="Message Alpha Robotics on WhatsApp" href="https://wa.me/34659483652?text=Hello%2C%20I%20would%20like%20a%20free%20assessment%20for%20a%20KEENON%20robot%20project" rel="noopener" target="_blank"><span aria-hidden="true">WA</span><strong>WhatsApp</strong></a><a class="mobile-sticky-cta__item mobile-sticky-cta__primary" aria-label="Request free assessment" href="/en/#diagnostico-gratuito"><span aria-hidden="true">ROI</span><strong>Go</strong></a></nav>
 </body>
