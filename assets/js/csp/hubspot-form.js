@@ -63,8 +63,19 @@
   }
 
   function sendToHubSpot(form) {
+    function report(state, httpStatus) {
+      // Operational status only: no form values, analytics or automatic retry.
+      // An accepted HTTP request is not proof of final CRM delivery.
+      form.dataset.hubspotSubmission = state;
+      window.dispatchEvent(new CustomEvent('alphaHubSpotSubmission', { detail: {
+        form: form.getAttribute('name') || 'contacto-alpha',
+        state: state,
+        httpStatus: httpStatus
+      } }));
+    }
     try {
       var payload = buildPayload(form);
+      report('pending', 0);
       fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -72,8 +83,10 @@
         keepalive: true,
         mode: 'cors',
         credentials: 'omit'
-      }).catch(function () { /* silencioso: Netlify sigue siendo el respaldo */ });
-    } catch (e) { /* no bloquear el envio nativo */ }
+      }).then(function (response) {
+        report(response.ok ? 'accepted' : 'http-error', response.status);
+      }).catch(function () { report('network-error', 0); });
+    } catch (e) { report('client-error', 0); /* no bloquear el envio nativo */ }
   }
 
   function init() {

@@ -1,7 +1,6 @@
 /*
  * Alpha Robotics cookie consent banner.
- * Vanilla JS, no dependencies. Future analytics/marketing scripts must be loaded
- * only after the matching preference is true.
+ * Vanilla JS, no dependencies. Analytics starts only after explicit consent.
  */
 (function () {
   var ALPHA_LANG = (document.documentElement.lang || "es").slice(0, 2);
@@ -19,7 +18,9 @@
       var raw = localStorage.getItem(CONSENT_KEY);
       if (!raw) return null;
       var data = JSON.parse(raw);
-      if (!data.expires || Date.now() > data.expires) return null;
+      if (!Number.isFinite(data.expires) || Date.now() >= data.expires ||
+          !data.preferences || typeof data.preferences.analytics !== "boolean" ||
+          typeof data.preferences.marketing !== "boolean") return null;
       return data;
     } catch (error) {
       return null;
@@ -28,7 +29,7 @@
 
   function saveConsent(preferences) {
     var payload = {
-      version: "2026-06-15",
+      version: "2026-09-13",
       updatedAt: now(),
       expires: Date.now() + ONE_YEAR_MS,
       preferences: {
@@ -37,18 +38,24 @@
         marketing: !!preferences.marketing
       }
     };
-    localStorage.setItem(CONSENT_KEY, JSON.stringify(payload));
-    localStorage.setItem(PREFS_KEY, JSON.stringify(payload.preferences));
-    window.dispatchEvent(new CustomEvent("alphaCookieConsentUpdated", { detail: payload.preferences }));
-    applyConsent(payload.preferences);
+    try {
+      localStorage.setItem(CONSENT_KEY, JSON.stringify(payload));
+      localStorage.setItem(PREFS_KEY, JSON.stringify(payload.preferences));
+    } catch (error) { /* The choice still applies to this page when storage is blocked. */ }
+    applyConsent(payload.preferences, payload.expires);
     return payload;
   }
 
-  function applyConsent(preferences) {
-    // TODO: Load analytics scripts here only if preferences.analytics === true.
-    // TODO: Load marketing pixels here only if preferences.marketing === true.
-    document.documentElement.dataset.cookieAnalytics = preferences.analytics ? "granted" : "denied";
-    document.documentElement.dataset.cookieMarketing = preferences.marketing ? "granted" : "denied";
+  function applyConsent(preferences, expires) {
+    var valid = Number.isFinite(expires) && Date.now() < expires;
+    document.documentElement.dataset.cookieAnalytics = valid && preferences.analytics === true ? "granted" : "denied";
+    document.documentElement.dataset.cookieMarketing = valid && preferences.marketing === true ? "granted" : "denied";
+    document.documentElement.dataset.cookieConsentExpires = valid ? String(expires) : "0";
+    window.dispatchEvent(new CustomEvent("alphaCookieConsentUpdated", { detail: {
+      necessary: true,
+      analytics: valid && preferences.analytics === true,
+      marketing: valid && preferences.marketing === true
+    } }));
   }
 
   function closeBanner() {
@@ -65,8 +72,8 @@
     wrapper.innerHTML =
       '<div class="cookie-banner__copy">' +
       '<strong>'+aT('Privacidad y cookies','Privacy and cookies')+'</strong>' +
-      '<p>'+aT('Usamos almacenamiento técnico para recordar tus preferencias y mejorar el simulador ROI. La analítica y marketing quedan desactivados salvo consentimiento futuro.','We use technical storage to remember your preferences and improve the ROI simulator. Analytics and marketing remain disabled unless you consent in the future.')+'</p>' +
-      '<a href="'+aT('cookies.html','/en/cookies')+'">'+aT('Política de cookies','Cookie policy')+'</a>' +
+      '<p>'+aT('Usamos almacenamiento técnico para recordar tus preferencias y el simulador ROI. Solo activamos la analítica de uso de Plausible si la aceptas. Puedes rechazarla o cambiar tu decisión en cualquier momento. No usamos rastreadores publicitarios.','We use technical storage for your preferences and the ROI simulator. Plausible usage analytics starts only if you accept it. You can reject it or change your decision at any time. We do not use advertising trackers.')+'</p>' +
+      '<a href="'+aT('/cookies','/en/cookies')+'">'+aT('Política de cookies','Cookie policy')+'</a>' +
       '</div>' +
       '<div class="cookie-banner__toggles" data-cookie-options hidden>' +
       '<label><input type="checkbox" checked disabled> '+aT('Necesarias','Necessary')+'</label>' +
@@ -85,6 +92,11 @@
     createBanner();
     var options = document.querySelector("[data-cookie-options]");
     if (options) options.hidden = false;
+    var valid = Date.now() < Number(document.documentElement.dataset.cookieConsentExpires);
+    var analytics = document.querySelector("[data-cookie-analytics]");
+    var marketing = document.querySelector("[data-cookie-marketing]");
+    if (analytics) analytics.checked = valid && document.documentElement.dataset.cookieAnalytics === "granted";
+    if (marketing) marketing.checked = valid && document.documentElement.dataset.cookieMarketing === "granted";
   }
 
   function bindEvents() {
@@ -118,11 +130,20 @@
     bindEvents();
     var stored = getStoredConsent();
     if (stored) {
-      applyConsent(stored.preferences);
       return;
     }
     createBanner();
   }
+
+  // Establish the default before other DOMContentLoaded listeners track events.
+  var initial = getStoredConsent();
+  applyConsent(initial ? initial.preferences : {}, initial ? initial.expires : 0);
+  window.addEventListener("storage", function (event) {
+    if (event.key !== CONSENT_KEY && event.key !== null) return;
+    var stored = getStoredConsent();
+    applyConsent(stored ? stored.preferences : {}, stored ? stored.expires : 0);
+    if (stored) closeBanner(); else createBanner();
+  });
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);

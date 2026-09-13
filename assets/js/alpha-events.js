@@ -1,7 +1,7 @@
 /* alpha-events.js · v3
  * Eventos de funnel para Plausible (cookieless, first-party via /stats proxy).
  * Sin dependencias. No-op silencioso si Plausible no está cargado o si el usuario
- * ha rechazado la analítica en el banner de cookies (data-cookie-analytics="denied").
+ * no ha aceptado la analítica o su preferencia ha caducado.
  * Eventos: hero_madlib_select, hero_madlib_submit, config_start, config_gate_submit,
  *          diag_form_start, diag_form_submit, form_thanks_view (vista de /gracias; no equivale
  *          a recepción en CRM), cta_whatsapp, cta_tel, cta_diagnostico, cta_demo_landing
@@ -11,7 +11,8 @@
 
   function track(name, props) {
     try {
-      if (document.documentElement.dataset.cookieAnalytics === 'denied') return;
+      if (document.documentElement.dataset.cookieAnalytics !== 'granted' ||
+          !(Date.now() < Number(document.documentElement.dataset.cookieConsentExpires || 0))) return;
       if (typeof window.plausible === 'function') {
         var p = props || {};
         p.page = window.location.pathname;

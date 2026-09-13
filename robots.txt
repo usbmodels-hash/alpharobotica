@@ -7,3 +7,4 @@ Disallow: /404.html
 Disallow: /components/
 
 Sitemap: https://alpharobotica.com/sitemap.xml
+Sitemap: https://landing.alpharobotica.com/sitemap.xml
