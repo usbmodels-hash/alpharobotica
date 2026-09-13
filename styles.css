@@ -3083,3 +3083,12 @@ html:has(#contacto:target) .section{
 .config-hero>.diag{grid-column:1/-1;max-width:1080px;margin:24px 0 0}
 @media(min-width:780px){.diag__step:not(:last-child)::after{content:"";position:absolute;top:50%;right:-13px;width:13px;height:13px;border-top:2.5px solid #53BAED;border-right:2.5px solid #53BAED;transform:translateY(-50%) rotate(45deg);z-index:3}}
 @media(max-width:779px){.diag__flow{grid-template-columns:1fr;gap:22px}.diag__head{margin-bottom:26px}}
+.footer .social-links{flex-wrap:wrap}.footer .social-links .social-label{flex-basis:100%;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.74)}
+.robot-card.expanded .btn.secondary,.s100-bellhop-copy .btn.secondary,.robot-detail-copy .btn.secondary,.alpha-care-table-wrap .btn.secondary,.legal-page .btn.secondary,main.legal .btn.secondary,.legal-content .btn.secondary{color:var(--navy);border-color:rgba(1,100,168,.22);background:#fff}.robot-card.expanded .btn.secondary:hover,.s100-bellhop-copy .btn.secondary:hover,.robot-detail-copy .btn.secondary:hover,.alpha-care-table-wrap .btn.secondary:hover{background:#f5fbff}
+.contact-demo-link{color:#9fd8ff;text-decoration:underline;text-underline-offset:3px;font-weight:600}.contact-demo-link:hover,.contact-demo-link:focus-visible{color:#fff}
+.article-body .article-section a,.lead-magnet-cta a,.site-footer a{color:#8fd0f5;text-decoration:underline;text-underline-offset:3px}.article-body .article-section a:hover,.lead-magnet-cta a:hover,.site-footer a:hover,.article-body .article-section a:focus-visible{color:#fff}
+.lead-magnet-cta{max-width:920px;margin:0 auto 36px;padding:16px 20px;border:1px solid rgba(83,186,237,.3);border-radius:14px;background:rgba(255,255,255,.04);color:rgba(255,255,255,.88);line-height:1.55}
+.site-footer{padding:26px 20px;text-align:center;color:rgba(255,255,255,.74);font-size:14px}
+.ideal-sector-list span a.sector-link{color:#9fd8ff;text-decoration:underline;text-underline-offset:3px}.ideal-sector-list span a.sector-link:hover{color:#fff}
+.testimonial-card blockquote p strong{color:inherit;display:inline;margin-top:0}.static-product-page .section-head p{color:#5b6b82}
+.cookie-banner__actions .btn.secondary{color:var(--navy);background:#fff;border-color:rgba(13,27,42,.28)}.cookie-banner__actions .btn.secondary:hover,.cookie-banner__actions .btn.secondary:focus-visible{background:#f4f8fc;border-color:var(--navy)}

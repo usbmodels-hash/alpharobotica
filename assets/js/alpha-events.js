@@ -1,14 +1,17 @@
-/* alpha-events.js · v2
+/* alpha-events.js · v3
  * Eventos de funnel para Plausible (cookieless, first-party via /stats proxy).
- * Sin dependencias. No-op silencioso si Plausible no está cargado.
- * Eventos: hero_madlib_select, hero_madlib_submit, config_start,
- *          config_gate_submit, diag_form_submit, cta_whatsapp, cta_tel, cta_diagnostico
+ * Sin dependencias. No-op silencioso si Plausible no está cargado o si el usuario
+ * ha rechazado la analítica en el banner de cookies (data-cookie-analytics="denied").
+ * Eventos: hero_madlib_select, hero_madlib_submit, config_start, config_gate_submit,
+ *          diag_form_start, diag_form_submit, form_thanks_view (vista de /gracias; no equivale
+ *          a recepción en CRM), cta_whatsapp, cta_tel, cta_diagnostico, cta_demo_landing
  */
 (function () {
   'use strict';
 
   function track(name, props) {
     try {
+      if (document.documentElement.dataset.cookieAnalytics === 'denied') return;
       if (typeof window.plausible === 'function') {
         var p = props || {};
         p.page = window.location.pathname;
@@ -65,6 +68,25 @@
       }, true);
     }
 
+    /* ---------- 2b · Inicio de formulario de contacto (primera interacción) ---------- */
+    var formStarted = {};
+    document.addEventListener('input', function (ev) {
+      var el = ev.target;
+      var form = el && el.closest ? el.closest('form') : null;
+      if (!form) return;
+      var fn = form.querySelector('input[name="form-name"]');
+      var formName = fn ? fn.value : (form.getAttribute('name') || '');
+      if (formName !== 'contacto-alpha' && formName !== 'leads-demo') return;
+      if (formStarted[formName]) return;
+      formStarted[formName] = true;
+      track('diag_form_start', { form: formName });
+    }, true);
+
+    /* ---------- 2c · Vista de la página de gracias (tras envío correcto del formulario) ---------- */
+    if (/^\/(en\/)?gracias\/?$/.test(window.location.pathname)) {
+      track('form_thanks_view');
+    }
+
     /* ---------- 3 · Formularios: gate del configurador y diagnóstico ---------- */
     document.addEventListener('submit', function (ev) {
       var form = ev.target;
@@ -94,6 +116,8 @@
         track('cta_tel');
       } else if (href.indexOf('#diagnostico-gratuito') !== -1) {
         track('cta_diagnostico');
+      } else if (href.indexOf('landing.alpharobotica.com') !== -1) {
+        track('cta_demo_landing');
       }
     }, true);
   });
