@@ -100,6 +100,26 @@
     }
   });
 
+
+  // Gesto táctil (swipe) sobre las imágenes — móvil
+  const slidesEl = hero.querySelector(".hero-slides");
+  let touchStart = null;
+  slidesEl?.addEventListener("touchstart", (event) => {
+    const t = event.touches[0];
+    touchStart = { x: t.clientX, y: t.clientY };
+  }, { passive: true });
+  slidesEl?.addEventListener("touchend", (event) => {
+    if (!touchStart) return;
+    const t = event.changedTouches[0];
+    const dx = t.clientX - touchStart.x;
+    const dy = t.clientY - touchStart.y;
+    touchStart = null;
+    if (Math.abs(dx) < 44 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
+    stop();
+    update(dx < 0 ? current + 1 : current - 1);
+    start();
+  }, { passive: true });
+
   hero.addEventListener("mouseenter", stop);
   hero.addEventListener("mouseleave", start);
   hero.addEventListener("focusin", stop);
