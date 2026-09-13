@@ -42,6 +42,7 @@
     slides.forEach((slide, slideIndex) => {
       slide.classList.toggle("is-active", slideIndex === current);
     });
+    hero.setAttribute("data-active", String(current));
     dots.forEach((dot, dotIndex) => {
       const active = dotIndex === current;
       dot.classList.toggle("is-active", active);
