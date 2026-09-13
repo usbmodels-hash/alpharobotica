@@ -51,34 +51,34 @@
 <section class="hero hero-carousel" id="inicio" aria-label="Alpha Robotics: KEENON robots for hotels and hospitality">
   <div class="hero-slides" aria-hidden="true">
     <picture class="hero-slide is-active" data-slide="0">
-      <source media="(max-width:640px)" srcset="/assets/hero/hero-roomservice-675x900.avif" type="image/avif">
-      <source media="(max-width:640px)" srcset="/assets/hero/hero-roomservice-675x900.webp" type="image/webp">
-      <source srcset="/assets/hero/hero-roomservice-1600.avif" type="image/avif">
-      <img src="/assets/hero/hero-roomservice-1600.webp" alt="" loading="eager" fetchpriority="high" decoding="async" width="1600" height="900">
-    </picture>
-    <picture class="hero-slide" data-slide="1">
-      <source media="(max-width:640px)" srcset="/assets/hero/hero-hospitality-675x900.avif" type="image/avif">
-      <source media="(max-width:640px)" srcset="/assets/hero/hero-hospitality-675x900.webp" type="image/webp">
-      <source srcset="/assets/hero/hero-hospitality-1600.avif" type="image/avif">
-      <img src="/assets/hero/hero-hospitality-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
-    </picture>
-    <picture class="hero-slide" data-slide="2">
       <source media="(max-width:640px)" srcset="/assets/hero/hero-limpieza-675x900.avif" type="image/avif">
       <source media="(max-width:640px)" srcset="/assets/hero/hero-limpieza-675x900.webp" type="image/webp">
       <source srcset="/assets/hero/hero-limpieza-1600.avif" type="image/avif">
-      <img src="/assets/hero/hero-limpieza-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
+      <img src="/assets/hero/hero-limpieza-1600.webp" alt="" loading="eager" fetchpriority="high" decoding="async" width="1600" height="900">
     </picture>
-    <picture class="hero-slide" data-slide="3">
+    <picture class="hero-slide" data-slide="1">
       <source media="(max-width:640px)" srcset="/assets/hero/hero-sala-675x900.avif" type="image/avif">
       <source media="(max-width:640px)" srcset="/assets/hero/hero-sala-675x900.webp" type="image/webp">
       <source srcset="/assets/hero/hero-sala-1600.avif" type="image/avif">
       <img src="/assets/hero/hero-sala-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
     </picture>
-    <picture class="hero-slide" data-slide="4">
+    <picture class="hero-slide" data-slide="2">
       <source media="(max-width:640px)" srcset="/assets/hero/hero-heavyload-600x800.avif" type="image/avif">
       <source media="(max-width:640px)" srcset="/assets/hero/hero-heavyload-600x800.webp" type="image/webp">
       <source srcset="/assets/hero/hero-heavyload-1600.avif" type="image/avif">
       <img src="/assets/hero/hero-heavyload-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="800">
+    </picture>
+    <picture class="hero-slide" data-slide="3">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-roomservice-675x900.avif" type="image/avif">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-roomservice-675x900.webp" type="image/webp">
+      <source srcset="/assets/hero/hero-roomservice-1600.avif" type="image/avif">
+      <img src="/assets/hero/hero-roomservice-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
+    </picture>
+    <picture class="hero-slide" data-slide="4">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-hospitality-675x900.avif" type="image/avif">
+      <source media="(max-width:640px)" srcset="/assets/hero/hero-hospitality-675x900.webp" type="image/webp">
+      <source srcset="/assets/hero/hero-hospitality-1600.avif" type="image/avif">
+      <img src="/assets/hero/hero-hospitality-1600.webp" alt="" loading="lazy" decoding="async" width="1600" height="900">
     </picture>
   </div>
   <div class="hero-overlay"></div>
@@ -105,7 +105,7 @@
 
 /* v4.153.6 — hero móvil: imagen visible + texto en el tercio inferior */
 /* v4.153.7 — diapositivas 2 (W3 en pasillo) y 6 (S100 Heavy Load): el sujeto está a la izquierda/centro de la foto → anclaje a la izquierda; en ≥641 px la 2 lleva velo más ligero */
-.hero.hero-carousel .hero-slide[data-slide="4"] img{object-position:0 center}
+.hero.hero-carousel .hero-slide[data-slide="2"] img{object-position:0 center}
 @media(max-width:900px){.hero.hero-carousel>.hero-overlay{background:linear-gradient(180deg,rgba(6,19,38,.42) 0%,rgba(6,19,38,.62) 45%,rgba(6,19,38,.88) 100%)}}
 @media(max-width:640px){
 .hero.hero-carousel{--hero-media-h:min(133.4vw,62vh);display:block;min-height:auto;padding:74px 18px 56px}
@@ -142,11 +142,11 @@
   </div>
   <div class="hero-controls" aria-label="Solutions carousel">
     <div class="hero-dots" role="tablist" aria-label="Select slide">
-      <button class="is-active" type="button" data-dot="0" role="tab" aria-selected="true" aria-label="Go to room service"></button>
-      <button type="button" data-dot="1" role="tab" aria-selected="false" aria-label="Go to innovation"></button>
-      <button type="button" data-dot="2" role="tab" aria-selected="false" aria-label="Go to cleaning"></button>
-      <button type="button" data-dot="3" role="tab" aria-selected="false" aria-label="Go to dining"></button>
-      <button type="button" data-dot="4" role="tab" aria-selected="false" aria-label="Go to logistics"></button>
+      <button class="is-active" type="button" data-dot="0" role="tab" aria-selected="true" aria-label="Go to cleaning"></button>
+      <button type="button" data-dot="1" role="tab" aria-selected="false" aria-label="Go to dining"></button>
+      <button type="button" data-dot="2" role="tab" aria-selected="false" aria-label="Go to logistics"></button>
+      <button type="button" data-dot="3" role="tab" aria-selected="false" aria-label="Go to room service"></button>
+      <button type="button" data-dot="4" role="tab" aria-selected="false" aria-label="Go to innovation"></button>
     </div>
   </div>
   <a class="hero-chip" href="/en/room-service" data-chip>Butlerbot - Room service</a>
@@ -400,7 +400,7 @@
 <script defer src="/main.js?v=4146-i18n"></script>
 <script defer src="/cookie-consent.js?v=4153-seo-gsc"></script>
 <script defer src="/assets/js/contact-area-prefill.js?v=4113-utf8-keenon"></script>
-<script defer src="/assets/js/hero-carousel.js?v=41538-hero-5slides"></script>
+<script defer src="/assets/js/hero-carousel.js?v=41539-hero-orden"></script>
 <script defer src="/assets/js/configurador.js?v=4138"></script>
 <nav class="mobile-sticky-cta" aria-label="Quick contact actions"><a class="mobile-sticky-cta__item" aria-label="Call Alpha Robotics" href="tel:+34659483652"><span aria-hidden="true">Tel</span><strong>Call</strong></a><a class="mobile-sticky-cta__item" aria-label="Message Alpha Robotics on WhatsApp" href="https://wa.me/34659483652?text=Hello%2C%20I%20would%20like%20a%20free%20assessment%20for%20a%20KEENON%20robot%20project" rel="noopener" target="_blank"><span aria-hidden="true">WA</span><strong>WhatsApp</strong></a><a class="mobile-sticky-cta__item mobile-sticky-cta__primary" aria-label="Request free assessment" href="/en/#diagnostico-gratuito"><span aria-hidden="true">ROI</span><strong>Go</strong></a></nav>
 </body>
