@@ -2704,7 +2704,7 @@ html:has(#contacto:target) .section{
   object-fit:cover;
   object-position:center;
 }
-.hero-carousel .hero-slide:nth-child(4) img{
+.hero-carousel .hero-slide:nth-child(3) img{
   object-position:60% center;
 }
 .hero-carousel .hero-overlay{

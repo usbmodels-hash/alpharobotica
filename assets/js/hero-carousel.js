@@ -18,7 +18,6 @@
     es: [
       { label: "Butlerbot - Room service", href: "/room-service" },
       { label: "KEENON - Innovacion robotica", href: "/catalogo-keenon" },
-      { label: "Hospitality - Atencion premium 4-5 estrellas", href: "/soluciones-enterprise-integracion-360" },
       { label: "KLEENBOT - Limpieza autonoma", href: "/limpieza-autonoma" },
       { label: "DINERBOT - Atencion y sala", href: "/food-beverage" },
       { label: "HEAVY LOAD - Logistica y transporte", href: "/logistica-interna" }
@@ -26,7 +25,6 @@
     en: [
       { label: "Butlerbot - Room service", href: "/room-service" },
       { label: "KEENON - Robotic innovation", href: "/catalogo-keenon" },
-      { label: "Hospitality - Premium 4-5 star service", href: "/soluciones-enterprise-integracion-360" },
       { label: "KLEENBOT - Autonomous cleaning", href: "/limpieza-autonoma" },
       { label: "DINERBOT - Dining room service", href: "/food-beverage" },
       { label: "HEAVY LOAD - Logistics and transport", href: "/logistica-interna" }
