@@ -67,13 +67,39 @@ Estas reescrituras quedan **preparadas y pendientes de acceso a la landing** (ve
 
 ---
 
+## Lote 3 — P6 (parte ejecutable en el repositorio)
+
+### Auditoría técnica de las páginas prioritarias
+
+Comprobado sobre las 16 páginas prioritarias del informe (8 ES + 8 EN): `robots`, `canonical`, `hreflang`, presencia en sitemap y enlaces internos entrantes.
+
+**Resultado: ninguna tiene un defecto técnico de indexabilidad.** Todas devuelven `index, follow`, canonical autorreferente correcta, `hreflang` es/en/x-default recíproco y están en el sitemap. Por tanto, «Descubierta, sin indexar» y «Desconocida para Google» **no** se explican por un bloqueo técnico en el repositorio, sino por descubrimiento, autoridad y diferenciación de contenido — coincide con lo que anticipaba el informe.
+
+### Causa de descubrimiento localizada y corregida
+
+| ID | URL/archivo | Situación inicial | Cambio | Prueba | Estado | Evidencia | Fecha | Dependencia |
+|---|---|---|---|---|---|---|---|---|
+| P6a | Footer de las 29 páginas EN que lo incluyen | El footer EN **omitía tres enlaces** que sí tiene el ES: Restauración / negocios locales, Enterprise / integración 360º y Modelos de adquisición. Las tres figuran en el anexo de URL sin indexar | Añadidos al footer EN, con los mismos destinos y su traducción | Recuento de enlaces entrantes antes/después, HTTP de los tres destinos y render en 390/1366 px | validado en vista previa | `/en/robots-para-restaurantes-negocios-locales` pasa de **4 a 30** enlaces entrantes (su gemela ES tenía 25); las otras dos de 36 a 38. Footer ES y EN quedan en 17 enlaces internos cada uno. Los tres destinos responden 200 | 14/09/2026 | pendiente de Google: el rastreo posterior no depende de nosotros |
+
+### Hallazgo documentado, sin actuar
+
+21 páginas **no incluyen el footer del sitio**: `blog.html`, los seis artículos, las dos comparativas, `404` y `gracias`, en ES y EN por igual. Eso explica que los blogs y las comparativas tengan entre 6 y 11 enlaces entrantes frente a una mediana del sitio de 37, y encaja con que las dos comparativas aparezcan como «Desconocida para Google».
+
+**No se ha modificado**: es simétrico en ambos idiomas, luego parece una decisión de diseño previa y no un fallo de la versión EN. Añadir el footer a esas 21 páginas mejoraría el enlazado interno de forma notable, pero es un cambio visible de maquetación que conviene que apruebe la propiedad. **Recomendación pendiente de decisión.**
+
+### Lo que no puede ejecutarse sin Search Console
+
+Sin conector de Search Console en esta sesión no se puede: inspeccionar URL en vivo, exportar la lista actual con motivo y última lectura, enviar sitemaps, solicitar indexación ni obtener el informe de indexación de vídeos con sus URL y motivos. La matriz `URL | motivo GSC | vídeo principal o complementario | causa | corrección | validación | estado` **no puede completarse** con datos reales: la columna «motivo GSC» requiere ese informe. Queda como dependencia con acción exacta: exportar «Indexación de vídeos» desde la propiedad `sc-domain:alpharobotica.com`.
+
+---
+
 ## Lotes pendientes y bloqueos
 
 | ID | Alcance | Estado | Motivo / dependencia exacta |
 |---|---|---|---|
 | P4 | Reordenar Inicio: necesidad → 4 aplicaciones → validación → evidencia → contacto breve → modalidades comerciales → detalle | pendiente | Ejecutable en este repositorio. Lote 2 |
 | P5 | Canal preferido (email o llamada) en el formulario de la landing | bloqueado | La landing se despliega por separado (Netlify Drop) y **su código no está en este repositorio**. Hace falta el origen de `landing.alpharobotica.com` o acceso a ese proyecto de Netlify |
-| P6 | Causas de las 31 URL sin indexar; envío de sitemaps; solicitud de indexación; informe de indexación de vídeos | parcialmente bloqueado | **No dispongo de conector de Search Console** en esta sesión: no puedo inspeccionar URL, enviar sitemaps, solicitar indexación ni exportar el informe de vídeos. Sí es ejecutable la parte on-page (contenido propio, enlaces internos, canonical/hreflang) sobre las páginas prioritarias del anexo |
+| P6 | Causas de las 31 URL sin indexar; envío de sitemaps; solicitud de indexación; informe de indexación de vídeos | **parte on-page publicada**; el resto bloqueado | **No dispongo de conector de Search Console** en esta sesión: no puedo inspeccionar URL, enviar sitemaps, solicitar indexación ni exportar el informe de vídeos. Sí es ejecutable la parte on-page (contenido propio, enlaces internos, canonical/hreflang) sobre las páginas prioritarias del anexo |
 | P7 | Acreditar recepción real en Netlify/HubSpot y atribución de fuente | bloqueado | Requiere un envío real que dispara correos y flujos comerciales. El encargo exige pedir **una autorización concreta** antes. Preparado: identificador único, datos de prueba y criterios de aceptación. Hay conector de HubSpot disponible para revisión de configuración sin enviar nada |
 | P8 | Reescrituras de texto (tabla del informe) | **publicado en la parte que aplica** | Lote 2. Las frases restantes están en la landing, fuera de este repositorio |
 | P10 | Pausa persistente accesible del carrusel, teclado, foco, `prefers-reduced-motion` | **publicado** | Lote 2. La parte de «imagen aprobada de robot en uso» ya se resolvió en los lotes de carrusel previos |
