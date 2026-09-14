@@ -12,7 +12,9 @@ El encargo indica adjuntar **`AlphaRobotica_Correcciones_Videos_CRO.zip`** (con 
 
 ## Estados usados
 
-`pendiente` · `preparado` · `validado en vista previa` · `publicado` · `comprobado en producción` · `pendiente de Google` · `bloqueado` · `no aplicable`
+`pendiente` · `preparado` · `probado localmente` · `validado en vista previa` · `publicado` · `comprobado en producción` · `pendiente de Google` · `bloqueado` · `no aplicable`
+
+Una misma tarea puede tener subpasos en estados distintos: el resumen final los desglosa así. «Publicado» significa fusionado en `main`; **no** implica comprobado en producción, que se registra aparte.
 
 ---
 
@@ -190,36 +192,139 @@ Eventos ya existentes que se conservan: `cta_diagnostico`, `cta_tel`, `cta_whats
 
 ---
 
-## Lote 7 — P13 · Vídeos: hechos verificados y límite real
+## Lote 6b (PR #15, `11e2b47`) — P13 · Vídeos: hechos verificados y límite real
 
 | Comprobación | Resultado |
 |---|---|
-| Integridad de los MP4 | **Válidos**: ISO Media, marca `avc1`, con `ftyp`, `moov` y `mdat`. El `ffmpeg` de esta sesión no los abre por ser una compilación sin H.264, **no por estar dañados** |
-| Duración real | C40 **77,28 s**; W3 **39,25 s** (medido sobre los WebM; coincide con el informe) |
+| Integridad de los MP4 | **Confirmada por decodificación completa** en la revisión externa del 14/09. Lo que yo comprobé aquí fueron solo las cabeceras del contenedor (`ftyp`, `moov`, `mdat`, marca `avc1`): **la presencia de cabeceras no era, por sí sola, prueba de integridad completa**, y así queda corregido |
+| Duración real | **C40 77,824 s · W3 39,250 s**, H.264/AAC. Dato de la **revisión externa del 14/09**, que descargó los dos MP4 publicados y decodificó vídeo y audio completos sin errores. **No es una prueba realizada en esta sesión.** Los 77,28 s que registré antes eran la duración del **WebM** del C40, no del MP4 |
 | Pista de audio en los WebM | **Ninguna**: solo `Stream #0:0 Video`. Confirma el informe y justifica que el MP4 vaya primero |
 | Reproducción efectiva | Verificada en las dos fichas: el vídeo arranca, `currentTime` avanza y la duración es la real |
 | Reproducción del MP4 y su audio | **No verificable en esta sesión**: el Chromium disponible devuelve `canPlayType('video/mp4; codecs="avc1…"') === ""`, es decir, no soporta H.264, y cae al WebM. Un Chrome, Safari o Edge reales sí lo reproducen |
 
-**Transcripción: no ejecutable aquí.** No hay motor de reconocimiento de voz instalado ni forma de instalarlo en esta sesión. La transcripción es contenido, no un dato del propietario, pero requiere una capacidad que esta sesión no tiene. Sin transcripción revisada no procede publicar páginas de visionado, porque es uno de sus requisitos.
+**Transcripción: no ejecutable aquí.** No hay motor de reconocimiento de voz instalado ni forma de instalarlo en esta sesión. Es una tarea de contenido que me corresponde, no un dato que deba aportar la propiedad: la limitación es de capacidad, no de alcance.
+
+Matiz que corrijo: **la transcripción no es un requisito universal de indexación de Google**. Es un requisito de **calidad** de las páginas de visionado que pide el encargo, para que el vídeo sea contenido principal con contexto propio. Sin ella, una página de visionado sería una ficha repetida.
 
 **`uploadDate`**: sigue sin evidencia documentada de la fecha de primera publicación. No se inventará ni se sustituirá por la fecha de un commit de migración.
 
 ---
 
-## Lotes pendientes y bloqueos
+## Lote 7 (PR #16, `cc6ea6d`) — Paso 1 · Medición corregida
 
-| ID | Alcance | Estado | Motivo / dependencia exacta |
+Los tres fallos se reprodujeron sobre el código vigente, blob `355e0c8b…`, el mismo que citaba el encargo.
+
+| ID | Situación inicial | Cambio | Prueba | Estado | Fecha |
+|---|---|---|---|---|---|
+| M1 | `hero_madlib_submit` se ataba **por el texto** del botón («Ver mis robots»). Desde el lote 1 el botón ES dice «Ver qué robot encaja», así que el controlador no se asociaba a nada | Se mide el `submit` del formulario `#finder`, en fase de captura para emitir antes de que `hero-carousel.js` navegue. Retirada la vinculación por clic, sin duplicado. El `submit` solo se dispara si la validación pasa | ES y EN, clic y teclado | **probado localmente** | 14/09/2026 |
+| M2 | `alphaAttribution` se guardaba **dentro de `track()`**: si el visitante entraba con UTM y navegaba antes de generar un evento, la fuente se perdía | Captura al cargar con consentimiento vigente, y en el momento de aceptar si acepta en la página de entrada. Sin consentimiento no se escribe; al rechazar, retirar o caducar se borra. La navegación interna no sustituye una fuente válida y un subdominio propio no cuenta como adquisición externa | 6 escenarios de consentimiento y navegación | **probado localmente** | 14/09/2026 |
+| M3 | Solo se recortaba a 60 caracteres: `utm_campaign=qa@example.invalid` llegaba a las propiedades | Política de valores: `utm_medium` contra lista de canales, `utm_source`/`utm_campaign` contra patrón de código de campaña. Se valida al guardar **y al leer**. Las UTM no admitidas se retiran también de la URL, para que no viajen en la que el proveedor envía con cada evento | 4 UTM no admitidas, 1 campaña válida, 4 estados de almacenamiento | **probado localmente** | 14/09/2026 |
+
+**Resultado de la tabla de aceptación (receptor simulado, datos sintéticos, sin tocar la analítica de producción):** los ocho casos se cumplen. Botón ES/EN ×1 por envío; fuente conservada tras navegar; captura al aceptar en la entrada; rechazo y retirada sin eventos ni almacenamiento; navegación interna que no sustituye; UTM con email sintético, texto personal, canal inventado y URL: ninguna viaja, se guarda ni queda en la URL; campaña válida intacta; almacenamiento inválido, con claves ajenas o bloqueado: descartado con página funcional.
+
+**Limitación documentada de `diag_form_accepted`:** el envío nativo navega a `/gracias`. El `fetch` a HubSpot lleva `keepalive`, así que la petición sale, pero el `.then()` que emite `alphaHubSpotSubmission` **no se ejecuta tras la descarga de la página**. El evento solo se observa si la página permanece abierta. Una respuesta simulada en una página abierta **no acredita el ciclo real**; la aceptación se acredita en el CRM. No se retrasa el envío comercial para medirlo.
+
+---
+
+## Lote 8 (PR #17, `a5c1d30`) — Paso 3 · Landing
+
+Recibida la fuente del último despliegue (13 archivos) el 14/09/2026.
+
+| Carpeta | Contenido |
+|---|---|
+| `docs/landing/origen-2026-09-14/` | Copia recuperable del despliegue de partida, intacta |
+| `docs/landing/dist/` | La landing con el pliego aplicado, 14 archivos, lista para desplegar |
+
+| Bloque | Estado | Evidencia |
+|---|---|---|
+| P3 · H1, subtítulo y apoyo del CTA | **preparado, sin desplegar** | H1 y subtítulo del pliego; el CTA ya decía «Solicitar demo para mi hotel» |
+| P2 · Contraste | **preparado, sin desplegar** | CTA del hero y botón del formulario: **4,37:1 → 6,54:1**. `:focus-visible` en CTA y campos |
+| P8 · Textos | **preparado, sin desplegar** | 0 apariciones de las seis frases retiradas; las seis nuevas presentes. La cifra de 23.500 Pa se conserva descrita como aspiración, sin garantía de secado |
+| P11 · S100 | **preparado, sin desplegar** | Dos aplicaciones bajo «Transporte interno»; anclas `#s100` y `#maletas` conservadas |
+| P5 · Canal preferido | **preparado, sin desplegar** | Llamada: `tel.required=true`; email: se invierte; vuelta: se restaura. Envío solo con email y teléfono vacío: **valida** |
+| Integridad | comprobada | `consent.js` y `landing-events.js` byte a byte sin cambios; `leads-demo`, `form-name`, honeypot y privacidad conservados; sin desbordes a 360/390/768/1366 px |
+
+**Dos defectos de cableado encontrados en la fuente**, corregidos en `dist/`:
+
+1. El formulario **no llevaba `data-netlify`**, solo el campo oculto `form-name`. Netlify detecta formularios por ese atributo; sin él, un despliegue nuevo puede no registrarlo. **No verificado contra el panel de Netlify.**
+2. `action` apuntaba a `/gracias`, **que no existía** en el despliegue recibido. Añadida `gracias.html` con `noindex`, que distingue «solicitud recibida» de «demostración reservada».
+
+**Dependencia:** no hay acceso al proyecto de Netlify de la landing y su dominio sigue bloqueado por el proxy de salida de esta sesión, así que **no se ha desplegado ni comprobado la URL pública**. Procedimiento y comprobaciones posteriores en `docs/landing/README.md`.
+
+---
+
+## Lote 9 — Paso 4.2 · Recepción por formulario: evidencia identificada
+
+Identificadores **recomprobados sobre la versión actual**: formulario `contacto-alpha`, elemento `#diagnostico-gratuito`, portal `148817158`, GUID `ed283c38-…`, `assets/js/csp/hubspot-form.js`, envío paralelo a HubSpot Forms API y formulario nativo de Netlify. Todos coinciden.
+
+### Recepción histórica acreditada, y con qué alcance
+
+Los dos contactos con origen `FORM` **sí se atribuyen al formulario de la web**, no solo a «algún formulario»:
+
+| Fecha (UTC) | URL de origen registrada | Área registrada | Campos recibidos |
 |---|---|---|---|
-| P4 | Reordenar Inicio: necesidad → 4 aplicaciones → validación → evidencia → contacto breve → modalidades comerciales → detalle | pendiente | Ejecutable en este repositorio. Lote 2 |
-| P5 | Canal preferido (email o llamada) en el formulario de la landing | bloqueado | La landing se despliega por separado (Netlify Drop) y **su código no está en este repositorio**. Hace falta el origen de `landing.alpharobotica.com` o acceso a ese proyecto de Netlify |
-| P6 | Causas de las 31 URL sin indexar; envío de sitemaps; solicitud de indexación; informe de indexación de vídeos | **parte on-page publicada**; el resto bloqueado | **No dispongo de conector de Search Console** en esta sesión: no puedo inspeccionar URL, enviar sitemaps, solicitar indexación ni exportar el informe de vídeos. Sí es ejecutable la parte on-page (contenido propio, enlaces internos, canonical/hreflang) sobre las páginas prioritarias del anexo |
-| P7 | Acreditar recepción real en Netlify/HubSpot y atribución de fuente | bloqueado | Requiere un envío real que dispara correos y flujos comerciales. El encargo exige pedir **una autorización concreta** antes. Preparado: identificador único, datos de prueba y criterios de aceptación. Hay conector de HubSpot disponible para revisión de configuración sin enviar nada |
-| P8 | Reescrituras de texto (tabla del informe) | **publicado en la parte que aplica** | Lote 2. Las frases restantes están en la landing, fuera de este repositorio |
-| P10 | Pausa persistente accesible del carrusel, teclado, foco, `prefers-reduced-motion` | **publicado** | Lote 2. La parte de «imagen aprobada de robot en uso» ya se resolvió en los lotes de carrusel previos |
-| P11 | Agrupar las dos presentaciones del S100 en «Transporte interno»; variante C40 de la landing | bloqueado | Landing fuera de este repositorio (ver P5) |
-| P12 | Casos reales con documentación y permiso | bloqueado | Requiere documentación e instalación acreditada del propietario. No se inventarán casos |
-| P13 | Páginas de visionado C40 y W3 con transcripción y `VideoObject` | pendiente de datos | Requiere transcripción derivada del vídeo real y **fecha real de primera publicación documentada**. Sin esos datos no se publicará `VideoObject` |
-| P14 | Microcopy y mensajes de ayuda | pendiente | Después de las fricciones principales |
+| 02/07/2026 22:41 | `https://alpharobotica.com/#diagnostico-gratuito` | Room Service | nombre, empresa, mensaje, área |
+| 11/09/2026 15:30 | `https://alpharobotica.com/en/#diagnostico-gratuito` | Limpieza autónoma | nombre, empresa, mensaje, área |
+
+El segundo caso **acredita además que el mapeo EN→ES funciona en producción**: la página EN ofrece «Autonomous cleaning» y en el CRM quedó registrado el valor español `Limpieza autónoma`, que es el que admite la propiedad.
+
+En el portal existe **un único formulario**, creado el 02/07/2026 11:11 UTC, cuya última modificación es el **11/09/2026 15:30:52 UTC**, catorce segundos después del segundo contacto. El conector no expone las propiedades del objeto formulario, así que **no he podido leer su GUID** para compararlo con el del código: la correspondencia se apoya en la URL de origen y en las marcas de tiempo, no en el identificador.
+
+**Alcance de esta evidencia:** acredita la recepción **histórica** del formulario web en HubSpot. **No valida el despliegue actual**, que es posterior a ambos registros. No se han enviado formularios.
+
+### Lo que sigue sin acreditarse, por separado
+
+| Ruta | Estado | Qué falta |
+|---|---|---|
+| Aceptación de HubSpot y alta/actualización en CRM | **acreditada en histórico** | Repetir sobre el despliegue actual |
+| Recepción de **Netlify Forms** del sitio web | **sin acreditar** | Es una ruta independiente de HubSpot. Requiere el panel de Netlify del sitio principal |
+| Recepción de **`leads-demo`** y su destino | **sin acreditar** | Requiere desplegar la landing corregida y el panel de su proyecto |
+| Otros formularios (`configurador-lead`) | **sin acreditar** | Usa una ruta distinta; no hereda la validación de `contacto-alpha` |
+
+### Plan mínimo de prueba real, preparado
+
+- **Formulario:** `contacto-alpha` en `https://alpharobotica.com/#diagnostico-gratuito`.
+- **Identificador único:** `PRUEBA-E2E-20260914-<4 dígitos>` en el campo `empresa`.
+- **Campos:** nombre `Prueba E2E`; email **un buzón controlado por la propiedad**, que debe indicarnos; **teléfono se omite**, que es opcional (no se inventará un número «no asignado» ni se usará uno de terceros); área `No lo tengo claro todavía`.
+- **Criterios:** (1) `diag_form_accepted` con HTTP 200 si la página permanece abierta; (2) contacto en HubSpot con el identificador en `empresa`, `hs_analytics_first_url` apuntando al ancla y `area_de_interes` correcta — vale que **actualice** un contacto existente por email, no hace falta que cree uno nuevo; (3) entrada correspondiente en Netlify Forms; (4) la página de gracias no cuenta como prueba.
+- **Efectos:** dispara los flujos comerciales del portal y la notificación de Netlify.
+- **Falta:** una confirmación concreta del envío y el buzón de destino. Cada prueba se enviará **una sola vez**, y antes de repetir tras un error se consultarán los receptores para evitar duplicados. El registro de prueba se documentará y se acordará su limpieza.
+
+---
+
+## Resumen por tarea P1–P14
+
+Este resumen sustituye al anterior y coincide con el detalle de los lotes.
+
+| ID | Subpaso | Estado | PR / evidencia | Dependencia concreta |
+|---|---|---|---|---|
+| **P1** | Objetivo del configurador ES/EN | **publicado** | PR #10 `8b4b86d`; 52/52 combinaciones reales; la prueba del propio paquete da 8/8 | Pruebas de interacción en producción |
+| **P2** | Sitio principal | **publicado** | PR #10; 1,96:1 → 6,54:1 | — |
+| **P2** | Landing | **preparado, sin desplegar** | PR #17; 4,37:1 → 6,54:1 en `dist/` | Acceso al proyecto de Netlify de la landing |
+| **P3** | Sitio principal | **publicado** | PR #10; área preseleccionada comprobada en ES y EN | — |
+| **P3** | Landing | **preparado, sin desplegar** | PR #17 | Igual que P2 landing |
+| **P4** | Reorganización de Inicio | **publicado** | PR #13 `ed13405`; contacto del 86 % al 42 % del alto; 0 anclas rotas | Comprobación pública hecha sobre estructura y recursos; **faltan pruebas de interacción** de cada flujo en producción |
+| **P5** | Canal preferido | **preparado, sin desplegar** | PR #17; alternancia de obligatoriedad comprobada | Igual que P2 landing, más confirmar si el campo `canal` debe reflejarse en el CRM |
+| **P6** | Enlazado y navegación | **publicado** | PR #12 `72a08a6` y PR #14 `84313b6`; comparativas 9 → 37 entrantes; footer en 19 páginas | **Pendiente de Google**: el recuento de enlaces es una mejora de descubrimiento justificada, **no** una prueba de la causa de exclusión |
+| **P6** | Informes de GSC | **bloqueado** | — | **No hay conector de Search Console** en esta sesión. Hace falta el exportado nativo |
+| **P7** | Configuración revisada | **comprobado** | Lote 6; mapeo de los 6 campos y los 5 valores de `area_de_interes` | — |
+| **P7** | Instrumentación | **publicado** | PR #15 `11e2b47` y PR #16 | — |
+| **P7** | Atribución de fuente | **publicado** | PR #16; política de valores y captura con consentimiento | — |
+| **P7** | Aceptación HTTP | **publicado con limitación** | PR #15; `diag_form_accepted` no se observa cuando la página navega a `/gracias` | Se acredita en el CRM, no en el navegador |
+| **P7** | Recepción en HubSpot | **acreditada en histórico** | Lote 9; dos contactos con URL de origen `#diagnostico-gratuito` | No valida el despliegue actual |
+| **P7** | Recepción en Netlify | **sin acreditar** | — | Panel de Netlify del sitio principal |
+| **P7** | Landing `leads-demo` | **sin acreditar** | — | Desplegar `dist/` y su panel |
+| **P8** | Sitio principal | **publicado** | PR #11 `2026551` | — |
+| **P8** | Landing | **preparado, sin desplegar** | PR #17; las seis frases sustituidas | Igual que P2 landing |
+| **P9** | Reproductores C40/W3 | **publicado** | PR #10; visibles, sin autoplay, 0 descargas al cargar | Reproducción del MP4 con audio: no verificable aquí (este Chromium no soporta H.264); confirmada por la revisión externa del 14/09 |
+| **P10** | Pausa persistente y accesibilidad | **publicado** | PR #11; persistente en los tres escenarios, 44 px, `prefers-reduced-motion` | — |
+| **P10** | Jerarquía visual de la landing | **preparado, sin desplegar** | PR #17 | Igual que P2 landing |
+| **P11** | Agrupar S100 | **preparado, sin desplegar** | PR #17; anclas conservadas | Igual que P2 landing |
+| **P11** | Variante C40 de campaña | **no procede por ahora** | — | Requiere una campaña identificada y destino justificado |
+| **P12** | Casos reales | **bloqueado** | — | Documentación y permiso de uso. No se inventarán casos |
+| **P13** | Hechos verificados del vídeo | **comprobado** | Lote 7, corregido con la medición externa del 14/09 | — |
+| **P13** | Páginas de visionado | **pendiente de capacidad y dato** | — | Transcripción (sin motor de voz en esta sesión) y **fecha real de primera publicación documentada** para `VideoObject`. Una página útil podría publicarse sin el marcado, pero no sin transcripción revisada |
+| **P14** | Microcopy y etiquetas | **parcialmente publicado** | PR #10 y #11: apoyo de CTA, etiquetas del botón de pausa, jerga explicada | Sin fricciones adicionales observadas; se revisará tras las pruebas de interacción en producción |
 
 ---
 
