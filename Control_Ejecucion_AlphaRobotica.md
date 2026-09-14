@@ -8,7 +8,7 @@ Encargo: `Prompt_Agente_Ejecucion_AlphaRobotica_GSC_Videos_CRO.md` + `Informe_Al
 
 ## Aviso sobre el material de partida
 
-El encargo indica adjuntar **`AlphaRobotica_Correcciones_Videos_CRO.zip`** (con `LEER_PRIMERO_Claude.md`, `aplicar.py`, el parche, los inventarios y las pruebas de regresión). **Ese ZIP no se ha recibido**: solo llegaron el prompt (.md) y el informe (.pdf). En consecuencia, P1 y P9 **no** se han aplicado desde el paquete preparado, sino reimplementados sobre el código vigente siguiendo la especificación del informe, y verificados con pruebas propias. Los inventarios de 69 URL y de vídeos que el informe dice incluir en el ZIP tampoco están disponibles; se ha trabajado con la lista del anexo del PDF.
+El encargo indica adjuntar **`AlphaRobotica_Correcciones_Videos_CRO.zip`** (con `LEER_PRIMERO_Claude.md`, `aplicar.py`, el parche, los inventarios y las pruebas de regresión). **Ese ZIP se recibió el 14/09/2026**, después de ejecutar los lotes 1-3. En consecuencia, P1 y P9 **no** se han aplicado desde el paquete preparado, sino reimplementados sobre el código vigente siguiendo la especificación del informe, y verificados con pruebas propias. Al llegar el paquete se comprobó que su parche está generado sobre `f94386b` y **no se ha aplicado**, según indica su propio `LEER_PRIMERO_Claude.md`. Sí se ejecutó su prueba de regresión `tests/finder_regression.cjs` contra el código publicado: **8/8 correctas** (solo hubo que ampliar su stub de DOM, que no implementaba `setAttribute`; las aserciones no se tocaron).
 
 ## Estados usados
 
@@ -90,6 +90,52 @@ Comprobado sobre las 16 páginas prioritarias del informe (8 ES + 8 EN): `robots
 ### Lo que no puede ejecutarse sin Search Console
 
 Sin conector de Search Console en esta sesión no se puede: inspeccionar URL en vivo, exportar la lista actual con motivo y última lectura, enviar sitemaps, solicitar indexación ni obtener el informe de indexación de vídeos con sus URL y motivos. La matriz `URL | motivo GSC | vídeo principal o complementario | causa | corrección | validación | estado` **no puede completarse** con datos reales: la columna «motivo GSC» requiere ese informe. Queda como dependencia con acción exacta: exportar «Indexación de vídeos» desde la propiedad `sc-domain:alpharobotica.com`.
+
+---
+
+## Lote 4 — P4 · Reorganización de Inicio
+
+| ID | URL/archivo | Situación inicial | Cambio | Prueba | Estado | Evidencia | Fecha | Dependencia |
+|---|---|---|---|---|---|---|---|---|
+| P4 | `index.html`, `en/index.html` | El bloque CAPEX/OpExFlow ocupaba la 3.ª posición, antes de las cuatro aplicaciones. El formulario de contacto quedaba al 86 % del alto | Orden nuevo dentro de `<main>`: hero → franja de impacto → cuatro aplicaciones → método → casos → escenarios ilustrativos → contacto → modalidades comerciales → packs → tecnología/ROI → KEENON+Alpha → sobre Alpha → FAQ. El blog sigue fuera de `<main>` | Secciones movidas completas; el script aborta si el resultado no es el mismo conjunto de caracteres reordenado. Render a 390 y 1366 px en ES y EN | publicado (PR #13, `ed13405`) | 1366 px: aplicaciones y=2786→**1324**; financiación y=1324→6892; contacto y=12991→**6293** (86 %→42 %). 390 px: contacto y=14724→8145. Sin ids duplicados; los 2 formularios Netlify y sus honeypots intactos; 3 anclas externas ES y 6 EN, ninguna rota; 1 h1 y 12 h2; JSON-LD válido; sin scroll horizontal; el salto a `#diagnostico-gratuito` no queda tapado | 14/09/2026 | comprobación en producción pendiente del despliegue |
+
+---
+
+## Lote 5 — P6 · Navegación y descubrimiento
+
+### Correcciones a mi diagnóstico anterior
+
+El encargo de continuación corrige tres afirmaciones mías de los lotes 1-3, y son correctas:
+
+1. **No encontrar fallos de canonical, robots o hreflang descarta esas causas concretas, no todas las causas técnicas** ni la causa exacta de la exclusión de Google. La redacción anterior daba a entender más de lo comprobado.
+2. **Que una página carezca de footer no explica sus pocos enlaces entrantes.** Un footer genera enlaces *salientes*. Para reforzar una página hay que enlazarla *desde* otras. Mi conclusión anterior confundía ambas direcciones.
+3. **El número de enlaces no identifica por sí solo una causa de indexación.** Las mejoras de descubrimiento se registran como acciones justificadas, y la respuesta de Google queda como observación pendiente.
+
+También corrijo un dato propio: al medir enlaces entrantes usaba un patrón que solo reconocía comillas dobles, y la navegación ES usa simples. Eso infravaloraba las páginas ES. La medición de este lote distingue además **enlaces totales** de **contextuales** (fuera de cabecera, nav y footer).
+
+Y corrijo el estado de las comparativas: según GSC Wizard el 14/09, **KLEENBOT ES está indexada (PASS)** y la EN «Descubierta, sin indexar»; DINERBOT está «Desconocida para Google» en ambos idiomas. Mi frase anterior sobre «ambas comparativas» era inexacta.
+
+### Medición corregida (antes de este lote)
+
+| Ruta | Totales ES | Contextuales ES | Totales EN | Contextuales EN |
+|---|---|---|---|---|
+| `/comparativa-dinerbot-t9-t10-t11` | 9 | 7 | 9 | 7 |
+| `/comparativa-kleenbot-c30-c40-c55` | 9 | 7 | 9 | 7 |
+| `/empresa` | 29 | **1** | 30 | **1** |
+| `/lidar` | 5 | 3 | 5 | 3 |
+| `/robot-limpieza-keenon-c55` | 37 | 7 | 37 | 7 |
+
+Las comparativas ya estaban bien enlazadas **contextualmente** (desde sus cuatro/tres fichas y el catálogo); lo que les faltaba era presencia en navegación. `/empresa` vive del footer: un solo enlace contextual.
+
+### Acciones
+
+| ID | URL/archivo | Cambio | Prueba | Estado | Evidencia | Fecha | Dependencia |
+|---|---|---|---|---|---|---|---|
+| P6b | 72 páginas con desplegable | Las dos comparativas entran en la columna «Herramientas / Tools», junto a ROI y configurador: son herramientas de decisión, no relleno de palabras clave | Recuento de entrantes y render | publicado | Las cuatro comparativas pasan de **9 a 37** enlaces entrantes, la mediana del sitio | 14/09/2026 | pendiente de Google |
+| P6c | 19 páginas (blog, 6 artículos y 2 comparativas en ES y EN, y `gracias` ES) | Footer del sitio añadido, con el selector de idioma apuntando a la propia página. Mejora la salida del visitante y reparte enlaces hacia las páginas comerciales | Render a 390 y 1366 px, ids sin duplicar, JSON-LD válido | publicado | 15-17 enlaces internos por página; sin desbordes | 14/09/2026 | — |
+| P6d | `blog.html` | Era la **única** página del sitio sin ningún selector de idioma, ni en cabecera ni en footer, pese a tener `hreflang` recíproco | Selector añadido en su footer | Render | publicado | ES↔EN navegable desde el blog | 14/09/2026 | — |
+
+**Recuento corregido de páginas sin footer:** eran **21**, no las que citaba antes sin desglosar: `404` y `gracias` ES, `404` EN, más blog, 6 artículos y 2 comparativas en cada idioma. `en/gracias.html` **sí** tenía footer, de ahí la asimetría. Tras este lote quedan **solo `404.html` y `en/404.html`**, a propósito: ni se les añade footer de destino SEO ni entran en el sitemap. `gracias` conserva su `noindex` y su función.
 
 ---
 
