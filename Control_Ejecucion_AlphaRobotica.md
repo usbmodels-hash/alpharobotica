@@ -139,6 +139,73 @@ Las comparativas ya estaban bien enlazadas **contextualmente** (desde sus cuatro
 
 ---
 
+## Lote 6 — P7 · Medición y cadena de formularios
+
+### Cadena real, revisada sin enviar nada
+
+`form[name="contacto-alpha"]` hace **dos envíos en paralelo**: el nativo de Netlify (`action="/gracias"`) y un POST a la **HubSpot Forms Submissions API**, portal `148817158`, formulario `ed283c38-…`, sin cookies de HubSpot.
+
+| Campo del formulario | Propiedad de HubSpot | Comprobado |
+|---|---|---|
+| `nombre` | `firstname` | sí |
+| `email` | `email` | sí |
+| `telefono` | `phone` | sí |
+| `empresa` | `company` | sí |
+| `mensaje` | `message` | sí |
+| `area` | `area_de_interes` | sí, con traducción EN→ES |
+
+La propiedad `area_de_interes` admite exactamente cinco valores (`Limpieza autónoma`, `Food & Beverage`, `Room Service`, `Logística interna`, `No lo tengo claro todavía`) y **las cinco opciones del formulario EN traducen a valores válidos**. El mapeo es correcto.
+
+### Recepción acreditada con registros existentes
+
+Sin enviar ningún formulario, en el CRM hay **dos contactos con origen `FORM`**:
+
+| Fecha | Área registrada | Estado | Fuente |
+|---|---|---|---|
+| 02/07/2026 | Room Service | lead | Tráfico directo |
+| 11/09/2026 | Limpieza autónoma | lead | Tráfico directo |
+
+Los otros 93 contactos del portal tienen origen `INTEGRATION` (importación del 04/09/2026), no del formulario web.
+
+**Esto acredita la cadena web → HubSpot**, incluida la propiedad personalizada. Lo que **sigue sin acreditarse** es la recepción en **Netlify Forms** (ruta independiente, sin acceso al panel) y el formulario `leads-demo` de la landing.
+
+### Instrumentación añadida
+
+| ID | Archivo | Cambio | Prueba | Estado | Evidencia | Fecha | Dependencia |
+|---|---|---|---|---|---|---|---|
+| P7a | `assets/js/alpha-events.js` | `hubspot-form.js` ya emitía `alphaHubSpotSubmission` con su estado operativo, pero **nadie lo escuchaba**. Ahora se registran `diag_form_accepted` (respuesta HTTP aceptada) y `diag_form_error` (`http-error`, `network-error`, `client-error`), separando el intento de la aceptación. `pending` se ignora para no contar dos veces | Emisión de los cuatro estados con y sin consentimiento | publicado | Sin consentimiento: **0 eventos**. Con consentimiento: `accepted` con `http=200`; dos `error` con su motivo; `pending` ignorado. **Ningún dato personal en las propiedades** | 14/09/2026 | — |
+| P7b | `assets/js/alpha-events.js` | Atribución de fuente: `utm_source/medium/campaign` de la primera página de la sesión, guardados en `sessionStorage`; si no hay UTM, el dominio de referencia. Se añaden a todos los eventos | Carga con UTM y lectura de las propiedades emitidas | publicado | `utm_source=prueba, utm_medium=cpc, utm_campaign=c40` presentes en los eventos, sin nombre, email, teléfono ni mensaje | 14/09/2026 | — |
+
+Eventos ya existentes que se conservan: `cta_diagnostico`, `cta_tel`, `cta_whatsapp`, `cta_demo_landing`, `diag_form_start`, `diag_form_submit`, `form_thanks_view`, `config_start`, `config_gate_submit`, `hero_madlib_select/submit`, `lead_magnet_submit`. **`form_thanks_view` no equivale a recepción en CRM** y así está documentado en el propio archivo.
+
+**Lead cualificado** no se instrumenta en el navegador a propósito: es un estado del CRM (`lifecyclestage`), no un evento de página. Contarlo desde el navegador lo duplicaría.
+
+### Prueba de extremo a extremo: preparada, pendiente de una autorización
+
+- **Identificador único:** `PRUEBA-E2E-<fecha>-<4 dígitos>` en el campo `empresa`, para localizarlo sin ambigüedad y poder borrarlo después.
+- **Datos:** nombre `Prueba E2E`, email de buzón controlado por la propiedad, teléfono no asignado, área `No lo tengo claro todavía`.
+- **Criterios de aceptación:** (1) `diag_form_accepted` con HTTP 200; (2) contacto nuevo en HubSpot con origen `FORM`, el identificador en `empresa` y `area_de_interes` correcta; (3) entrada correspondiente en Netlify Forms; (4) la página de gracias no se toma como prueba.
+- **Efectos:** el envío dispara los flujos comerciales que tenga configurados el portal y la notificación de Netlify.
+- **Lo que hace falta:** una confirmación concreta del envío y del buzón de destino. **No se ha enviado nada.**
+
+---
+
+## Lote 7 — P13 · Vídeos: hechos verificados y límite real
+
+| Comprobación | Resultado |
+|---|---|
+| Integridad de los MP4 | **Válidos**: ISO Media, marca `avc1`, con `ftyp`, `moov` y `mdat`. El `ffmpeg` de esta sesión no los abre por ser una compilación sin H.264, **no por estar dañados** |
+| Duración real | C40 **77,28 s**; W3 **39,25 s** (medido sobre los WebM; coincide con el informe) |
+| Pista de audio en los WebM | **Ninguna**: solo `Stream #0:0 Video`. Confirma el informe y justifica que el MP4 vaya primero |
+| Reproducción efectiva | Verificada en las dos fichas: el vídeo arranca, `currentTime` avanza y la duración es la real |
+| Reproducción del MP4 y su audio | **No verificable en esta sesión**: el Chromium disponible devuelve `canPlayType('video/mp4; codecs="avc1…"') === ""`, es decir, no soporta H.264, y cae al WebM. Un Chrome, Safari o Edge reales sí lo reproducen |
+
+**Transcripción: no ejecutable aquí.** No hay motor de reconocimiento de voz instalado ni forma de instalarlo en esta sesión. La transcripción es contenido, no un dato del propietario, pero requiere una capacidad que esta sesión no tiene. Sin transcripción revisada no procede publicar páginas de visionado, porque es uno de sus requisitos.
+
+**`uploadDate`**: sigue sin evidencia documentada de la fecha de primera publicación. No se inventará ni se sustituirá por la fecha de un commit de migración.
+
+---
+
 ## Lotes pendientes y bloqueos
 
 | ID | Alcance | Estado | Motivo / dependencia exacta |
