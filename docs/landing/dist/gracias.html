@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,follow">
 <title>Solicitud recibida · Alpha Robótica</title>
-<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
 <style>
   :root { --navy:#0A1E44; --ink:#1a2b4a; --cta:#B30F6E; --cta-hover:#8E0B57; }
   body { margin:0; background:var(--navy); color:#fff; font-family:system-ui,-apple-system,'Segoe UI',sans-serif;
@@ -16,6 +16,20 @@
           border-radius:12px; background:var(--cta); color:#fff; text-decoration:none; font-weight:700; }
   a.btn:hover { background:var(--cta-hover); }
   a.btn:focus-visible { outline:3px solid #fff; outline-offset:3px; }
+
+/* Mismos controles de consentimiento que la portada. */
+.cookie-banner { position:fixed; left:12px; right:12px; bottom:12px; z-index:70; max-width:980px; margin:0 auto; background:#fff; color:var(--ink); border-radius:16px; box-shadow:0 18px 50px rgba(0,0,0,.35); padding:16px 18px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:14px; align-items:center; font-size:14px; line-height:1.45; }
+.cookie-banner strong { display:block; font-family:'Barlow Condensed',sans-serif; font-size:19px; margin-bottom:4px; color:var(--navy); }
+.cookie-banner p { margin:0; color:#41506b; }
+.cookie-banner a { color:var(--navy); font-weight:700; }
+.cookie-banner__actions { display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+.cb-btn { border-radius:10px; padding:11px 16px; min-height:44px; box-sizing:border-box; font-weight:800; font-size:14px; font-family:'Barlow',sans-serif; cursor:pointer; border:1.5px solid var(--navy); background:#fff; color:var(--navy); }
+.cb-btn.cb-accept { background:var(--cta); color:#fff; border-color:var(--cta); }
+.cb-btn:focus-visible { outline:2px solid #53BAED; outline-offset:2px; }
+@media (max-width:760px) { .cookie-banner { grid-template-columns:1fr; bottom:8px; } .cookie-banner__actions { justify-content:stretch; } .cb-btn { flex:1; } html.cookie-open .fab { display:none; } }
+
+.cookie-settings { display:inline-block; margin-top:20px; color:#fff; text-decoration:underline; min-height:44px; line-height:44px; }
+.cookie-settings:focus-visible { outline:3px solid #fff; outline-offset:3px; }
 </style>
 </head><body>
 <main class="caja">
@@ -25,8 +39,9 @@
   <p>Una solicitud recibida no es todavía una demostración reservada: la fecha se acuerda contigo en
      ese primer contacto.</p>
   <a class="btn" href="/">Volver a la página principal</a>
+  <p><a class="cookie-settings" href="#" data-cookie-settings>Configurar cookies</a></p>
 </main>
-<script defer src="assets/consent.js"></script>
-<script defer src="assets/plausible-init.js"></script>
-<script defer src="assets/landing-events.js"></script>
+<script defer src="/assets/consent.js"></script>
+<script defer src="/assets/plausible-init.js"></script>
+<script defer src="/assets/landing-events.js"></script>
 </body></html>

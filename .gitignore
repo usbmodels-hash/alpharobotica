@@ -3,3 +3,6 @@ Thumbs.db
 *.log
 node_modules/
 *.zip
+
+# El paquete de la landing sí se versiona: es el entregable de despliegue.
+!docs/landing/paquete/*.zip
