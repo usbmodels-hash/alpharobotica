@@ -12,7 +12,9 @@ El encargo indica adjuntar **`AlphaRobotica_Correcciones_Videos_CRO.zip`** (con 
 
 ## Estados usados
 
-`pendiente` · `preparado` · `probado localmente` · `validado en vista previa` · `publicado` · `comprobado en producción` · `pendiente de Google` · `bloqueado` · `no aplicable`
+`pendiente` · `preparado` · `validado en local` · `validado en vista previa` · `publicado` · `desplegado` · `comprobado en producción` · `recepción acreditada` · `pendiente de Google` · `bloqueado` · `no aplicable`
+
+Para la landing, que va por su propio proyecto de Netlify, los planos se separan expresamente: **implementado** (archivos en GitHub) → **validado en local o vista previa** → **desplegado en Netlify** → **comprobado en producción** → **recepción real de contactos acreditada**. Una página de gracias o un evento del navegador **no** acredita recepción en Netlify ni llegada al CRM.
 
 Una misma tarea puede tener subpasos en estados distintos: el resumen final los desglosa así. «Publicado» significa fusionado en `main`; **no** implica comprobado en producción, que se registra aparte.
 
@@ -244,10 +246,15 @@ Recibida la fuente del último despliegue (13 archivos) el 14/09/2026.
 | P5 · Canal preferido | **preparado, sin desplegar** | Llamada: `tel.required=true`; email: se invierte; vuelta: se restaura. Envío solo con email y teléfono vacío: **valida** |
 | Integridad | comprobada | `consent.js` y `landing-events.js` byte a byte sin cambios; `leads-demo`, `form-name`, honeypot y privacidad conservados; sin desbordes a 360/390/768/1366 px |
 
-**Dos defectos de cableado encontrados en la fuente**, corregidos en `dist/`:
+**Rectificación (14/09/2026, lote 10).** Las dos afirmaciones que este lote registró como «defectos de
+cableado de la fuente» eran lecturas equivocadas de una copia incompleta:
 
-1. El formulario **no llevaba `data-netlify`**, solo el campo oculto `form-name`. Netlify detecta formularios por ese atributo; sin él, un despliegue nuevo puede no registrarlo. **No verificado contra el panel de Netlify.**
-2. `action` apuntaba a `/gracias`, **que no existía** en el despliegue recibido. Añadida `gracias.html` con `noindex`, que distingue «solicitud recibida» de «demostración reservada».
+1. **`data-netlify`.** Netlify **elimina** `data-netlify` / `netlify` del HTML procesado e inyecta el campo
+   oculto `form-name`. Que el atributo no apareciera en el HTML descargado de producción **no demuestra** que
+   el formulario estuviera roto ni sin registrar. El atributo se conserva en la fuente porque es lo que usa la
+   detección en tiempo de despliegue, y es inocuo si el formulario ya estaba registrado.
+2. **`/gracias`.** Esa ruta **ya existe en producción, con `noindex`**. Lo que faltaba era el archivo en la
+   copia recibida, no la página en el sitio. `gracias.html` completa el paquete; no estrena una ruta.
 
 **Dependencia:** no hay acceso al proyecto de Netlify de la landing y su dominio sigue bloqueado por el proxy de salida de esta sesión, así que **no se ha desplegado ni comprobado la URL pública**. Procedimiento y comprobaciones posteriores en `docs/landing/README.md`.
 
@@ -292,6 +299,70 @@ En el portal existe **un único formulario**, creado el 02/07/2026 11:11 UTC, cu
 
 ---
 
+## Lote 10 — Paso 3b · Paquete completo de la landing (rama `landing-paquete-completo`)
+
+Base: `main` = `58957d69239503ac4d49d1fb915f4be1cdc66f1d`. Las PR #16, #17 y #18 quedan intactas.
+
+### Distinción de planos
+
+| Plano | Estado |
+|---|---|
+| Implementado (archivos en GitHub) | **Sí** — rama `landing-paquete-completo` |
+| Validado en local / vista previa | **Sí** — Chromium + servidor que emula el enrutado de Netlify |
+| Desplegado en Netlify | **No** |
+| Comprobado en producción | **No** |
+| Recepción real de contactos acreditada | **No** — las pruebas usan un receptor simulado local |
+
+### Diferencias entre la copia recibida y la landing publicada, y cómo quedan
+
+| Diferencia | Resolución |
+|---|---|
+| `canonical` relativo (`index.html`) frente al absoluto de producción | Restaurado `https://landing.alpharobotica.com/`; `og:url` ya era coherente |
+| `/robots.txt` y `/sitemap.xml` existen en producción y faltaban en la copia | Añadidos. El sitemap lleva **solo** la portada canónica, con `lastmod` `2026-09-14`. `robots.txt` **no** bloquea `/gracias` |
+| `/icon-512.png` existe en producción, se citaba en `og:image` y falta en la copia | No es reproducible (el PNG mayor disponible es de 180×180). La imagen social pasa a `assets/og-landing.jpg`, JPEG real de 1200×630 **incluido en el paquete**, con `og:image:width/height/alt` y `twitter:card`. Dependencia **D2** si se prefiere el archivo de producción |
+| `/gracias` ya existía en producción con `noindex` | `gracias.html` incluido, con `noindex,follow`. **No es una ruta nueva** |
+| `/stats/js/script.js` funciona en producción sin configuración acreditada | **Sin resolver: dependencia D1.** No se ha copiado el `netlify.toml` ni el `_redirects` del sitio principal |
+
+### Correcciones y mejoras de este lote
+
+| Cambio | Estado | Evidencia |
+|---|---|---|
+| `action` del formulario a mismo origen `/gracias` | validado en local | Evita que una prueba en vista previa envíe datos a producción |
+| 12 enlaces internos reescritos por la descarga (`index.html#…`) devueltos a anclas | validado en local | Las seis anclas resuelven. **Repara `cta_demo`**, que `landing-events.js` solo emite con `href` exactamente `#contacto` |
+| «te llamamos» adaptado a los dos canales | validado en local | «O déjanos tus datos y te contactamos por el canal que prefieras» |
+| Objetivos táctiles y contraste del aviso de cookies | validado en local | `.btn` 43 px → 44 px; botones del aviso 40 px → 44 px; «Aceptar» de `--magenta` (4,37:1) a `--cta` (**6,54:1**) |
+| Rutas absolutas en `gracias.html` | validado en local | Resisten una variante con barra final |
+| `consent.js`, `landing-events.js`, `plausible-init.js` | **sin tocar** | Byte a byte idénticos a `origen-2026-09-14/` |
+| Lote de medición del sitio principal | **sin tocar** | Este despliegue es independiente |
+
+### Comprobaciones (sintéticas, con receptor simulado; ningún contacto real generado)
+
+17 rutas 200 con el tipo de contenido correcto · consentimiento A–F correcto (0 peticiones a `/stats` antes de
+aceptar) · ambos canales envían y llegan a `/gracias` · `canal` viaja en el cuerpo junto a `form-name` ·
+doble pulsación → **1** POST · validación nativa correcta en cada canal · **sin JavaScript también envía** ·
+sin desbordes a 360/390/768/1366 px en `/` y `/gracias` · ningún campo sin etiqueta · ningún objetivo táctil
+por debajo de 44 px · 22 paradas de teclado, todas con foco visible.
+
+### Paquete
+
+`docs/landing/paquete/AlphaRobotica_Landing_Completa.zip` — 17 archivos, `index.html` en la raíz, sin carpeta
+envolvente, sin documentación interna, copias, credenciales ni pruebas.
+SHA-256 del ZIP: `0bd82f17d84a0cbb136489c55305f222acf9ab8b12069b7318871e2f87222c0d`.
+Manifiesto en `MANIFIESTO-SHA256.txt`; inventario de rutas en `INVENTARIO.md`.
+
+### Dependencias que impiden cerrar
+
+| | Qué falta exactamente |
+|---|---|
+| **D1** | El `_redirects` o `netlify.toml` **del proyecto de la landing**, con el destino real del proxy `/stats`. `plausible-init.js` no lleva `data-domain`, así que el destino no se puede deducir. **Mientras no se resuelva, no desplegar por Netlify Drop**: borraría el `_redirects` actual |
+| **D2** | El archivo `icon-512.png` de producción, si se quiere conservar esa imagen social |
+| **D3** | Identificación del proyecto de Netlify: nombre, `site_id`, dominios, despliegue activo y ajustes de panel (Forms, notificaciones, cabeceras). No constan en el repositorio ni en el paquete recibido |
+| **D4** | Acceso de red: la pasarela de salida responde **403 a CONNECT** para `landing.alpharobotica.com:443`, `alpharobotica.com:443` y `api.netlify.com:443` |
+
+**La landing no está publicada.** Procedimiento de despliegue y de reversión en `docs/landing/README.md`.
+
+---
+
 ## Resumen por tarea P1–P14
 
 Este resumen sustituye al anterior y coincide con el detalle de los lotes.
@@ -300,11 +371,11 @@ Este resumen sustituye al anterior y coincide con el detalle de los lotes.
 |---|---|---|---|---|
 | **P1** | Objetivo del configurador ES/EN | **publicado** | PR #10 `8b4b86d`; 52/52 combinaciones reales; la prueba del propio paquete da 8/8 | Pruebas de interacción en producción |
 | **P2** | Sitio principal | **publicado** | PR #10; 1,96:1 → 6,54:1 | — |
-| **P2** | Landing | **preparado, sin desplegar** | PR #17; 4,37:1 → 6,54:1 en `dist/` | Acceso al proyecto de Netlify de la landing |
+| **P2** | Landing | **validado en local, sin desplegar** | PR #17 + rama `landing-paquete-completo`; 4,37:1 → 6,54:1, y el «Aceptar» del aviso de cookies también | D1–D4 del lote 10 |
 | **P3** | Sitio principal | **publicado** | PR #10; área preseleccionada comprobada en ES y EN | — |
-| **P3** | Landing | **preparado, sin desplegar** | PR #17 | Igual que P2 landing |
+| **P3** | Landing | **validado en local, sin desplegar** | PR #17 | Igual que P2 landing |
 | **P4** | Reorganización de Inicio | **publicado** | PR #13 `ed13405`; contacto del 86 % al 42 % del alto; 0 anclas rotas | Comprobación pública hecha sobre estructura y recursos; **faltan pruebas de interacción** de cada flujo en producción |
-| **P5** | Canal preferido | **preparado, sin desplegar** | PR #17; alternancia de obligatoriedad comprobada | Igual que P2 landing, más confirmar si el campo `canal` debe reflejarse en el CRM |
+| **P5** | Canal preferido | **validado en local, sin desplegar** | Lote 10: ambos canales envían, `canal` viaja en el cuerpo, doble pulsación → 1 POST, y **envía también sin JavaScript** | Igual que P2 landing, más confirmar si el campo `canal` debe reflejarse en el CRM |
 | **P6** | Enlazado y navegación | **publicado** | PR #12 `72a08a6` y PR #14 `84313b6`; comparativas 9 → 37 entrantes; footer en 19 páginas | **Pendiente de Google**: el recuento de enlaces es una mejora de descubrimiento justificada, **no** una prueba de la causa de exclusión |
 | **P6** | Informes de GSC | **bloqueado** | — | **No hay conector de Search Console** en esta sesión. Hace falta el exportado nativo |
 | **P7** | Configuración revisada | **comprobado** | Lote 6; mapeo de los 6 campos y los 5 valores de `area_de_interes` | — |
@@ -313,13 +384,13 @@ Este resumen sustituye al anterior y coincide con el detalle de los lotes.
 | **P7** | Aceptación HTTP | **publicado con limitación** | PR #15; `diag_form_accepted` no se observa cuando la página navega a `/gracias` | Se acredita en el CRM, no en el navegador |
 | **P7** | Recepción en HubSpot | **acreditada en histórico** | Lote 9; dos contactos con URL de origen `#diagnostico-gratuito` | No valida el despliegue actual |
 | **P7** | Recepción en Netlify | **sin acreditar** | — | Panel de Netlify del sitio principal |
-| **P7** | Landing `leads-demo` | **sin acreditar** | — | Desplegar `dist/` y su panel |
+| **P7** | Landing `leads-demo` | **sin acreditar** | Lote 10: comprobado solo contra un **receptor simulado local**. Una página de gracias no demuestra recepción en Netlify ni llegada al CRM | Desplegar el paquete y consultar el panel de Netlify de la landing |
 | **P8** | Sitio principal | **publicado** | PR #11 `2026551` | — |
-| **P8** | Landing | **preparado, sin desplegar** | PR #17; las seis frases sustituidas | Igual que P2 landing |
+| **P8** | Landing | **validado en local, sin desplegar** | PR #17; las seis frases sustituidas | Igual que P2 landing |
 | **P9** | Reproductores C40/W3 | **publicado** | PR #10; visibles, sin autoplay, 0 descargas al cargar | Reproducción del MP4 con audio: no verificable aquí (este Chromium no soporta H.264); confirmada por la revisión externa del 14/09 |
 | **P10** | Pausa persistente y accesibilidad | **publicado** | PR #11; persistente en los tres escenarios, 44 px, `prefers-reduced-motion` | — |
-| **P10** | Jerarquía visual de la landing | **preparado, sin desplegar** | PR #17 | Igual que P2 landing |
-| **P11** | Agrupar S100 | **preparado, sin desplegar** | PR #17; anclas conservadas | Igual que P2 landing |
+| **P10** | Jerarquía visual de la landing | **validado en local, sin desplegar** | PR #17; además, ningún objetivo táctil por debajo de 44 px | Igual que P2 landing |
+| **P11** | Agrupar S100 | **validado en local, sin desplegar** | PR #17; las seis anclas resuelven en el navegador | Igual que P2 landing |
 | **P11** | Variante C40 de campaña | **no procede por ahora** | — | Requiere una campaña identificada y destino justificado |
 | **P12** | Casos reales | **bloqueado** | — | Documentación y permiso de uso. No se inventarán casos |
 | **P13** | Hechos verificados del vídeo | **comprobado** | Lote 7, corregido con la medición externa del 14/09 | — |
