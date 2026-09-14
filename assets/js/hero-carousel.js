@@ -130,8 +130,14 @@
     const url = new URL(lang === "en" ? "/en/configurador" : "/configurador", window.location.origin);
     const vertical = formData.get("v");
     const area = formData.get("area");
+    const useCase = formData.get("uc");
     if (vertical) url.searchParams.set("v", vertical.toString());
     if (area) url.searchParams.set("area", area.toString());
+    // El configurador espera el objetivo en uc; sin el, la recomendacion inicial
+    // no corresponde a lo que acaba de elegir el visitante.
+    if (useCase && /^(clean|room|fnb|trans)$/.test(useCase.toString())) {
+      url.searchParams.set("uc", useCase.toString());
+    }
     window.location.href = `${url.pathname}${url.search}`;
   });
 

@@ -1,25 +1,34 @@
 (function(){
+  // El formulario ES y el EN usan valores distintos en el select de area,
+  // y el mensaje generado debe ir en el idioma de la pagina.
+  const LANG = (document.documentElement.lang || 'es').toLowerCase().indexOf('en') === 0 ? 'en' : 'es';
+
   const mappings = {
     'limpieza': {
-      value: 'Limpieza autónoma',
+      value: { es: 'Limpieza autónoma', en: 'Autonomous cleaning' },
       family: 'KLEENBOT',
-      area: 'limpieza autónoma'
+      area: { es: 'limpieza autónoma', en: 'autonomous cleaning' }
     },
     'fnb': {
-      value: 'Food & Beverage',
+      value: { es: 'Food & Beverage', en: 'Food & Beverage' },
       family: 'DINERBOT',
-      area: 'sala y Food & Beverage'
+      area: { es: 'sala y Food & Beverage', en: 'dining and Food & Beverage' }
     },
     'room-service': {
-      value: 'Room Service',
+      value: { es: 'Room Service', en: 'Room Service' },
       family: 'BUTLERBOT',
-      area: 'room service'
+      area: { es: 'room service', en: 'room service' }
     },
     'logistica': {
-      value: 'Logística interna',
+      value: { es: 'Logística interna', en: 'Internal logistics' },
       family: 'HEAVY LOAD',
-      area: 'logística interna'
+      area: { es: 'logística interna', en: 'internal logistics' }
     }
+  };
+
+  const MSG = {
+    es: function (f, a) { return 'Me interesa la familia ' + f + ' para ' + a + '.'; },
+    en: function (f, a) { return 'I am interested in the ' + f + ' range for ' + a + '.'; }
   };
 
   function getAreaParam() {
@@ -83,18 +92,20 @@
 
     if (!form || !select) return;
 
-    const optionExists = Array.from(select.options).some((option) => option.value === config.value);
+    const wanted = config.value[LANG] || config.value.es;
+    const optionExists = Array.from(select.options).some((option) => option.value === wanted);
     if (!optionExists) return;
 
-    select.value = config.value;
+    select.value = wanted;
     select.dispatchEvent(new Event('change', { bubbles: true }));
 
-    const generatedMessages = Object.values(mappings).map(function(item){
-      return 'Me interesa la familia ' + item.family + ' para ' + item.area + '.';
+    const generatedMessages = [];
+    Object.values(mappings).forEach(function(item){
+      ['es', 'en'].forEach(function(l){ generatedMessages.push(MSG[l](item.family, item.area[l])); });
     });
     const message = form.querySelector('textarea[name="mensaje"], textarea[name="message"]');
     if (message && (!message.value.trim() || generatedMessages.indexOf(message.value.trim()) !== -1)) {
-      message.value = 'Me interesa la familia ' + config.family + ' para ' + config.area + '.';
+      message.value = MSG[LANG](config.family, config.area[LANG] || config.area.es);
     }
 
     cleanContactUrl();
