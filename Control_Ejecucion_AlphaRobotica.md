@@ -303,6 +303,10 @@ En el portal existe **un único formulario**, creado el 02/07/2026 11:11 UTC, cu
 
 Base: `main` = `58957d69239503ac4d49d1fb915f4be1cdc66f1d`. Las PR #16, #17 y #18 quedan intactas.
 
+> **Superado por el lote 11.** La landing se publicó ese mismo día y las dependencias D1–D4 que este lote
+> dejaba abiertas quedaron resueltas. Lo que sigue se conserva como historial; el estado vigente es el del
+> lote 11.
+
 ### Distinción de planos
 
 | Plano | Estado |
@@ -360,6 +364,68 @@ Manifiesto en `MANIFIESTO-SHA256.txt`; inventario de rutas en `INVENTARIO.md`.
 | **D4** | Acceso de red: la pasarela de salida responde **403 a CONNECT** para `landing.alpharobotica.com:443`, `alpharobotica.com:443` y `api.netlify.com:443` |
 
 **La landing no está publicada.** Procedimiento de despliegue y de reversión en `docs/landing/README.md`.
+
+---
+
+## Lote 11 — Paso 3c · Landing publicada y fuentes sincronizadas
+
+Publicación hecha fuera de esta sesión, con el CLI oficial de Netlify. Este lote sincroniza GitHub con esa
+versión y actualiza la documentación. **No se ha ejecutado ningún despliegue desde aquí.**
+
+### Estados
+
+| Plano | Estado |
+|---|---|
+| Landing publicada y comprobada | **completado** — despliegue `6aa7c943cf146e1186e04f57`, publicado el **14/09/2026 a las 12:15:44 CEST**. Atribuido a la verificación previa del propietario, no a una prueba de esta sesión |
+| Proxy `/stats`, icono, identificación del proyecto y acceso para publicar | **resueltos en esa ejecución** (antes D1–D4) |
+| Registro del formulario | `leads-demo`, ID `6aa3d5f449890600084101b8`. Campo nuevo `canal` reconocido; aviso por correo conservado |
+| Recepción del contacto | **acreditada por confirmación del propietario** |
+| Sincronización de GitHub | **completada** tras comprobar los archivos en la rama remota y su fusión en `main` |
+
+| Dato del proyecto | Valor |
+|---|---|
+| Proyecto Netlify | `alpharobotica-landing` |
+| Site ID | `ce07e6ab-8176-47dc-9d42-3de7f68e0034` |
+| Vista previa final comprobada | `6aa7c81527616400eff2cf01` |
+| Despliegue anterior conservado (reversión) | `6aa69fc317e0443637a1329d` |
+
+### Cómo quedaron las dependencias D1–D4
+
+| | Resolución |
+|---|---|
+| **D1** · proxy `/stats` | `_redirects` en la raíz del paquete, con las dos reglas comprobadas hacia `plausible.io`. El CLI de Netlify las convirtió en un `netlify.toml` generado durante el despliegue: por eso el sitio desplegado muestra 18 archivos de contenido más esa configuración, mientras el ZIP fuente lleva 18 más `_redirects`. Diferencia de representación esperada. No se ha copiado configuración del sitio principal ni añadido otro medidor |
+| **D2** · `icon-512.png` | PNG original de 512×512 recuperado de producción. Es la imagen social vigente, con dimensiones, ALT y tarjeta `summary`. `assets/og-landing.jpg` se conserva como recurso **sin referencias sociales**: llevaba texto superpuesto |
+| **D3** · identificación | `alpharobotica-landing`, site ID `ce07e6ab-8176-47dc-9d42-3de7f68e0034` |
+| **D4** · acceso | Resuelto en esa ejecución. Esta sesión sigue sin salida hacia `landing.alpharobotica.com` ni `api.netlify.com` (403 a CONNECT), así que la sincronización se apoya en el paquete verificado por hash y en la evidencia aportada, no en una consulta propia |
+
+### Sincronización
+
+Paquete recibido `AlphaRobotica_Landing_Proxy_Recuperado_2026-09-14.zip`, **hash comprobado antes de usarlo**:
+`fbf17a98c9b6170113f5f3e8d774a629629a9f2bae7119c7fc24f3a408978603`. 19 archivos, `index.html` en la raíz.
+
+Comparado archivo a archivo con `docs/landing/dist/` tal como quedó en la PR #19: **15 archivos idénticos** y
+exactamente las cuatro diferencias previstas.
+
+| Archivo | Diferencia respecto a la PR #19 |
+|---|---|
+| `_redirects` | Nuevo: las dos reglas verificadas del proxy |
+| `icon-512.png` | Nuevo: PNG original de 512×512 |
+| `index.html` | Imagen social al icono original con tarjeta `summary`; radios del selector de canal a 20×20 px; `scroll-margin-top` bajo la cabecera fija. **Conserva** canonical absoluto, anclas, `action` de mismo origen, 44 px y contraste |
+| `gracias.html` | Estilos del aviso de cookies y enlace «Configurar cookies». **Conserva** `noindex,follow` y las rutas absolutas |
+
+El paquete del repositorio se sustituye por el ZIP recibido **sin reconstruirlo**, para que conserve su hash.
+`docs/landing/origen-2026-09-14/` queda intacta.
+
+### Comprobaciones sobre las fuentes sincronizadas
+
+Se reutiliza la batería del lote 10 (Chromium más servidor que emula el enrutado de Netlify, con receptor
+simulado). **No se ha enviado ningún formulario, contacto ni evento analítico reales.**
+
+18 rutas públicas **200** con su tipo de contenido correcto, `/icon-512.png` incluida como `image/png` de
+512×512 · consentimiento A–F correcto · ambos canales envían y llegan a `/gracias`, con `canal` en el cuerpo ·
+doble pulsación → 1 POST · envía también sin JavaScript · sin desbordes a 360/390/768/1366 px · ningún campo
+sin etiqueta · ningún objetivo táctil por debajo de 44 px · `consent.js`, `plausible-init.js` y
+`landing-events.js` idénticos a los del ZIP y a los de `origen-2026-09-14/`.
 
 ---
 
