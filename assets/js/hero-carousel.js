@@ -59,8 +59,12 @@
     }
   };
 
+  // P10: la pausa elegida por el usuario es persistente; no se deshace al
+  // retirar el raton ni al navegar entre diapositivas.
+  let userPaused = false;
+
   const start = () => {
-    if (reduceMotion || timer) return;
+    if (reduceMotion || userPaused || timer) return;
     timer = window.setInterval(() => update(current + 1), 5000);
   };
 
@@ -123,6 +127,33 @@
   hero.addEventListener("mouseleave", start);
   hero.addEventListener("focusin", stop);
   hero.addEventListener("focusout", start);
+
+  const pauseBtn = hero.querySelector("[data-pause]");
+  const pauseText = pauseBtn?.querySelector(".hero-pause__text");
+  const LABELS = lang === "en"
+    ? { pause: "Pause", play: "Play", pauseAria: "Pause the carousel", playAria: "Resume the carousel" }
+    : { pause: "Pausar", play: "Reanudar", pauseAria: "Pausar el carrusel", playAria: "Reanudar el carrusel" };
+
+  const paintPause = () => {
+    if (!pauseBtn) return;
+    pauseBtn.setAttribute("aria-pressed", userPaused ? "true" : "false");
+    pauseBtn.setAttribute("aria-label", userPaused ? LABELS.playAria : LABELS.pauseAria);
+    if (pauseText) pauseText.textContent = userPaused ? LABELS.play : LABELS.pause;
+  };
+
+  if (pauseBtn) {
+    if (reduceMotion) {
+      // Con prefers-reduced-motion no hay reproduccion automatica que pausar.
+      userPaused = true;
+    }
+    paintPause();
+    pauseBtn.addEventListener("click", () => {
+      userPaused = !userPaused;
+      if (userPaused) stop();
+      else start();
+      paintPause();
+    });
+  }
 
   finder?.addEventListener("submit", (event) => {
     event.preventDefault();

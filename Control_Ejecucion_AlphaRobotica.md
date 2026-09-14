@@ -41,6 +41,32 @@ El encargo indica adjuntar **`AlphaRobotica_Correcciones_Videos_CRO.zip`** (con 
 
 ---
 
+## Lote 2 — P10, P8
+
+| ID | URL/archivo | Situación inicial | Cambio | Prueba | Estado | Evidencia | Fecha | Dependencia |
+|---|---|---|---|---|---|---|---|---|
+| P10 | `assets/js/hero-carousel.js`, `index.html`, `en/index.html`, `styles.css` | El carrusel pausaba al recibir foco o ratón, pero **reanudaba al retirarlos**: no existía una pausa elegida por el usuario. Tampoco había control visible de pausa | Botón de pausa persistente con `aria-pressed` y etiqueta que cambia (Pausar/Reanudar · Pause/Play). `start()` respeta la elección del usuario, de modo que la pausa sobrevive al ratón, a los puntos y al swipe. Con `prefers-reduced-motion` el botón arranca en estado pausado. Objetivo táctil de 44 px y `:focus-visible` | En navegador, ES y EN: estado del botón, persistencia tras mover el ratón, tras usar los puntos, reanudación, `prefers-reduced-motion`, teclado y solapamiento con los puntos en 360/390/768/1366 px | validado en vista previa | Pausa persistente **sí** en los tres escenarios; táctil 110×44 (ES) y 99×44 (EN); reduced-motion sin avance automático; flechas ←/→ funcionan con el foco dentro del carrusel; foco visible de 3 px; sin solapamientos ni scroll horizontal | 14/09/2026 | — |
+| P10b | `styles.css` | **Defecto detectado al probar:** `.hero-controls` lleva `pointer-events:none` (solo los puntos lo reactivan), así que el botón nuevo era visible pero **no pulsable** | `pointer-events:auto` en `.hero-pause` y separación entre puntos y botón | Clic real en ES y EN | validado en vista previa | Antes: clic con tiempo de espera agotado. Después: funciona | 14/09/2026 | — |
+| P8 | `index.html`, `en/index.html` | Inicio no expresaba el beneficio inmediato bajo el H1; la lista comercial prometía «ROI orientativo desde el primer mes»; la jerga aparecía sin explicar | Beneficio bajo el H1 conservando el H1 SEO; introducción del informe **sumada** a la promesa útil anterior (diagnóstico gratuito, piloto medible, soporte local), en vez de sustituirla; «ROI orientativo desde el primer mes» → «Estima el ahorro operativo y el plazo de recuperación con tus datos»; OpExFlow y F&B explicados en su primera aparición | Render en 360/390/768/1366 px y validación de los 90 bloques JSON-LD | validado en vista previa | Sin pérdida de texto indexable | 14/09/2026 | — |
+
+### Textos de la tabla P8 que **no** aplican a este repositorio
+
+El informe cita frases que **no existen en el sitio principal**; están en la landing, que se despliega por separado y cuyo código no está aquí. Comprobado con búsqueda en las 78 páginas ES/EN:
+
+| Texto del informe | Resultado de la búsqueda |
+|---|---|
+| «23.500 Pa → secado instantáneo» | 0 apariciones (ni «23.500», ni «23500», ni «instantáne») |
+| «cumple todas las frecuencias, todos los días» (C40) | 0 apariciones |
+| «La experiencia que se comenta» (W3) | 0 apariciones |
+| «siempre disponible» (S100) | 0 apariciones. Los cinco usos de «siempre» en el repositorio están condicionados («siempre que el diagnóstico valide…», «siempre orientativos») y no son absolutos |
+| «sin esperas» (maletas) | 0 apariciones como promesa; el único uso cita tiempos medidos con su rango |
+| «Mejor servicio, con el mismo equipo» | 0 apariciones |
+| H1 y subtítulo de la landing | Fuera de este repositorio |
+
+Estas reescrituras quedan **preparadas y pendientes de acceso a la landing** (ver P5/P11).
+
+---
+
 ## Lotes pendientes y bloqueos
 
 | ID | Alcance | Estado | Motivo / dependencia exacta |
@@ -49,8 +75,8 @@ El encargo indica adjuntar **`AlphaRobotica_Correcciones_Videos_CRO.zip`** (con 
 | P5 | Canal preferido (email o llamada) en el formulario de la landing | bloqueado | La landing se despliega por separado (Netlify Drop) y **su código no está en este repositorio**. Hace falta el origen de `landing.alpharobotica.com` o acceso a ese proyecto de Netlify |
 | P6 | Causas de las 31 URL sin indexar; envío de sitemaps; solicitud de indexación; informe de indexación de vídeos | parcialmente bloqueado | **No dispongo de conector de Search Console** en esta sesión: no puedo inspeccionar URL, enviar sitemaps, solicitar indexación ni exportar el informe de vídeos. Sí es ejecutable la parte on-page (contenido propio, enlaces internos, canonical/hreflang) sobre las páginas prioritarias del anexo |
 | P7 | Acreditar recepción real en Netlify/HubSpot y atribución de fuente | bloqueado | Requiere un envío real que dispara correos y flujos comerciales. El encargo exige pedir **una autorización concreta** antes. Preparado: identificador único, datos de prueba y criterios de aceptación. Hay conector de HubSpot disponible para revisión de configuración sin enviar nada |
-| P8 | Reescrituras de texto (tabla del informe), incluida la retirada de «23.500 Pa → secado instantáneo» y de absolutos | pendiente | Ejecutable. Lote 2 |
-| P10 | Pausa persistente accesible del carrusel, teclado, foco, `prefers-reduced-motion` | pendiente | Ejecutable. Lote 2 |
+| P8 | Reescrituras de texto (tabla del informe) | **publicado en la parte que aplica** | Lote 2. Las frases restantes están en la landing, fuera de este repositorio |
+| P10 | Pausa persistente accesible del carrusel, teclado, foco, `prefers-reduced-motion` | **publicado** | Lote 2. La parte de «imagen aprobada de robot en uso» ya se resolvió en los lotes de carrusel previos |
 | P11 | Agrupar las dos presentaciones del S100 en «Transporte interno»; variante C40 de la landing | bloqueado | Landing fuera de este repositorio (ver P5) |
 | P12 | Casos reales con documentación y permiso | bloqueado | Requiere documentación e instalación acreditada del propietario. No se inventarán casos |
 | P13 | Páginas de visionado C40 y W3 con transcripción y `VideoObject` | pendiente de datos | Requiere transcripción derivada del vídeo real y **fecha real de primera publicación documentada**. Sin esos datos no se publicará `VideoObject` |
