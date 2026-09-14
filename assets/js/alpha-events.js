@@ -4,7 +4,11 @@
  * no ha aceptado la analítica o su preferencia ha caducado.
  * Eventos: hero_madlib_select, hero_madlib_submit, config_start, config_gate_submit,
  *          diag_form_start, diag_form_submit, form_thanks_view (vista de /gracias; no equivale
- *          a recepción en CRM), cta_whatsapp, cta_tel, cta_diagnostico, cta_demo_landing
+ *          a recepción en CRM), cta_whatsapp, cta_tel, cta_diagnostico, cta_demo_landing,
+ *          diag_form_accepted (respuesta HTTP aceptada por el receptor; tampoco acredita
+ *          el alta definitiva en CRM) y diag_form_error (error HTTP, de red o de cliente).
+ * Atribución: utm_source/medium/campaign de la primera página de la sesión. Nunca se envían
+ * nombre, email, teléfono, empresa ni mensaje.
  */
 (function () {
   'use strict';
@@ -16,9 +20,32 @@
       if (typeof window.plausible === 'function') {
         var p = props || {};
         p.page = window.location.pathname;
+        var a = attribution();
+        for (var k in a) { if (a[k] && !p[k]) p[k] = a[k]; }
         window.plausible(name, { props: p });
       }
     } catch (e) { /* nunca romper la página por analítica */ }
+  }
+
+  // Fuente de la sesion: solo utm_source/medium/campaign. Se guarda en sessionStorage
+  // para que un evento posterior conserve la fuente de entrada. Sin datos personales.
+  function attribution() {
+    var out = {};
+    try {
+      var guardado = window.sessionStorage.getItem('alphaAttribution');
+      if (guardado) return JSON.parse(guardado);
+      var q = new URLSearchParams(window.location.search);
+      ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+        var v = q.get(k);
+        if (v) out[k] = String(v).slice(0, 60);
+      });
+      if (!out.utm_source && document.referrer) {
+        var h = new URL(document.referrer).hostname;
+        if (h && h !== window.location.hostname) out.utm_source = h.slice(0, 60);
+      }
+      window.sessionStorage.setItem('alphaAttribution', JSON.stringify(out));
+    } catch (e) { /* almacenamiento bloqueado: seguimos sin atribucion */ }
+    return out;
   }
 
   function ready(fn) {
@@ -26,6 +53,20 @@
       document.addEventListener('DOMContentLoaded', fn);
     } else { fn(); }
   }
+
+  // El receptor emite su estado operativo en alphaHubSpotSubmission. Se registra aqui para
+  // separar el intento (diag_form_submit) de la aceptacion HTTP y del error. «accepted» acredita
+  // una respuesta HTTP del receptor, no el alta definitiva del contacto en el CRM.
+  window.addEventListener('alphaHubSpotSubmission', function (ev) {
+    var d = (ev && ev.detail) || {};
+    if (d.state === 'pending') return;
+    if (d.state === 'accepted') {
+      track('diag_form_accepted', { form: d.form || 'contacto-alpha', http: String(d.httpStatus || '') });
+    } else {
+      track('diag_form_error', { form: d.form || 'contacto-alpha', motivo: String(d.state || 'desconocido'),
+                                 http: String(d.httpStatus || '') });
+    }
+  });
 
   ready(function () {
     var isConfigurador = /\/configurador\/?$/.test(window.location.pathname) ||
