@@ -12,8 +12,8 @@ historial, un paquete listo y una reversión concreta.
 |---|---|
 | Fuentes en GitHub | Sincronizadas con el despliegue **`6aa7dd28a96ea01c454e27ff`** (versión «vídeo y valoración»), y encima la adaptación **«hoteles y centros sanitarios · toda España»** |
 | Validado en local | **Sí** — Chromium y un servidor que emula el enrutado de Netlify |
-| **Desplegado en Netlify** | **No.** La adaptación está preparada en `dist/` y en `paquete/`; lo publicado sigue siendo `6aa7dd28…`, orientado a hoteles de Andalucía |
-| **Comprobado en producción** | **No** |
+| **Desplegado en Netlify** | **Sí.** Despliegue `6ab99baf5b1b2dba307fd3c7`, publicado el **28/09/2026 a las 00:41 CEST** desde `main@958b6f5`; primer deploy del proyecto **enlazado a GitHub** |
+| **Comprobado en producción** | **Sí, por el propietario**: título sin «Andalucía», `/stats/js/script.js` 200 `application/javascript`, `/gracias` 200 `noindex,follow`, `leads-demo` activo |
 | Recepción del contacto | Acreditada por confirmación del propietario para el formulario `leads-demo` (ID `6aa3d5f449890600084101b8`). La adaptación no cambia nombre, campos ni `action` del formulario |
 
 **Procedencia de la base:** el ZIP `deploy-6aa7dd28a96ea01c454e27ff.zip` aportado por el propietario (SHA-256
@@ -27,7 +27,7 @@ ha podido comparar con la URL pública ni desplegar.
 |---|---|
 | `origen-2026-09-14/` | Captura parcial histórica del despliegue de partida (13 archivos), **intacta** |
 | `dist/` | Las fuentes: 21 archivos, 20 de contenido más `_redirects` |
-| `paquete/` | `AlphaRobotica_Landing_Completa.zip` (pendiente de desplegar), su manifiesto SHA-256 y el inventario |
+| `paquete/` | `AlphaRobotica_Landing_Completa.zip` (mismo contenido que `dist/`), su manifiesto SHA-256 y el inventario. Ya no es la vía de despliegue: sirve de copia verificable |
 | `netlify.toml` | Configuración mínima del proyecto enlazado: sin build; el directorio de publicación se fija en el panel |
 | `Cambios_pendientes_landing.md` | El pliego original |
 
@@ -91,13 +91,14 @@ desde `main`, como ya hace el sitio principal. Ajustes en Netlify (Site configur
 `docs/landing/netlify.toml` solo declara que no hay build y evita que la landing herede el `netlify.toml` del
 sitio principal; el directorio de publicación se fija en el panel. Las reglas del proxy siguen en `dist/_redirects`.
 
-Al enlazar, Netlify lanza el primer despliegue desde `main`. Comprobar después en producción: `<title>` y
-kicker sin «Andalucía», `/stats/js/script.js` con `text/javascript`, `/gracias` 200 con `noindex`, el aviso por
-correo con el asunto nuevo y que `leads-demo` sigue registrado. Las PR que toquen `docs/landing/` tendrán deploy
-preview de este proyecto.
+Enlace hecho el 28/09/2026 (sin autorización nueva en GitHub: la app de Netlify ya estaba instalada por el
+sitio principal). Primer despliegue: `6ab99baf5b1b2dba307fd3c7`. Desde entonces, **cada fusión en `main` que
+toque `docs/landing/` despliega la landing** y las PR tienen deploy preview de este proyecto. Ya no hace falta
+el CLI. El explorador del deploy lista `dist/` y `netlify.toml` porque muestra el base directory; la raíz
+servida es `dist` (`/` responde y `/dist/` da 404).
 
-Hasta que el enlace exista, sigue valiendo el CLI: `netlify deploy --prod --dir docs/landing/dist`. No usar
-Netlify Drop.
+Deploys y reversión: **Deploys → despliegue anterior → «Publish deploy»**. Versión previa a esta:
+`6aa7dd28a96ea01c454e27ff`.
 
 ## Reversión
 

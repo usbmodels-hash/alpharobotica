@@ -1,7 +1,7 @@
 # Inventario del paquete de la landing
 
 **27/09/2026 (Europe/Madrid).** 21 archivos: 20 de contenido más `_redirects`. Versión «hoteles y centros
-sanitarios · toda España», **pendiente de desplegar**.
+sanitarios · toda España», desplegada el 28/09/2026 (deploy `6ab99baf5b1b2dba307fd3c7`).
 
 El CLI oficial de Netlify convierte `_redirects` en un `netlify.toml` generado durante el despliegue; en el sitio
 desplegado aparece esa configuración en lugar de `_redirects`. Diferencia de representación esperada.
