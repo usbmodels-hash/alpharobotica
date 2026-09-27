@@ -1,102 +1,104 @@
 # Landing `landing.alpharobotica.com` — fuente, paquete y despliegue
 
-**Actualizado el 14/09/2026 (Europe/Madrid).**
+**Actualizado el 27/09/2026 (Europe/Madrid).**
 
-La landing **no se despliega desde este repositorio**: va por su propio proyecto de Netlify. Aquí se guarda su
-fuente, sincronizada con la versión publicada, para tener historial y una reversión concreta.
+La landing **no se despliega desde este repositorio**: va por su propio proyecto de Netlify
+(`alpharobotica-landing`, site ID `ce07e6ab-8176-47dc-9d42-3de7f68e0034`). Aquí se guarda su fuente para tener
+historial, un paquete listo y una reversión concreta.
 
 ## Estado
 
 | Plano | Estado |
 |---|---|
-| Fuentes en GitHub | **Sincronizadas** con la versión publicada (19 archivos) |
+| Fuentes en GitHub | Sincronizadas con el despliegue **`6aa7dd28a96ea01c454e27ff`** (versión «vídeo y valoración»), y encima la adaptación **«hoteles y centros sanitarios · toda España»** |
 | Validado en local | **Sí** — Chromium y un servidor que emula el enrutado de Netlify |
-| **Desplegado en Netlify** | **Sí.** Despliegue `6aa7c943cf146e1186e04f57`, publicado el **14/09/2026 a las 12:15:44 CEST** |
-| **Comprobado en producción** | **Sí**, en esa misma ejecución. Vista previa final comprobada: `6aa7c81527616400eff2cf01` |
-| **Recepción del contacto** | **Acreditada por confirmación del propietario** |
+| **Desplegado en Netlify** | **No.** La adaptación está preparada en `dist/` y en `paquete/`; lo publicado sigue siendo `6aa7dd28…`, orientado a hoteles de Andalucía |
+| **Comprobado en producción** | **No** |
+| Recepción del contacto | Acreditada por confirmación del propietario para el formulario `leads-demo` (ID `6aa3d5f449890600084101b8`). La adaptación no cambia nombre, campos ni `action` del formulario |
 
-| Dato del proyecto | Valor |
-|---|---|
-| Proyecto Netlify | `alpharobotica-landing` |
-| Site ID | `ce07e6ab-8176-47dc-9d42-3de7f68e0034` |
-| Despliegue publicado | `6aa7c943cf146e1186e04f57` · 14/09/2026 12:15:44 CEST |
-| Despliegue anterior conservado (reversión) | `6aa69fc317e0443637a1329d` |
-| Formulario registrado | `leads-demo`, ID `6aa3d5f449890600084101b8`. Campo nuevo `canal` reconocido; aviso por correo conservado |
-
-**Procedencia de estos datos:** los aporta el propietario. Esta sesión sigue sin salida de red hacia
-`landing.alpharobotica.com` ni `api.netlify.com` (la pasarela responde 403 a CONNECT), así que la
-sincronización se apoya en el paquete verificado por hash y en esa evidencia, no en una consulta propia.
-No se ha ejecutado ningún despliegue desde aquí.
+**Procedencia de la base:** el ZIP `deploy-6aa7dd28a96ea01c454e27ff.zip` aportado por el propietario (SHA-256
+`43b36c9ae24ae0c0537329343017ddd40b053910093a4456d2a192c2b4c39a65`). Esta sesión sigue sin salida de red hacia
+`landing.alpharobotica.com`, `alpharobotica-landing.netlify.app` ni `api.netlify.com` (403 a CONNECT), así que no
+ha podido comparar con la URL pública ni desplegar.
 
 ## Carpetas
 
 | Carpeta | Qué es |
 |---|---|
-| `origen-2026-09-14/` | Captura parcial histórica del despliegue de partida (13 archivos), **intacta**. No es una copia completa del proyecto de Netlify |
-| `dist/` | Las fuentes de la versión publicada: 19 archivos, 18 de contenido más `_redirects` |
-| `paquete/` | `AlphaRobotica_Landing_Completa.zip` (el paquete desplegado), su manifiesto SHA-256 y el inventario |
+| `origen-2026-09-14/` | Captura parcial histórica del despliegue de partida (13 archivos), **intacta** |
+| `dist/` | Las fuentes: 21 archivos, 20 de contenido más `_redirects` |
+| `paquete/` | `AlphaRobotica_Landing_Completa.zip` (pendiente de desplegar), su manifiesto SHA-256 y el inventario |
+| `netlify.toml` | Configuración del proyecto enlazado: publica `dist/` sin build |
 | `Cambios_pendientes_landing.md` | El pliego original |
 
-SHA-256 del paquete: `fbf17a98c9b6170113f5f3e8d774a629629a9f2bae7119c7fc24f3a408978603`
+El `netlify.toml` que viene en los ZIP de deploy lo genera el CLI de Netlify a partir de `_redirects` (mismas
+dos reglas del proxy, comprobado) e incluye una ruta de build local, así que **no se versiona**: la fuente del
+proxy sigue siendo `_redirects`.
 
-## Cómo se resolvió cada dependencia que quedaba abierta
+## Adaptación «hoteles y centros sanitarios · toda España» (27/09/2026)
 
-| | Qué faltaba | Cómo quedó |
-|---|---|---|
-| **D1** | El destino real del proxy `/stats` | Resuelto: `_redirects` en la raíz del paquete, con las dos reglas comprobadas. El CLI oficial de Netlify las convirtió en un `netlify.toml` generado durante el despliegue; por eso el sitio desplegado muestra 18 archivos de contenido más esa configuración. Esa diferencia de representación es esperada. **No** se ha copiado configuración del sitio principal ni añadido otro medidor |
-| **D2** | `icon-512.png` | Resuelto: PNG original de 512×512 recuperado de producción. Es la imagen social vigente, con sus dimensiones, ALT y tarjeta `summary` |
-| **D3** | Identificación del proyecto | Resuelta: `alpharobotica-landing`, site ID `ce07e6ab-8176-47dc-9d42-3de7f68e0034` |
-| **D4** | Acceso para publicar | Resuelto en esa ejecución, con el CLI oficial de Netlify |
+Objetivo: que la landing sirva también para centros sanitarios y no quede acotada a Andalucía, porque la campaña
+de apollo.io se envía a toda España. Solo textos; sin cambios de estructura, imágenes ni cableado.
 
-Reglas del proxy, tal como viajan en `dist/_redirects`:
+| Bloque | Cambio |
+|---|---|
+| SEO y social | `<title>` «Robots para hoteles y centros sanitarios \| Vídeo y valoración»; descripción y `og:` con «tu hotel o centro sanitario, en toda España». **Andalucía: 0 menciones** (antes 3: título, descripción y kicker) |
+| Hero | Kicker «ROBÓTICA DE SERVICIO PARA HOTELES Y CENTROS SANITARIOS · TODA ESPAÑA». H1 «¿Qué tareas puede asumir un robot en tu hotel o centro sanitario?», sin salto forzado y con `text-wrap:balance` para que no queden líneas huérfanas con ninguna tipografía. Subtítulo: el vídeo muestra aplicaciones hoteleras y «las mismas soluciones de limpieza, entregas y transporte interno se aplican en centros sanitarios» |
+| Vídeo | Sin cambios: es el vídeo oficial «Smart Hotel Solution» de KEENON y se describe como lo que es |
+| Contacto | H2 «¿Vemos por dónde empezar en tu hotel o centro sanitario?»; textos, WhatsApp y `mailto` con «hotel o centro sanitario»; etiqueta «Hotel / Centro / Empresa» **manteniendo `name="hotel"`** |
+| Aviso por correo | Asunto oculto y asunto dinámico (`video-funnel.js`) pasan a «…para hotel o centro sanitario». Versión del script `?v=20260927-sanitario1` |
+| «Servicio de habitaciones» → «Entregas a habitaciones» | Menú, tarjeta 02, H2 del W3, opción del desplegable, alt de la foto y texto prellenado del WhatsApp del W3. Vale para habitación de hotel y de paciente |
+| W3 | «ENTREGA EN SU PUERTA»; «Entregas 24/7: amenities, toallas y pedidos en hoteles; lencería y suministros a planta en centros sanitarios»; «cada destinatario accede solo a lo suyo»; «Convive con las personas»; «para huéspedes y pacientes». **No se afirma** transporte de medicación, material estéril ni desinfección |
+| C40 | «también de noche: pasillos, salas de espera y zonas comunes»; registros «para auditorías, en hoteles y en centros sanitarios» |
+| S100 | «Almacén, lencería y suministros: … entre almacén, plantas y servicios» |
+| S100 + carro | Se conserva como aplicación hotelera, etiquetada «aplicación 2 de 2 · hoteles» |
+| `/gracias` | «…para comentar tu hotel o centro sanitario…» |
+| `sitemap.xml` | `lastmod` 2026-09-27 (fecha real de esta modificación sustancial) |
 
-```text
-/stats/js/script.js  https://plausible.io/js/pa-xmf_YZISFSNuuYU-zgSlN.js  200
-/stats/api/event     https://plausible.io/api/event  200
-```
+`consent.js`, `plausible-init.js`, `landing-events.js`, `leadform-channel.js` y `video-funnel.css` quedan **byte a
+byte** como en el despliegue `6aa7dd28…`. Formulario: `leads-demo`, `form-name`, señuelo, `canal`, `solicitud`,
+`interes` y `action="/gracias"` sin cambios; la opción «Entregas a habitaciones (W3)» cambia solo el texto que se
+envía en `interes`.
 
-`assets/og-landing.jpg` se conserva como recurso **sin referencias sociales**: esa imagen alternativa llevaba
-texto superpuesto.
+## Comprobaciones (Chromium + servidor local; receptor simulado, ningún envío real)
 
-## Qué contiene la versión publicada
+20 rutas públicas **200** con su tipo de contenido (`text/css` incluido) · consentimiento: primera visita sin
+aviso aceptado no pide `/stats` **ni YouTube**; aceptar activa la medición y **sigue sin cargar YouTube**; YouTube
+solo se pide al pulsar «Ver vídeo»; rechazo y retirada correctos · canal por defecto email (teléfono oculto y
+deshabilitado) y alternancia correcta · asunto dinámico y botón cambian con «Prefiero solicitar una demo» · los
+chips de interés fijan una opción existente del desplegable · envío por email y por llamada llegan a `/gracias`
+con `canal`, `solicitud` y `subject` en el cuerpo · doble pulsación → 1 POST · **sin JavaScript también envía** ·
+anclas `#top #video #c40 #w3 #s100 #maletas #contacto #solicitud` resuelven · sin desbordes a 360/390/768/1366 px
+· ningún campo sin etiqueta ni objetivo táctil por debajo de 44 px · foco visible en el recorrido de teclado.
 
-- `canonical` absoluto `https://landing.alpharobotica.com/`, `og:url` coherente, imagen social `/icon-512.png`
-  con tarjeta `summary`.
-- `robots.txt` con la línea `Sitemap:` y **sin** bloquear `/gracias`, que debe seguir siendo rastreable para que
-  Google lea su `noindex`. `sitemap.xml` con **una sola URL**, la portada canónica.
-- `/gracias` con `noindex,follow`, que distingue expresamente «solicitud recibida» de «demostración reservada»,
-  con los controles de consentimiento y el enlace «Configurar cookies».
-- Formulario `leads-demo` con su declaración de origen para Netlify, el campo oculto `form-name`, el señuelo
-  `bot-field`, el selector de canal (`canal`) y `action` de **mismo origen** `/gracias`.
-- Selector de canal con controles de radio de 20×20 px y `scroll-margin-top` bajo la cabecera fija, para que las
-  anclas no queden tapadas.
-- Enlaces internos como anclas reales. Esto hace funcionar `cta_demo`, que `landing-events.js` solo emite
-  cuando el `href` es exactamente `#contacto`.
-- Accesibilidad: ningún objetivo táctil por debajo de 44 px; acción principal a 6,54:1 de contraste.
+Observación no atribuible a este cambio: con la tipografía de reserva (aquí no se pueden cargar las Google
+Fonts), el menú de escritorio deja «Contacto» fuera del área visible; `.links` es desplazable, así que nada se
+rompe, y con Barlow cargada es probable que quepa. Ya ocurría con `6aa7dd28…`. Conviene mirarlo en producción.
 
-`consent.js`, `plausible-init.js` y `landing-events.js` son **byte a byte** los mismos de
-`origen-2026-09-14/`: la medición validada no se ha reescrito.
+## Despliegue: desde GitHub
 
-## Comprobaciones sobre estas fuentes
+Decidido el 27/09/2026: el proyecto `alpharobotica-landing` se **enlaza a este repositorio** y despliega solo
+desde `main`, como ya hace el sitio principal. Ajustes en Netlify (Site configuration → Build & deploy →
+*Link repository*):
 
-Chromium con Playwright y un servidor local que emula el enrutado de Netlify. **Receptor simulado**: los
-envíos se guardan en el entorno de pruebas y no salen de él. No se ha enviado ningún formulario, contacto ni
-evento analítico reales.
+| Ajuste | Valor |
+|---|---|
+| Repositorio / rama | `usbmodels-hash/alpharobotica` / `main` |
+| **Base directory** | `docs/landing` |
+| Publish directory | `dist` (relativo a la base; `docs/landing/netlify.toml` ya lo fija) |
+| Build command | *(vacío)* |
 
-18 rutas públicas **200** con su tipo de contenido correcto · consentimiento A–F correcto (0 peticiones a
-`/stats` antes de aceptar) · ambos canales envían y llegan a `/gracias`, con `canal` en el cuerpo junto a
-`form-name` · doble pulsación → 1 POST · validación nativa correcta en cada canal · envía también **sin
-JavaScript** · sin desbordes a 360/390/768/1366 px · ningún campo sin etiqueta · ningún objetivo táctil por
-debajo de 44 px · paradas de teclado con foco visible.
+`docs/landing/netlify.toml` fija el directorio de publicación y evita que la landing herede el `netlify.toml`
+del sitio principal. Las reglas del proxy siguen en `dist/_redirects`.
+
+Al enlazar, Netlify lanza el primer despliegue desde `main`. Comprobar después en producción: `<title>` y
+kicker sin «Andalucía», `/stats/js/script.js` con `text/javascript`, `/gracias` 200 con `noindex`, el aviso por
+correo con el asunto nuevo y que `leads-demo` sigue registrado. Las PR que toquen `docs/landing/` tendrán deploy
+preview de este proyecto.
+
+Hasta que el enlace exista, sigue valiendo el CLI: `netlify deploy --prod --dir docs/landing/dist`. No usar
+Netlify Drop.
 
 ## Reversión
 
-En el panel del proyecto `alpharobotica-landing`: **Deploys → `6aa69fc317e0443637a1329d` → «Publish deploy»**.
-Es inmediata y no depende de este repositorio. El contenido íntegro del despliegue vigente está además en
-`dist/` y en `paquete/AlphaRobotica_Landing_Completa.zip`.
-
-## Si hubiera que volver a desplegar
-
-Subir el contenido de `dist/` con el CLI oficial de Netlify al proyecto `alpharobotica-landing`. `_redirects`
-debe viajar en la raíz. **Nunca** subir ahí el paquete de correcciones del sitio principal, ni copiar a la
-landing el `netlify.toml`, el `_redirects` o el `index.html` de la raíz del sitio principal.
+Panel de `alpharobotica-landing` → Deploys → `6aa7dd28a96ea01c454e27ff` → «Publish deploy».

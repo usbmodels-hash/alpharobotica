@@ -429,6 +429,64 @@ sin etiqueta · ningún objetivo táctil por debajo de 44 px · `consent.js`, `p
 
 ---
 
+## Lote 12 — Landing para hoteles y centros sanitarios, toda España (rama `landing-hoteles-sanitarios`)
+
+Encargo del 27/09/2026: que la landing sirva también para centros sanitarios y no quede acotada a Andalucía,
+porque la campaña de apollo.io se envía a toda España.
+
+### Estados
+
+| Plano | Estado |
+|---|---|
+| Fuentes sincronizadas con lo publicado | **completado** — despliegue `6aa7dd28a96ea01c454e27ff` («vídeo y valoración»), recibido como ZIP con SHA-256 `43b36c9a…`, incorporado tal cual en un commit propio antes de tocar nada |
+| Adaptación de textos | **validado en local** |
+| Desplegado en Netlify | **No.** Lo publicado sigue siendo `6aa7dd28…` (hoteles de Andalucía) |
+| Comprobado en producción | **No** |
+| Recepción del contacto | Sin cambios en el formulario: nombre, campos y `action` iguales. La acreditación previa sigue valiendo para la estructura; el asunto del aviso cambia de texto |
+
+### Hallazgo previo a la adaptación
+
+La fuente que este repositorio tenía en `main` (despliegue `6aa7c943…` del 14/09) **no era ya la publicada**: el
+propietario había desplegado después la versión «vídeo y valoración», con el hero en vídeo, formulario con
+`solicitud` (valoración/demostración), canal por defecto email y asunto dinámico. Por eso el primer paso fue
+sincronizar, no adaptar. El `netlify.toml` del deploy es generado por el CLI (mismas reglas que `_redirects`)
+y no se versiona.
+
+### Qué cambia (solo textos; 31 sustituciones en `index.html`, 2 en `video-funnel.js`, 1 en `gracias.html`)
+
+Andalucía pasa de 3 menciones a **0**. Título, descripción, `og:`, kicker, H1, subtítulo, contacto, etiqueta
+del campo, asunto del aviso, H2 de catálogo y W3, «Servicio de habitaciones» → «Entregas a habitaciones»
+(menú, tarjeta, opción, alt, WhatsApp), y una frase sanitaria en C40, W3 y S100. El H1 pierde el salto forzado
+y usa `text-wrap:balance`. La sección de maletas se conserva etiquetada «hoteles». `sitemap.xml` con
+`lastmod` 2026-09-27. Detalle completo en `docs/landing/README.md`.
+
+**Decisiones tomadas por defecto**, al no recibir respuesta a las preguntas: el W3 en sanidad se limita a
+suministros, lencería y pedidos (sin medicación ni material estéril); no se añade un campo «Tipo de centro»;
+el vídeo se mantiene y se describe como lo que es (aplicaciones hoteleras). Cualquiera de las tres se puede
+revisar.
+
+### Comprobaciones
+
+Batería adaptada al formulario nuevo, con receptor simulado y sin envíos reales: 20 rutas 200 con su tipo ·
+consentimiento correcto y YouTube solo al pulsar «Ver vídeo» · canales, asunto dinámico y chips correctos ·
+ambos canales llegan a `/gracias` con `canal`, `solicitud` y `subject` · doble pulsación 1 POST · sin JavaScript
+envía · ocho anclas resuelven · sin desbordes a 360/390/768/1366 px · sin campos sin etiqueta ni objetivos
+< 44 px · foco visible. `consent.js`, `plausible-init.js`, `landing-events.js`, `leadform-channel.js` y
+`video-funnel.css` idénticos al deploy. Observación heredada (menú de escritorio con la tipografía de reserva)
+anotada en el README.
+
+### Paquete
+
+`docs/landing/paquete/AlphaRobotica_Landing_Completa.zip`, 21 archivos, **pendiente de desplegar**.
+SHA-256: `e113fb8599e73a2edb02fe30dc4e07cd9a437b22c25faec94a98242d892f1e2b`.
+
+**Vía de despliegue decidida (27/09):** enlazar `alpharobotica-landing` a este repositorio (base
+`docs/landing`, publish `dist`, sin build; `docs/landing/netlify.toml` añadido). Netlify despliega desde `main`
+al enlazar y en cada fusión posterior. **Pendiente real:** que el propietario cree el enlace en el panel de
+Netlify y la comprobación en producción del primer despliegue. Reversión: `6aa7dd28a96ea01c454e27ff`.
+
+---
+
 ## Resumen por tarea P1–P14
 
 Este resumen sustituye al anterior y coincide con el detalle de los lotes.
