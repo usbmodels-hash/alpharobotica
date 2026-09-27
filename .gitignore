@@ -6,3 +6,4 @@ node_modules/
 
 # El paquete de la landing sí se versiona: es el entregable de despliegue.
 !docs/landing/paquete/*.zip
+!docs/landing-industria/paquete/*.zip

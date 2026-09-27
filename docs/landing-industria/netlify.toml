@@ -1,0 +1,9 @@
+# Configuración del proyecto de Netlify de la landing industrial
+# (alpharobotica-industria), enlazado al repositorio con base directory =
+# docs/landing-industria. Sitio estático: no hay build. El directorio de
+# publicación (docs/landing-industria/dist) se fija en el panel de Netlify.
+# Este archivo existe también para que la landing no herede el netlify.toml
+# del sitio principal, que está en la raíz del repositorio.
+
+[build]
+  command = ""

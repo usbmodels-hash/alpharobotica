@@ -491,6 +491,58 @@ base directory; no hay subcarpeta `dist/dist` (comprobado en `main`) y `/dist/` 
 
 ---
 
+## Lote 13 — Landing industrial para naves, almacenes y plantas (rama `landing-industria`)
+
+Encargo del 28/09/2026: una versión de la landing para empresas con naves industriales que quieren automatizar
+limpieza y logística, en un subdominio propio, para la campaña de apollo.io a toda España.
+
+### Estados
+
+| Plano | Estado |
+|---|---|
+| Fuentes en GitHub | **implementado** — `docs/landing-industria/` (dist, README, netlify.toml, paquete) |
+| Validado en local | **validado en local** — batería adaptada; ver abajo |
+| Proyecto de Netlify y subdominio | **pendiente del propietario** — propuesto `alpharobotica-industria` / `industria.alpharobotica.com` |
+| Desplegado / comprobado en producción | **No** |
+| Formulario y aviso por correo | **pendiente** — se registra en el primer deploy del proyecto nuevo; el aviso hay que configurarlo allí |
+| Medición | **pendiente (D1)** — hace falta dar de alta el subdominio en Plausible y aportar su script; `_redirects` se añade entonces |
+| Recepción de contactos | **sin acreditar** |
+
+### Qué es
+
+Proyecto de Netlify independiente, desplegable desde este repositorio con base `docs/landing-industria` y
+publish `docs/landing-industria/dist`, sin build. Misma base técnica que la landing de hoteles (CSS, aviso de
+cookies, formulario con canal y tipo de solicitud, medición con consentimiento) y contenido propio: hero sin
+YouTube con fotos de C55 y S300; contacto con primera valoración; catálogo de cuatro fichas — **C40, C55, S100 y
+S300** — con datos tomados de las fichas del sitio principal; vídeos del fabricante **alojados en el propio
+sitio** para C55 y S300, cargados solo al pulsar; sección de proceso; `/gracias`, `robots.txt` y `sitemap.xml`
+propios. Campo «Empresa / Planta» (`name="empresa"`). Formulario `leads-demo` con `subject`
+«…para nave industrial».
+
+`plausible-init.js`, `landing-events.js`, `leadform-channel.js` y `video-funnel.css` son byte a byte los de
+`docs/landing/dist/`. `consent.js` es la versión de `origen-2026-09-14/` (la anterior a la frase sobre YouTube,
+que aquí no aplica). `industria.js` es nuevo: lógica del formulario sin YouTube y carga bajo demanda de vídeo.
+
+No se afirma uso en exteriores, entornos ATEX, cargas superiores a las publicadas ni integración con carretillas
+o sistemas de gestión de almacén.
+
+### Comprobaciones (Chromium + servidor local, receptor simulado, sin envíos reales)
+
+23 rutas 200 con su tipo de contenido (`video/mp4` e `image/webp` incluidos) · primera visita sin `/stats` **y
+sin ningún MP4**; aceptar activa la medición y sigue sin pedir vídeo; el MP4 solo se pide al pulsar «Ver … en
+acción», con `controls` y sin `autoplay`; sin JavaScript quedan los enlaces directos al MP4 · rechazo y retirada
+correctos · canal por defecto email y alternancia correcta · asunto y botón cambian con la solicitud; los chips
+fijan opciones existentes · ambos canales llegan a `/gracias` · doble pulsación → 1 POST · sin JavaScript envía ·
+siete anclas resuelven · sin desbordes a 360/390/768/1366 px · sin campos sin etiqueta ni objetivos < 44 px ·
+foco visible · ninguna petición externa salvo las tipografías.
+
+### Paquete
+
+`docs/landing-industria/paquete/AlphaRobotica_Landing_Industria.zip` (23 archivos, ~10,9 MB por los dos
+vídeos). **Pendiente de desplegar.** Puesta en marcha, DNS y dependencias en `docs/landing-industria/README.md`.
+
+---
+
 ## Resumen por tarea P1–P14
 
 Este resumen sustituye al anterior y coincide con el detalle de los lotes.
