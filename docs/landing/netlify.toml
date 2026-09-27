@@ -1,10 +1,11 @@
 # Configuración del proyecto de Netlify de la landing (alpharobotica-landing),
 # enlazado al repositorio con base directory = docs/landing.
-# Sitio estático: no hay build. Se publica dist/ tal cual.
-# Las reglas del proxy de medición viven en dist/_redirects; no se duplican aquí.
+# Sitio estático: no hay build. El directorio de publicación (dist) se fija en
+# el panel de Netlify, no aquí: en netlify.toml la ruta tendría prioridad sobre
+# el panel y su resolución (relativa a la base o a la raíz) no está verificada.
+# Las reglas del proxy de medición viven en dist/_redirects.
 # Este archivo existe también para que la landing no herede el netlify.toml
 # del sitio principal, que está en la raíz del repositorio.
 
 [build]
-  publish = "dist"
   command = ""

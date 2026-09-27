@@ -28,7 +28,7 @@ ha podido comparar con la URL pública ni desplegar.
 | `origen-2026-09-14/` | Captura parcial histórica del despliegue de partida (13 archivos), **intacta** |
 | `dist/` | Las fuentes: 21 archivos, 20 de contenido más `_redirects` |
 | `paquete/` | `AlphaRobotica_Landing_Completa.zip` (pendiente de desplegar), su manifiesto SHA-256 y el inventario |
-| `netlify.toml` | Configuración del proyecto enlazado: publica `dist/` sin build |
+| `netlify.toml` | Configuración mínima del proyecto enlazado: sin build; el directorio de publicación se fija en el panel |
 | `Cambios_pendientes_landing.md` | El pliego original |
 
 El `netlify.toml` que viene en los ZIP de deploy lo genera el CLI de Netlify a partir de `_redirects` (mismas
@@ -85,11 +85,11 @@ desde `main`, como ya hace el sitio principal. Ajustes en Netlify (Site configur
 |---|---|
 | Repositorio / rama | `usbmodels-hash/alpharobotica` / `main` |
 | **Base directory** | `docs/landing` |
-| Publish directory | `dist` (relativo a la base; `docs/landing/netlify.toml` ya lo fija) |
+| Publish directory | `docs/landing/dist` — el panel muestra la ruta completa desde la raíz del repositorio; el log del deploy debe decir `Publish directory: /opt/build/repo/docs/landing/dist` |
 | Build command | *(vacío)* |
 
-`docs/landing/netlify.toml` fija el directorio de publicación y evita que la landing herede el `netlify.toml`
-del sitio principal. Las reglas del proxy siguen en `dist/_redirects`.
+`docs/landing/netlify.toml` solo declara que no hay build y evita que la landing herede el `netlify.toml` del
+sitio principal; el directorio de publicación se fija en el panel. Las reglas del proxy siguen en `dist/_redirects`.
 
 Al enlazar, Netlify lanza el primer despliegue desde `main`. Comprobar después en producción: `<title>` y
 kicker sin «Andalucía», `/stats/js/script.js` con `text/javascript`, `/gracias` 200 con `noindex`, el aviso por
