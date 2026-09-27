@@ -480,8 +480,10 @@ anotada en el README.
 `docs/landing/paquete/AlphaRobotica_Landing_Completa.zip`, 21 archivos, **pendiente de desplegar**.
 SHA-256: `e113fb8599e73a2edb02fe30dc4e07cd9a437b22c25faec94a98242d892f1e2b`.
 
-**Pendiente real:** despliegue con el CLI de Netlify sobre `alpharobotica-landing` (sin acceso desde esta
-sesión) y comprobación en producción. Reversión: `6aa7dd28a96ea01c454e27ff`.
+**Vía de despliegue decidida (27/09):** enlazar `alpharobotica-landing` a este repositorio (base
+`docs/landing`, publish `dist`, sin build; `docs/landing/netlify.toml` añadido). Netlify despliega desde `main`
+al enlazar y en cada fusión posterior. **Pendiente real:** que el propietario cree el enlace en el panel de
+Netlify y la comprobación en producción del primer despliegue. Reversión: `6aa7dd28a96ea01c454e27ff`.
 
 ---
 

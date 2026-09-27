@@ -28,6 +28,7 @@ ha podido comparar con la URL pública ni desplegar.
 | `origen-2026-09-14/` | Captura parcial histórica del despliegue de partida (13 archivos), **intacta** |
 | `dist/` | Las fuentes: 21 archivos, 20 de contenido más `_redirects` |
 | `paquete/` | `AlphaRobotica_Landing_Completa.zip` (pendiente de desplegar), su manifiesto SHA-256 y el inventario |
+| `netlify.toml` | Configuración del proyecto enlazado: publica `dist/` sin build |
 | `Cambios_pendientes_landing.md` | El pliego original |
 
 El `netlify.toml` que viene en los ZIP de deploy lo genera el CLI de Netlify a partir de `_redirects` (mismas
@@ -74,14 +75,29 @@ Observación no atribuible a este cambio: con la tipografía de reserva (aquí n
 Fonts), el menú de escritorio deja «Contacto» fuera del área visible; `.links` es desplazable, así que nada se
 rompe, y con Barlow cargada es probable que quepa. Ya ocurría con `6aa7dd28…`. Conviene mirarlo en producción.
 
-## Despliegue
+## Despliegue: desde GitHub
 
-1. Anotar en el panel de `alpharobotica-landing` el despliegue publicado actual (`6aa7dd28a96ea01c454e27ff`):
-   es el punto de reversión.
-2. Desplegar el contenido de `dist/` (o el ZIP de `paquete/`, extraído) con el CLI oficial de Netlify, con
-   `_redirects` en la raíz. No usar Netlify Drop.
-3. Comprobar en producción: `<title>` y kicker sin «Andalucía», `/gracias` 200 con `noindex`, el aviso por correo
-   con el asunto nuevo, y que `leads-demo` sigue registrado.
+Decidido el 27/09/2026: el proyecto `alpharobotica-landing` se **enlaza a este repositorio** y despliega solo
+desde `main`, como ya hace el sitio principal. Ajustes en Netlify (Site configuration → Build & deploy →
+*Link repository*):
+
+| Ajuste | Valor |
+|---|---|
+| Repositorio / rama | `usbmodels-hash/alpharobotica` / `main` |
+| **Base directory** | `docs/landing` |
+| Publish directory | `dist` (relativo a la base; `docs/landing/netlify.toml` ya lo fija) |
+| Build command | *(vacío)* |
+
+`docs/landing/netlify.toml` fija el directorio de publicación y evita que la landing herede el `netlify.toml`
+del sitio principal. Las reglas del proxy siguen en `dist/_redirects`.
+
+Al enlazar, Netlify lanza el primer despliegue desde `main`. Comprobar después en producción: `<title>` y
+kicker sin «Andalucía», `/stats/js/script.js` con `text/javascript`, `/gracias` 200 con `noindex`, el aviso por
+correo con el asunto nuevo y que `leads-demo` sigue registrado. Las PR que toquen `docs/landing/` tendrán deploy
+preview de este proyecto.
+
+Hasta que el enlace exista, sigue valiendo el CLI: `netlify deploy --prod --dir docs/landing/dist`. No usar
+Netlify Drop.
 
 ## Reversión
 
