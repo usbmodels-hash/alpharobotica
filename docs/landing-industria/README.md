@@ -1,4 +1,4 @@
-# Landing industrial — `industria.alpharobotica.com` (propuesto)
+# Landing industrial — `industria.alpharobotica.com`
 
 **Creada el 28/09/2026 (Europe/Madrid).**
 
@@ -13,11 +13,11 @@ repositorio con base directory `docs/landing-industria`.
 |---|---|
 | Fuentes en GitHub | Sí — `docs/landing-industria/dist/` |
 | Validado en local | Sí — Chromium y un servidor que emula el enrutado de Netlify |
-| **Proyecto de Netlify creado** | **No** — ver «Puesta en marcha» |
-| **Subdominio configurado** | **No** — propuesto `industria.alpharobotica.com` |
-| **Desplegado / comprobado en producción** | **No** |
-| Formulario registrado en Netlify | **No** — se registra en el primer despliegue del proyecto nuevo |
-| Medición (Plausible) | **Pendiente**: ver dependencia D1 |
+| **Proyecto de Netlify creado** | **Sí** — `alpharobotica-industria` (equipo Cubotic), base `docs/landing-industria`, publish `docs/landing-industria/dist`, sin build |
+| **Subdominio configurado** | **Sí** — `industria.alpharobotica.com`, DNS de Netlify, certificado comodín, Force HTTPS con HSTS de 1 año |
+| **Desplegado / comprobado en producción** | **Sí** — despliegue `6ab9a713db134853beb52e6a` (`main@d9fa5fb`, 28/09/2026 01:30 CEST). Portada 200, `/gracias` 200 `noindex,follow` |
+| Formulario registrado en Netlify | **Sí** — `leads-demo`, aviso por correo a `antonio@alpharobotica.com`. El primer deploy (`6ab9a4ab…`) salió con la detección de formularios desactivada; se activó y se relanzó |
+| Medición (Plausible) | **Pendiente**: ver dependencia D1. `/stats/js/script.js` responde 404 hasta entonces, como está previsto |
 | Recepción de contactos acreditada | **No** |
 
 ## Qué contiene
@@ -79,5 +79,8 @@ sin la parte de YouTube, más la carga bajo demanda de los vídeos.
 
 ## Reversión
 
-Antes del primer deploy no hay nada publicado en ese subdominio. Después, como en la landing de hoteles:
-Deploys → despliegue anterior → «Publish deploy».
+Deploys → despliegue anterior → «Publish deploy». El primero válido es `6ab9a713db134853beb52e6a`; antes no
+había nada publicado en ese subdominio.
+
+El explorador de archivos del deploy muestra `dist/` y `netlify.toml` porque lista el base directory; no existe
+`dist/dist` en `main` y los 10,6 MB del deploy son los dos vídeos MP4, no activos duplicados.

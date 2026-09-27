@@ -502,10 +502,10 @@ limpieza y logística, en un subdominio propio, para la campaña de apollo.io a 
 |---|---|
 | Fuentes en GitHub | **implementado** — `docs/landing-industria/` (dist, README, netlify.toml, paquete) |
 | Validado en local | **validado en local** — batería adaptada; ver abajo |
-| Proyecto de Netlify y subdominio | **pendiente del propietario** — propuesto `alpharobotica-industria` / `industria.alpharobotica.com` |
-| Desplegado / comprobado en producción | **No** |
-| Formulario y aviso por correo | **pendiente** — se registra en el primer deploy del proyecto nuevo; el aviso hay que configurarlo allí |
-| Medición | **pendiente (D1)** — hace falta dar de alta el subdominio en Plausible y aportar su script; `_redirects` se añade entonces |
+| Proyecto de Netlify y subdominio | **completado por el propietario** — `alpharobotica-industria` (equipo Cubotic), base `docs/landing-industria`, publish `docs/landing-industria/dist`, sin build. `industria.alpharobotica.com` con DNS de Netlify (registro creado solo), certificado comodín, Force HTTPS y HSTS de 1 año, igual que hoteles |
+| Desplegado / comprobado en producción | **completado** — despliegue **`6ab9a713db134853beb52e6a`**, `main@d9fa5fb`, 28/09/2026 01:30 CEST. Un primer deploy (`6ab9a4abc138327e0d9b98d8`) salió con la detección de formularios desactivada en el proyecto nuevo; se activó y se relanzó. Comprobado por el propietario: portada 200 con el título correcto; `/gracias` 200 `noindex,follow`; `/stats/js/script.js` 404, esperado hasta D1 |
+| Formulario y aviso por correo | **completado** — `leads-demo` activo con sus campos detectados; aviso por correo a `antonio@alpharobotica.com` |
+| Medición | **pendiente (D1)** — el propietario tiene que iniciar sesión en Plausible, dar de alta `industria.alpharobotica.com` y aportar el script `pa-…`; entonces se añade `dist/_redirects`. Esta sesión no tiene ni puede tener sesión en Plausible |
 | Recepción de contactos | **sin acreditar** |
 
 ### Qué es
@@ -539,7 +539,10 @@ foco visible · ninguna petición externa salvo las tipografías.
 ### Paquete
 
 `docs/landing-industria/paquete/AlphaRobotica_Landing_Industria.zip` (23 archivos, ~10,9 MB por los dos
-vídeos). **Pendiente de desplegar.** Puesta en marcha, DNS y dependencias en `docs/landing-industria/README.md`.
+vídeos). Desplegado desde GitHub; ver README. El explorador del deploy muestra `dist/` y `netlify.toml` porque
+lista el base directory: no hay `dist/dist` en `main` (comprobado) y los 10,6 MB del deploy son los dos vídeos
+MP4, no activos duplicados. **Reversión:** Deploys → `6ab9a713db134853beb52e6a` es el primero válido; antes
+no había nada publicado en ese subdominio.
 
 ---
 
