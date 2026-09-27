@@ -1,7 +1,7 @@
 # AlphaRobotica_Landing_Industria.zip — manifiesto SHA-256
 # 28/09/2026 (Europe/Madrid). Rutas relativas a la raiz del ZIP.
 # Landing industrial (naves, almacenes y plantas), subdominio propuesto industria.alpharobotica.com.
-# PENDIENTE DE DESPLEGAR: proyecto de Netlify y subdominio aun no creados.
+# Desplegado desde GitHub el 28/09/2026: deploy 6ab9a713db134853beb52e6a (alpharobotica-industria).
 
 41eeef7551d8c9924badf778f61f89a588ed2d2f9356d7e0bd3b95f9ec09d2ca      16918  apple-touch-icon.png
 07538d3ebd1c0ad72ada674346741bc07e8f2ba1ae450082605510dca30d893a      44033  assets/alpha-robotica-logo.png

@@ -1,7 +1,7 @@
 # Inventario del paquete de la landing
 
 **28/09/2026 (Europe/Madrid).** 23 archivos de contenido, todos servidos; sin `_redirects` (ver dependencia D1 del README).
-Landing industrial, versión inicial, **pendiente de desplegar**: falta crear el proyecto de Netlify y el subdominio.
+Landing industrial, desplegada el 28/09/2026 (deploy `6ab9a713db134853beb52e6a`, `industria.alpharobotica.com`).
 
 | Ruta pública | Archivo en el ZIP | Tipo de contenido | Bytes | SHA-256 |
 |---|---|---|---:|---|
