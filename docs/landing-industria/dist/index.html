@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robots de limpieza y logística para naves industriales | Alpha Robótica</title>
+<meta name="description" content="Fregado autónomo de grandes superficies y transporte interno de hasta 300 kg con robots KEENON. Primera valoración gratuita para tu nave, almacén o planta, en toda España.">
+<meta property="og:title" content="Robots de limpieza y logística para tu nave industrial | Alpha Robótica">
+<meta property="og:description" content="Descubre qué tareas de limpieza y transporte interno podrías automatizar en tu nave. Solicita una primera valoración sin coste.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://industria.alpharobotica.com/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Símbolo de Alpha Robótica">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://industria.alpharobotica.com/icon-512.png">
+<meta name="twitter:image:alt" content="Símbolo de Alpha Robótica">
+<meta property="og:url" content="https://industria.alpharobotica.com/">
+<link rel="canonical" href="https://industria.alpharobotica.com/">
+<script defer src="assets/plausible-init.js?v=20260928-industria1"></script><script defer src="assets/leadform-channel.js?v=20260928-industria1"></script>
+<script defer src="assets/landing-events.js?v=20260928-industria1"></script><script defer src="assets/consent.js?v=20260928-industria1"></script>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root { --navy:#0A1E44; --navy2:#0d2452; --blue:#007CFF; --sky:#53BAED; --magenta:#E5148C; --ink:#1a2b4a;
+  /* P2: la accion principal necesita fondo solido accesible. Blanco sobre
+     #B30F6E = 6,54:1; el magenta de marca se queda en 4,37:1. El magenta
+     sigue usandose en degradados y acentos decorativos. */
+  --cta:#B30F6E; --cta-hover:#8E0B57; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Barlow',sans-serif; color:var(--ink); background:#fff; }
+.wrap { max-width:1100px; margin:0 auto; padding:0 20px; }
+h1,h2,h3 { font-family:'Barlow Condensed',sans-serif; }
+em { font-style:normal; color:var(--sky); }
+/* NAV */
+header { position:sticky; top:0; z-index:50; background:rgba(10,30,68,.96); backdrop-filter:blur(8px); }
+.nav { display:flex; align-items:center; gap:18px; padding:10px 20px; max-width:1100px; margin:0 auto; }
+.nav img { height:34px; width:auto; background:#fff; border-radius:8px; padding:4px 8px; }
+.nav .links { display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; }
+.nav .links::-webkit-scrollbar { display:none; }
+.nav a { color:#c9d6ec; text-decoration:none; font-weight:600; font-size:14px; padding:7px 11px; border-radius:8px; white-space:nowrap; }
+.nav a:hover { background:rgba(255,255,255,.1); color:#fff; }
+.nav .cta { margin-left:auto; background:#25D366; color:#06301b; padding:8px 14px; border-radius:10px; font-weight:700; }
+.nav .menu { display:contents; }
+.menu-btn { display:none; }
+[id] { scroll-margin-top:76px; }
+/* HERO */
+.hero { background:var(--navy); color:#fff; position:relative; overflow:hidden; padding:72px 0 56px; }
+.hero::before { content:""; position:absolute; right:-220px; top:-200px; width:640px; height:640px; border-radius:50%;
+  border:36px solid transparent; background:linear-gradient(var(--navy),var(--navy)) padding-box,
+  conic-gradient(from 210deg,#00E0FF,var(--blue),var(--magenta),transparent 70%) border-box; opacity:.5; transform:rotate(-18deg); }
+.hero .wrap { position:relative; z-index:2; }
+.kick { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.2em; color:var(--sky); }
+.hero h1 { font-weight:800; font-size:clamp(34px,6vw,58px); line-height:1.03; margin:14px 0 16px; }
+.hero h1 { text-wrap:balance; } /* reparte las líneas del titular largo; los navegadores sin soporte lo ignoran */
+.hero p.sub { font-size:clamp(16px,2.2vw,19px); color:#c9d6ec; max-width:640px; line-height:1.55; }
+.claim { margin:26px 0 8px; font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:clamp(22px,3.4vw,30px); color:var(--magenta); }
+.claim span { color:#fff; }
+.claim::after { content:""; display:block; height:5px; width:210px; margin-top:6px; border-radius:4px; background:linear-gradient(90deg,var(--magenta),var(--blue),var(--sky)); }
+.herocta { display:flex; gap:12px; flex-wrap:wrap; margin-top:26px; }
+.btn { display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-weight:700; padding:13px 20px; border-radius:12px; font-size:15px; transition:transform .15s; min-height:44px; box-sizing:border-box; }
+.btn:hover { transform:translateY(-2px); }
+.btn.wa { background:#25D366; color:#06301b; }
+.btn.em { background:#fff; color:var(--navy); }
+.btn.ghost { background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.25); }
+/* INDEX */
+.idx { background:var(--navy); padding:8px 0 64px; }
+.idxgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px; }
+.idxcard { display:flex; align-items:center; gap:12px; text-decoration:none; color:#fff; background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14); border-radius:14px; padding:16px; transition:background .15s; }
+.idxcard:hover { background:rgba(255,255,255,.12); }
+.idxcard .n { font-family:'DM Mono',monospace; color:var(--sky); font-size:17px; }
+.idxcard b { font-family:'Barlow Condensed',sans-serif; font-size:18px; display:block; }
+.idxcard p { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--sky); margin:0 0 3px; }
+.idxcard .arr { margin-left:auto; color:var(--sky); font-size:18px; }
+/* SOLUTION SECTIONS */
+.sol { padding:64px 0; }
+.sol:nth-of-type(even) { background:#f4f8fe; }
+.solhero { display:flex; gap:32px; align-items:center; background:var(--navy); color:#fff; border-radius:22px; padding:34px; position:relative; overflow:hidden; }
+.solhero::before { content:""; position:absolute; right:-140px; top:-160px; width:420px; height:420px; border-radius:50%;
+  border:26px solid transparent; background:linear-gradient(var(--navy),var(--navy)) padding-box,
+  conic-gradient(from 210deg,#00E0FF,var(--blue),var(--magenta),transparent 70%) border-box; opacity:.5; }
+.soltxt { flex:1.4; position:relative; z-index:2; }
+.sol h2 { font-weight:800; font-size:clamp(26px,3.6vw,38px); line-height:1.05; margin:10px 0 20px; }
+.solimg { flex:1; position:relative; z-index:2; display:flex; justify-content:center; }
+.solimg.blend { background:var(--navy); border-radius:14px; } .solimg.blend img { max-height:300px; max-width:100%; height:auto; width:auto; mix-blend-mode:screen; }
+.solimg.card img { max-height:300px; max-width:100%; height:auto; width:auto; border-radius:14px; }
+.band { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.node { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.node span { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; letter-spacing:.05em; }
+.dot { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+.dot svg { width:19px; height:19px; }
+.d0 { background:linear-gradient(135deg,var(--blue),#0a5fd0); } .d1 { background:linear-gradient(135deg,#2ea8e8,var(--sky)); }
+.d2 { background:linear-gradient(135deg,#7a3ff2,#4f6af5); } .d3 { background:linear-gradient(135deg,var(--magenta),#ff5aa8); }
+.lnk { height:4px; width:26px; border-radius:3px; margin-bottom:18px; }
+.k0 { background:linear-gradient(90deg,var(--blue),var(--sky)); } .k1 { background:linear-gradient(90deg,var(--sky),#7a3ff2); } .k2 { background:linear-gradient(90deg,#7a3ff2,var(--magenta)); }
+.res { border:1.5px solid var(--magenta); background:rgba(229,20,140,.15); color:#ffd9ee; border-radius:10px;
+  padding:8px 12px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; margin-left:6px; margin-bottom:14px; }
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); border:1px solid #dbe4f2; border-radius:14px; overflow:hidden; margin:22px 0; background:#fff; }
+.st { text-align:center; padding:14px 8px; border-right:1px solid #dbe4f2; border-bottom:1px solid #dbe4f2; }
+.st b { font-family:'DM Mono',monospace; font-size:19px; color:var(--blue); display:block; }
+.st span { font-size:12px; color:#5a6a85; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; }
+.bu { background:#fff; border:1px solid #dbe4f2; border-radius:14px; padding:18px; }
+.sol:nth-of-type(even) .bu { background:#fff; }
+.bu b { font-family:'Barlow Condensed',sans-serif; font-size:18px; color:var(--navy); display:block; margin-bottom:6px; }
+.bu p { font-size:14px; line-height:1.5; color:#41506b; }
+.solcta { display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; }
+.solcta .btn.em { background:var(--navy); color:#fff; }
+.solcta .btn.ficha { background:#fff; color:var(--navy); border:1.5px solid var(--navy); }
+/* CONTACTO */
+.contact { background:var(--navy); color:#fff; padding:70px 0; text-align:center; position:relative; overflow:hidden; }
+.contact h2 { font-size:clamp(28px,4vw,40px); font-weight:800; margin-bottom:10px; }
+.contact p { color:#c9d6ec; max-width:560px; margin:0 auto 26px; line-height:1.55; }
+.contact .btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.btn.main { background:var(--cta); color:#fff; font-size:16px; padding:15px 24px; }
+.btn.main:hover { background:var(--cta-hover); }
+.btn.main:focus-visible, .leadform button:focus-visible, .leadform input:focus-visible,
+.leadform select:focus-visible, .leadform textarea:focus-visible { outline:3px solid #fff; outline-offset:3px; box-shadow:0 0 0 6px var(--cta-hover); }
+.ctasupport { margin:10px 0 0; font-size:15px; line-height:1.5; opacity:.9; max-width:46ch; }
+.chanrow { display:flex; gap:18px; flex-wrap:wrap; margin:4px 0 10px; }
+.chanrow label { display:inline-flex; align-items:center; gap:8px; min-height:44px; cursor:pointer; font-weight:600; }
+.subnote { color:#c9d6ec; max-width:640px; margin-top:14px; font-size:15px; line-height:1.5; }
+.leadform { max-width:640px; margin:34px auto 0; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:26px 24px; text-align:left; }
+.leadform h3 { font-size:22px; font-weight:800; margin-bottom:4px; color:#fff; }
+.leadform .hint { color:#c9d6ec; font-size:14px; margin-bottom:16px; }
+.leadform .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.leadform label { display:block; font-size:13px; font-weight:600; color:#c9d6ec; margin:10px 0 4px; }
+.leadform input, .leadform select, .leadform textarea { width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.22); background:rgba(255,255,255,.95); color:var(--ink); font-family:'Barlow',sans-serif; font-size:15px; }
+.leadform input:focus, .leadform select:focus, .leadform textarea:focus { outline:2px solid var(--sky); }
+.leadform button { width:100%; margin-top:16px; padding:15px; border:0; border-radius:12px; background:var(--cta); color:#fff; font-weight:800; font-size:16px; cursor:pointer; font-family:'Barlow',sans-serif; transition:transform .15s; }
+.leadform button:hover { background:var(--cta-hover); }
+.leadform button:hover { transform:translateY(-2px); }
+.leadform .priv { font-size:12px; color:#a9bbda; margin-top:10px; text-align:center; }
+.leadform .priv a { color:#fff; text-decoration:underline; text-underline-offset:2px; }
+.leadform .chan { border:1px solid rgba(255,255,255,.3); border-radius:12px; padding:10px 14px; }
+.leadform .chan legend { padding:0 6px; color:#c9d6ec; font-size:14px; font-weight:600; }
+.leadform .chanrow { margin:0; gap:8px 24px; }
+.leadform .chanrow label { display:inline-flex; align-items:center; gap:10px; min-height:44px; margin:0; font-size:15px; cursor:pointer; }
+.leadform .chanrow input[type="radio"] { width:20px; height:20px; padding:0; margin:0; flex:0 0 20px; accent-color:var(--cta); }
+#c40, #c55, #s100, #s300, #contacto { scroll-margin-top:86px; }
+@media (max-width:600px) { .leadform .row { grid-template-columns:1fr; } }
+.wa-ic { width:1.15em; height:1.15em; flex:0 0 auto; vertical-align:-0.18em; }
+.fab { display:flex; align-items:center; justify-content:center; }
+.fab .wa-ic { width:30px; height:30px; }
+footer { background:#071633; color:#8fa5cc; font-size:12.5px; padding:22px 0; text-align:center; line-height:1.7; }
+footer a { color:#c9d6ec; text-decoration:underline; text-underline-offset:2px; }
+footer a:hover { color:#fff; }
+/* FLOAT WA */
+.fab { position:fixed; right:18px; bottom:18px; z-index:60; background:#25D366; color:#06301b; width:56px; height:56px;
+  border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:26px; text-decoration:none;
+  box-shadow:0 6px 18px rgba(0,0,0,.3); }
+@media (max-width:760px) {
+  footer { padding-bottom:88px; }
+  .solhero { flex-direction:column; padding:24px; }
+  .solimg.blend img, .solimg.card img { max-height:220px; }
+}
+@media (max-width:1100px) {
+  .nav { position:relative; padding:8px 14px; }
+  .menu-btn { display:inline-flex; flex-direction:column; justify-content:center; align-items:center; gap:5px; margin-left:auto; width:44px; height:44px; padding:0; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2); border-radius:10px; cursor:pointer; }
+  .menu-btn span { display:block; width:20px; height:2px; background:#fff; border-radius:2px; transition:transform .2s, opacity .2s; }
+  .menu-btn[aria-expanded="true"] span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .menu-btn[aria-expanded="true"] span:nth-child(2) { opacity:0; }
+  .menu-btn[aria-expanded="true"] span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+  .nav .menu { display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; gap:4px; padding:8px 12px 16px; background:#0A1E44; border-top:1px solid rgba(255,255,255,.1); box-shadow:0 18px 40px rgba(0,0,0,.35); }
+  .nav .menu.open { display:flex; }
+  .nav .links { flex-direction:column; gap:2px; overflow:visible; }
+  .nav .links a { font-size:17px; padding:13px 12px; border-radius:10px; white-space:normal; }
+  .nav .cta { display:flex; justify-content:center; align-items:center; gap:8px; margin:8px 0 0; padding:13px 16px; font-size:16px; }
+}
+/* consentimiento (v5) */
+.cookie-banner { position:fixed; left:12px; right:12px; bottom:12px; z-index:70; max-width:980px; margin:0 auto; background:#fff; color:var(--ink); border-radius:16px; box-shadow:0 18px 50px rgba(0,0,0,.35); padding:16px 18px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:14px; align-items:center; font-size:14px; line-height:1.45; }
+.cookie-banner strong { display:block; font-family:'Barlow Condensed',sans-serif; font-size:19px; margin-bottom:4px; color:var(--navy); }
+.cookie-banner p { margin:0; color:#41506b; }
+.cookie-banner a { color:var(--blue); font-weight:700; }
+.cookie-banner__actions { display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+.cb-btn { border-radius:10px; padding:11px 16px; min-height:44px; box-sizing:border-box; font-weight:800; font-size:14px; font-family:'Barlow',sans-serif; cursor:pointer; border:1.5px solid var(--navy); background:#fff; color:var(--navy); }
+.cb-btn.cb-accept { background:var(--cta); color:#fff; border-color:var(--cta); }
+.cb-btn:focus-visible { outline:2px solid var(--sky); outline-offset:2px; }
+@media (max-width:760px) { .cookie-banner { grid-template-columns:1fr; bottom:8px; } .cookie-banner__actions { justify-content:stretch; } .cb-btn { flex:1; } html.cookie-open .fab { display:none; } }
+</style>
+<link rel="stylesheet" href="assets/video-funnel.css?v=20260928-industria1">
+<style>
+.hero-visual { display:grid; grid-template-columns:1fr 1fr; gap:14px; max-width:880px; margin:28px 0 0; }
+.hero-visual figure { margin:0; background:#fff; border-radius:16px; overflow:hidden; border:1px solid #63718a; }
+.hero-visual img { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:contain; background:#fff; }
+.hero-visual figcaption { padding:8px 12px 10px; font-size:13px; color:var(--navy); background:#fff; font-weight:600; }
+.demo { margin:22px 0 0; }
+.demo-stage { position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden; background:#050b17; border:1px solid #dbe4f2; }
+.demo-stage img, .demo-stage video { display:block; width:100%; height:100%; object-fit:cover; }
+.demo-load { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; border:0; padding:0; cursor:pointer; background:rgba(5,11,23,.25); font:inherit; color:#fff; }
+.demo-load span { display:inline-flex; align-items:center; gap:12px; padding:14px 22px; border-radius:14px; background:var(--cta); font-size:17px; font-weight:700; box-shadow:0 8px 34px rgba(0,0,0,.34); }
+.demo-load:hover span { background:var(--cta-hover); }
+.demo-load:focus-visible { outline:4px solid #fff; outline-offset:-6px; }
+.demo p { font-size:13px; color:#5a6a85; margin:8px 0 0; }
+.demo p a { color:#155484; }
+.process { background:var(--navy); color:#fff; padding:56px 0; }
+.process h2 { font-size:clamp(26px,3.4vw,36px); font-weight:800; margin:10px 0 18px; }
+.process ol { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; padding:0; margin:0; list-style:none; counter-reset:paso; }
+.process li { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.18); border-radius:14px; padding:18px; counter-increment:paso; }
+.process li::before { content:"0" counter(paso); display:block; font-family:'DM Mono',monospace; color:var(--sky); font-size:15px; margin-bottom:6px; }
+.process li b { display:block; font-family:'Barlow Condensed',sans-serif; font-size:19px; margin-bottom:6px; }
+.process li p { margin:0; font-size:14px; line-height:1.5; color:#c9d6ec; }
+.hero h1 { text-wrap:balance; }
+@media (max-width:640px) { .hero-visual { grid-template-columns:1fr; } }
+</style>
+<script defer src="assets/industria.js?v=20260928-industria1"></script>
+</head><body>
+
+<header><div class="nav">
+  <a class="brand" href="#top"><img src="assets/alpha-robotica-logo.png" width="435" height="120" alt="Alpha Robótica, distribuidor autorizado KEENON Robotics" decoding="async"></a>
+  <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  <nav class="menu" id="menu" aria-label="Secciones">
+  <div class="links"><a href="#c40">Fregado profesional</a><a href="#c55">Grandes superficies</a><a href="#s100">Transporte interno</a><a href="#s300">Carga pesada</a><a href="#contacto">Contacto</a></div>
+  <a class="cta" href="https://wa.me/34659483652?text=Hola%2C%20me%20gustar%C3%ADa%20una%20demo%20de%20los%20robots%20KEENON%20para%20mi%20nave" target="_blank" rel="noopener"><svg class="wa-ic" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg> WhatsApp</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="hero" id="top"><div class="wrap">
+  <div class="kick">ROBÓTICA DE SERVICIO PARA NAVES INDUSTRIALES, ALMACENES Y PLANTAS · TODA ESPAÑA</div>
+  <h1>¿Qué tareas de limpieza y logística <em>puede asumir un robot en tu nave?</em></h1>
+  <p class="sub">Fregado autónomo de grandes superficies en interiores y transporte interno de cargas de hasta 300 kg entre zonas de la planta. Te ayudamos a elegir qué automatizar y cómo comprobar el resultado en tu propia operación, sin compromiso.</p>
+  <div class="hero-visual">
+    <figure><img src="assets/keenon-kleenbot-c55.webp" width="1600" height="900" alt="Robot de limpieza KEENON KLEENBOT C55 para grandes superficies" decoding="async" fetchpriority="high"><figcaption>Limpieza: KLEENBOT C40 y C55</figcaption></figure>
+    <figure><img src="assets/keenon-s300-cajas.webp" width="1800" height="1079" alt="Robot logístico KEENON CARRYBOT S300 con estantería de cajas" decoding="async"><figcaption>Logística: CARRYBOT S100 y S300</figcaption></figure>
+  </div>
+  <div class="herocta"><a class="btn main" href="#contacto" data-solicitud="valoracion">Quiero una primera valoración →</a><a class="btn ghost" href="#contacto" data-solicitud="demostracion">Prefiero solicitar una demo</a></div>
+</div></section>
+
+<section class="contact" id="contacto" aria-labelledby="contact-title"><div class="wrap contact-grid">
+  <div class="contact-copy">
+    <p class="kick">UNA PRIMERA CONVERSACIÓN, SIN COMPROMISO</p>
+    <h2 id="contact-title">¿Vemos por dónde empezar en tu nave?</h2>
+    <p>Cuéntanos qué tarea te gustaría revisar. Te preparamos una primera valoración sin coste, con una recomendación inicial y los puntos que habría que comprobar en tu planta: superficies, pesos, distancias, anchura de paso, puertas y montacargas.</p>
+    <ul class="assessment-list"><li>La tarea o zona por la que tendría sentido empezar.</li><li>Qué modelo estudiar y qué condiciones comprobar en tu instalación.</li><li>Cómo evaluar una prueba piloto medible antes de decidir.</li></ul>
+    <p class="needs-label">¿Qué te gustaría revisar?</p>
+    <div class="needs" aria-label="Tareas de interés">
+      <a href="#solicitud" data-interes="Limpieza de suelos (C40 / C55)">Limpieza de suelos de la nave</a>
+      <a href="#solicitud" data-interes="Transporte interno (S100)">Transporte interno entre zonas</a>
+      <a href="#solicitud" data-interes="Carga pesada hasta 300 kg (S300)">Cargas pesadas hasta 300 kg</a>
+      <a href="#solicitud" data-interes="Aún no sé qué solución necesito">Quiero orientación</a>
+    </div>
+    <p class="assessment-note">No necesitas preparar un plano para empezar. Si después encaja una demostración o un piloto, acordamos contigo su alcance.</p>
+    <p class="direct-contact">También puedes <a href="https://wa.me/34659483652?text=Hola%2C%20me%20gustar%C3%ADa%20una%20primera%20valoraci%C3%B3n%20para%20mi%20nave%20industrial" target="_blank" rel="noopener">escribirnos por WhatsApp</a> o a <a href="mailto:antonio@alpharobotica.com?subject=Primera%20valoraci%C3%B3n%20para%20mi%20nave%20industrial">antonio@alpharobotica.com</a>.</p>
+  </div>
+  <form action="/gracias" class="leadform" id="solicitud" method="POST" name="leads-demo" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="leads-demo">
+    <input type="hidden" name="subject" value="Alpha Robótica · Solicitud desde la landing industrial">
+    <p style="display:none"><label>No rellenar: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+    <h3>Cuéntanos qué necesitas</h3>
+    <p class="hint">Te contactamos por el canal que elijas. La primera valoración es gratuita y no supone una reserva de demostración.</p>
+    <label for="lf-solicitud">¿Cómo prefieres empezar?</label>
+    <select id="lf-solicitud" name="solicitud"><option value="valoracion" selected>Primera valoración gratuita</option><option value="demostracion">Solicitar una demostración</option></select>
+    <div class="row">
+      <div><label for="lf-nombre">Nombre*</label><input id="lf-nombre" name="nombre" required autocomplete="name"></div>
+      <div><label for="lf-empresa">Empresa / Planta*</label><input id="lf-empresa" name="empresa" required autocomplete="organization"></div>
+    </div>
+    <fieldset class="chan"><legend>¿Cómo prefieres que te contactemos?</legend><div class="chanrow"><label><input type="radio" name="canal" value="email" checked> Prefiero email</label><label><input type="radio" name="canal" value="llamada"> Prefiero llamada</label></div></fieldset>
+    <div class="row contact-data">
+      <div><label for="lf-email">Email<span data-req="email">*</span></label><input id="lf-email" name="email" type="email" inputmode="email" required autocomplete="email"></div>
+      <div><label for="lf-tel">Teléfono<span data-req="llamada" hidden>*</span></label><input id="lf-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel"></div>
+    </div>
+    <noscript><p class="hint">Sin JavaScript, el email es obligatorio. Si prefieres una llamada, añade tu teléfono o escríbenos por WhatsApp.</p></noscript>
+    <label for="lf-interes">¿Qué tarea te interesa?</label>
+    <select id="lf-interes" name="interes">
+      <option>Limpieza de suelos (C40 / C55)</option>
+      <option>Transporte interno (S100)</option>
+      <option>Carga pesada hasta 300 kg (S300)</option>
+      <option selected>Aún no sé qué solución necesito</option>
+    </select>
+    <label for="lf-msg">¿Algo que debamos saber? (opcional)</label>
+    <textarea id="lf-msg" name="mensaje" rows="2" placeholder="Por ejemplo, metros de nave, tipo de suelo, qué se mueve y entre qué zonas."></textarea>
+    <button type="submit" id="lead-submit">Solicitar primera valoración →</button>
+    <p class="priv">Tus datos se usan únicamente para responder a tu solicitud. Responsable: ALPHA BOOTIS, S.L. · <a href="https://alpharobotica.com/privacidad">Política de privacidad</a></p>
+  </form>
+</div></section>
+
+<div class="catalogue-heading wrap"><p class="kick">PARA CONOCER MEJOR CADA APLICACIÓN</p><h2>Soluciones que podemos estudiar para tu nave</h2><p>Cuatro robots KEENON para interiores: dos de limpieza de suelos, según la superficie, y dos de transporte interno, según la carga. Todos gestionables desde un panel central y disponibles por cuota mensual. La elección depende del uso y de tu instalación.</p></div>
+<div class="idx"><div class="wrap"><div class="idxgrid"><a class="idxcard" href="#c40"><span class="n">01</span><div><p>KLEENBOT C40</p><b>Fregado profesional · 500–4.500 m²</b></div><span class="arr">→</span></a><a class="idxcard" href="#c55"><span class="n">02</span><div><p>KLEENBOT C55</p><b>Grandes superficies · más de 3.000 m²</b></div><span class="arr">→</span></a><a class="idxcard" href="#s100"><span class="n">03</span><div><p>CARRYBOT S100</p><b>Transporte interno · 100 kg+</b></div><span class="arr">→</span></a><a class="idxcard" href="#s300"><span class="n">04</span><div><p>CARRYBOT S300</p><b>Carga pesada · hasta 300 kg</b></div><span class="arr">→</span></a></div></div></div>
+
+<section class="sol" id="c40">
+  <div class="wrap">
+    <div class="solhero">
+      <div class="soltxt">
+        <div class="kick">KEENON KLEENBOT C40 · LIMPIEZA DE SUELOS</div>
+        <h2>Fregado profesional <em>con frecuencia planificada</em> y resultados registrados</h2>
+        <div class="band"><div class="node"><div class="dot d0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3 8 13"/><path d="M5 14l6 3 2-4-5-3z" fill="currentColor" stroke="none"/><path d="M4 20h2M8 21h2M12 20h2"/></svg></div><span>BARRE</span></div><div class="node"><div class="dot d1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h9M4 12h7M4 16h9"/><path d="M16 4v16l5-4V8z" fill="currentColor" stroke="none"/></svg></div><span>ASPIRA</span></div><div class="node"><div class="dot d2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4.5 6 7.5 6 11a6 6 0 1 1-12 0c0-3.5 3-6.5 6-11z"/></svg></div><span>FRIEGA</span></div><div class="node"><div class="dot d3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h9a3 3 0 1 0-3-3M3 14h13a3 3 0 1 1-3 3M3 19h6"/></svg></div><span>SECA</span></div><div class="res">SUELO LISTO · SECO · AL PASO</div></div>
+      </div>
+      <div class="solimg blend"><img src="assets/keenon-kleenbot-c40.webp" width="900" height="522" alt="Robot de limpieza profesional KEENON KLEENBOT C40" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="stats"><div class="st"><b>1.100</b><span>m²/hora</span></div><div class="st"><b>5 h</b><span>fregado · 12 h barrido</span></div><div class="st"><b>10</b><span>sensores: LiDAR, visión estéreo, láser y ultrasonidos</span></div><div class="st"><b>500–4.500</b><span>m² por instalación</span></div><div class="st"><b>24/7</b><span>con Work Station</span></div></div>
+    <div class="grid"><div class="bu"><b>Pasillos de reposición y zonas de alto desgaste</b><p>Naves industriales y pasillos de reposición con suelos de alto desgaste: el C40 mantiene el nivel de limpieza con mínima intervención del equipo de mantenimiento.</p></div><div class="bu"><b>Autonomía operativa</b><p>La Work Station recarga la batería, repone agua y detergente y vacía el agua sucia de forma automática; el equipo solo supervisa y gestiona consumibles.</p></div><div class="bu"><b>Turnos y horario nocturno</b><p>Rutas programadas por zonas y horarios: limpia entre turnos o de noche, y cada mañana el resultado está registrado.</p></div><div class="bu"><b>Seguridad 360°</b><p>LiDAR y cámaras detectan personas, carretillas y objetos: el robot reduce la velocidad, se detiene o recalcula la ruta según el entorno.</p></div><div class="bu"><b>Fiabilidad auditable</b><p>Cada pasada queda registrada — mapa, superficie, duración — lista para auditorías y control de calidad.</p></div><div class="bu"><b>Cuota mensual</b><p>Un servicio de limpieza profesional por una cuota fija. Presupuesto previsible desde el primer día, con garantía ampliable.</p></div></div>
+    <div class="solcta">
+      <a class="btn wa" href="https://wa.me/34659483652?text=Hola%2C%20me%20interesa%20una%20demo%20del%20robot%20de%20limpieza%20C40%20para%20mi%20nave" target="_blank" rel="noopener"><svg class="wa-ic" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg> Pedir demo por WhatsApp</a>
+      <a class="btn ghost ficha" href="https://alpharobotica.com/robot-limpieza-keenon-c40">Ver ficha técnica del C40 →</a>
+    </div>
+  </div>
+</section>
+
+<section class="sol" id="c55">
+  <div class="wrap">
+    <div class="solhero">
+      <div class="soltxt">
+        <div class="kick">KEENON KLEENBOT C55 · GRANDES SUPERFICIES</div>
+        <h2>Alta capacidad <em>para naves de más de 3.000 m²</em> con mucha carga de limpieza</h2>
+        <div class="band"><div class="node"><div class="dot d0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3 8 13"/><path d="M5 14l6 3 2-4-5-3z" fill="currentColor" stroke="none"/><path d="M4 20h2M8 21h2M12 20h2"/></svg></div><span>BARRE</span></div><div class="node"><div class="dot d1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4.5 6 7.5 6 11a6 6 0 1 1-12 0c0-3.5 3-6.5 6-11z"/></svg></div><span>FRIEGA</span></div><div class="node"><div class="dot d2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h9a3 3 0 1 0-3-3M3 14h13a3 3 0 1 1-3 3M3 19h6"/></svg></div><span>SECA</span></div><div class="res">HASTA 2.376 M²/H · EFICIENCIA TEÓRICA</div></div>
+      </div>
+      <div class="solimg card"><img src="assets/keenon-kleenbot-c55.webp" width="1600" height="900" alt="Robot de limpieza KEENON KLEENBOT C55" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="stats"><div class="st"><b>2.376</b><span>m²/h, eficiencia teórica máxima</span></div><div class="st"><b>550 mm</b><span>ancho de fregado</span></div><div class="st"><b>60 / 47 L</b><span>depósitos de agua limpia y sucia</span></div><div class="st"><b>5 h</b><span>autonomía, con cambio de batería en caliente</span></div><div class="st"><b>5 cm</b><span>badenes que supera</span></div></div>
+    <div class="grid"><div class="bu"><b>Pensado para gran volumen</b><p>Fábricas, parkings interiores, centros logísticos y superficies con mucha carga de limpieza: el C55 reduce horas de limpieza donde el C40 se queda corto.</p></div><div class="bu"><b>Barrido, fregado y mopa de polvo</b><p>Cubre el ciclo completo en una pasada. 150 kg con batería y 860 × 850 × 1082 mm con squeegee: conviene comprobar pasos y rampas en la valoración.</p></div><div class="bu"><b>Sin paradas por batería</b><p>Cambio de batería en caliente: encadena zonas sin esperar a la recarga de 4 h.</p></div><div class="bu"><b>Seguridad en zonas con tráfico</b><p>Navegación con detección de obstáculos: convive con personal y carretillas en pasillos amplios; la valoración define las zonas y horarios de trabajo.</p></div><div class="bu"><b>Resultados registrados</b><p>Rutas repetibles y cada pasada registrada, para auditorías y para comparar antes y después del piloto.</p></div><div class="bu"><b>Cuota mensual</b><p>Un servicio de limpieza para gran superficie por una cuota fija, con consumibles y soporte gestionados en España.</p></div></div>
+    <div class="demo" data-video="assets/keenon-c55-demo-540p.mp4">
+      <div class="demo-stage"><img src="assets/keenon-c55-video-poster.webp" width="1280" height="720" alt="Fotograma del vídeo del KEENON C55" loading="lazy" decoding="async"><button type="button" class="demo-load"><span>▶ Ver el C55 en acción · 59 s</span></button></div>
+      <p>Vídeo del fabricante, sin audio relevante. Se carga solo al pulsar (5,6 MB). <a href="assets/keenon-c55-demo-540p.mp4">Abrir el vídeo (MP4)</a>.</p>
+    </div>
+    <div class="solcta">
+      <a class="btn wa" href="https://wa.me/34659483652?text=Hola%2C%20me%20interesa%20una%20demo%20del%20robot%20de%20limpieza%20C55%20para%20gran%20superficie" target="_blank" rel="noopener"><svg class="wa-ic" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg> Pedir demo por WhatsApp</a>
+      <a class="btn ghost ficha" href="https://alpharobotica.com/robot-limpieza-keenon-c55">Ver ficha técnica del C55 →</a>
+    </div>
+  </div>
+</section>
+
+<section class="sol" id="s100">
+  <div class="wrap">
+    <div class="solhero">
+      <div class="soltxt">
+        <div class="kick">KEENON CARRYBOT S100 · TRANSPORTE INTERNO</div>
+        <h2>Transporte interno: <em>más de 100 kg entre zonas</em>, sin esfuerzo del equipo</h2>
+        <div class="band"><div class="node"><div class="dot d0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="12" width="14" height="8" rx="1"/><path d="M12 3v6m0 0-2.5-2.5M12 9l2.5-2.5"/></svg></div><span>CARGA</span></div><div class="node"><div class="dot d1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8 17c5 0 3-9 8-10"/></svg></div><span>NAVEGA</span></div><div class="node"><div class="dot d2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M12 4v16M8 11h1M15 11h1"/></svg></div><span>ENTREGA</span></div><div class="res">CARGA ENTREGADA · 100 KG+</div></div>
+      </div>
+      <div class="solimg card"><img src="assets/keenon-s100-estanteria.webp" width="1800" height="1314" alt="Robot logístico KEENON CARRYBOT S100 con estantería de cajas" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="stats"><div class="st"><b>100 kg+</b><span>carga máxima</span></div><div class="st"><b>8 h</b><span>autonomía</span></div><div class="st"><b>15 s</b><span>cambio de batería</span></div><div class="st"><b>2×</b><span>LiDAR + triple visión estéreo</span></div><div class="st"><b>Sí</b><span>control de ascensor y montacargas</span></div></div>
+    <div class="grid"><div class="bu"><b>Cajas, material y reposición</b><p>Mueve cajas, material y reposición entre almacén, líneas y expediciones en rutas repetitivas, mientras tu equipo se ocupa de lo que aporta valor.</p></div><div class="bu"><b>Estantería configurable</b><p>Estantería incluida y configurable según lo que se transporta: cubetas, cajas o bultos voluminosos.</p></div><div class="bu"><b>Continuidad del servicio</b><p>Batería intercambiable en unos 15 segundos y tres opciones de carga: planifica la continuidad según tu operativa.</p></div><div class="bu"><b>Seguridad 360°</b><p>Evasión de obstáculos en 360°, banda anticolisión y paradas de emergencia.</p></div><div class="bu"><b>Multiplanta</b><p>Control de ascensor integrado: sube y baja plantas con la carga completa, previa validación en la valoración.</p></div><div class="bu"><b>Cuota mensual</b><p>Un servicio de transporte interno por una cuota fija, con estantería incluida.</p></div></div>
+    <div class="solcta">
+      <a class="btn wa" href="https://wa.me/34659483652?text=Hola%2C%20me%20interesa%20una%20demo%20del%20robot%20de%20logistica%20interna%20S100%20para%20mi%20nave" target="_blank" rel="noopener"><svg class="wa-ic" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg> Pedir demo por WhatsApp</a>
+      <a class="btn ghost ficha" href="https://alpharobotica.com/robot-logistica-keenon-s100">Ver ficha técnica del S100 →</a>
+    </div>
+  </div>
+</section>
+
+<section class="sol" id="s300">
+  <div class="wrap">
+    <div class="solhero">
+      <div class="soltxt">
+        <div class="kick">KEENON CARRYBOT S300 · CARGA PESADA</div>
+        <h2>Carga pesada: <em>hasta 300 kg por viaje</em> para operaciones intensivas</h2>
+        <div class="band"><div class="node"><div class="dot d0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="12" width="14" height="8" rx="1"/><path d="M12 3v6m0 0-2.5-2.5M12 9l2.5-2.5"/></svg></div><span>CARGA</span></div><div class="node"><div class="dot d1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8 17c5 0 3-9 8-10"/></svg></div><span>NAVEGA</span></div><div class="node"><div class="dot d2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M12 4v16M8 11h1M15 11h1"/></svg></div><span>ENTREGA</span></div><div class="res">MERCANCÍA PESADA · HASTA 300 KG</div></div>
+      </div>
+      <div class="solimg card"><img src="assets/keenon-s300-cajas.webp" width="1800" height="1079" alt="Robot logístico KEENON CARRYBOT S300 con estantería de cajas" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="stats"><div class="st"><b>300 kg</b><span>carga máxima</span></div><div class="st"><b>6 h</b><span>autonomía máxima</span></div><div class="st"><b>4–6 h</b><span>tiempo de carga orientativo</span></div><div class="st"><b>LiDAR</b><span>navegación con detección de obstáculos</span></div></div>
+    <div class="grid"><div class="bu"><b>Mercancía pesada y alto volumen</b><p>Transporte interno intensivo para grandes complejos y operaciones de alto volumen: palés ligeros, cajas y mercancía pesada entre zonas.</p></div><div class="bu"><b>Rutas repetitivas</b><p>Ideal cuando el mismo trayecto se repite muchas veces al día: recepción → almacén → línea → expediciones.</p></div><div class="bu"><b>Qué comprobamos antes</b><p>Pesos reales, distancias, anchura de paso, puertas, rampas y protocolos internos. Con eso decidimos si encaja S100, S300 o una implantación por fases.</p></div><div class="bu"><b>Piloto medible</b><p>Proponemos un piloto con métricas antes de plantear una implantación completa.</p></div><div class="bu"><b>Cuota mensual</b><p>Un servicio de carga pesada por una cuota fija.</p></div><div class="bu"><b>Soporte en España</b><p>Servicio técnico, consumibles y garantía gestionados en España.</p></div></div>
+    <div class="demo" data-video="assets/keenon-s300-demo-540p.mp4">
+      <div class="demo-stage"><img src="assets/keenon-s300-video-poster.webp" width="1280" height="720" alt="Fotograma del vídeo del KEENON S300" loading="lazy" decoding="async"><button type="button" class="demo-load"><span>▶ Ver el S300 en acción · 48 s</span></button></div>
+      <p>Vídeo del fabricante, sin audio relevante. Se carga solo al pulsar (5,0 MB). <a href="assets/keenon-s300-demo-540p.mp4">Abrir el vídeo (MP4)</a>.</p>
+    </div>
+    <div class="solcta">
+      <a class="btn wa" href="https://wa.me/34659483652?text=Hola%2C%20me%20interesa%20una%20demo%20del%20robot%20de%20carga%20pesada%20S300" target="_blank" rel="noopener"><svg class="wa-ic" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg> Pedir demo por WhatsApp</a>
+      <a class="btn ghost ficha" href="https://alpharobotica.com/robot-logistica-keenon-s300">Ver ficha técnica del S300 →</a>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="proceso"><div class="wrap">
+  <p class="kick">CÓMO LO HACEMOS</p>
+  <h2>De la primera valoración a un piloto medible</h2>
+  <ol>
+    <li><b>Primera valoración</b><p>Sin coste. Revisamos superficies, pesos, distancias, rutas, anchura de paso, puertas y montacargas, y te decimos por dónde empezar.</p></li>
+    <li><b>Demostración</b><p>Si encaja, acordamos alcance y fecha de una demostración en tu instalación o con tu caso.</p></li>
+    <li><b>Piloto con métricas</b><p>Horas liberadas, m² por turno o viajes por día: datos de tu propia operación antes de decidir.</p></li>
+    <li><b>Puesta en marcha</b><p>Despliegue, integración con puertas, ascensores o montacargas y automatismos, formación del personal y arranque en horario real.</p></li>
+  </ol>
+</div></section>
+</main>
+<footer><div class="wrap">Alpha Robótica · Distribuidor autorizado KEENON Robotics en España · <a href="https://alpharobotica.com/">alpharobotica.com</a><br>Especificaciones según datasheet oficial del fabricante · Garantía ampliable según programa de servicio<br><a href="https://alpharobotica.com/empresa">Sobre Alpha Robótica</a> · <a href="https://alpharobotica.com/privacidad">Privacidad</a> · <a href="https://alpharobotica.com/aviso-legal">Aviso legal</a> · <a href="#" data-cookie-settings>Configurar cookies</a></div></footer>
+
+<a class="fab" href="https://wa.me/34659483652?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20de%20los%20robots%20KEENON%20para%20naves%20industriales" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="wa-ic" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg></a>
+
+<script>
+(function(){var b=document.querySelector(".menu-btn"),m=document.getElementById("menu");if(!b||!m)return;function set(o){m.classList.toggle("open",o);b.setAttribute("aria-expanded",o?"true":"false");b.setAttribute("aria-label",o?"Cerrar menú":"Abrir menú");}b.addEventListener("click",function(){set(!m.classList.contains("open"));});m.addEventListener("click",function(e){if(e.target.closest("a"))set(false);});document.addEventListener("keydown",function(e){if(e.key==="Escape")set(false);});document.addEventListener("click",function(e){if(m.classList.contains("open")&&!e.target.closest(".nav"))set(false);});window.addEventListener("resize",function(){if(window.innerWidth>1100)set(false);});})();
+</script>
+</body></html>
