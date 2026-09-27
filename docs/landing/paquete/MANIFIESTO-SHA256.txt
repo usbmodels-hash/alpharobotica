@@ -1,7 +1,7 @@
 # AlphaRobotica_Landing_Completa.zip — manifiesto SHA-256
 # 27/09/2026 (Europe/Madrid). Rutas relativas a la raiz del ZIP.
 # Version «hoteles y centros sanitarios · toda España», preparada sobre el despliegue
-# 6aa7dd28a96ea01c454e27ff. PENDIENTE DE DESPLEGAR: este paquete no esta publicado.
+# 6aa7dd28a96ea01c454e27ff. Desplegado desde GitHub el 28/09/2026: deploy 6ab99baf5b1b2dba307fd3c7.
 
 248f1b7c56c9bc63deb5c0d281cb700c527c5f57db77be38beb133efe4ca0a58        226  _redirects
 41eeef7551d8c9924badf778f61f89a588ed2d2f9356d7e0bd3b95f9ec09d2ca      16918  apple-touch-icon.png

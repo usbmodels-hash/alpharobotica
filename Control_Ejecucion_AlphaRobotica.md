@@ -440,8 +440,8 @@ porque la campaña de apollo.io se envía a toda España.
 |---|---|
 | Fuentes sincronizadas con lo publicado | **completado** — despliegue `6aa7dd28a96ea01c454e27ff` («vídeo y valoración»), recibido como ZIP con SHA-256 `43b36c9a…`, incorporado tal cual en un commit propio antes de tocar nada |
 | Adaptación de textos | **validado en local** |
-| Desplegado en Netlify | **No.** Lo publicado sigue siendo `6aa7dd28…` (hoteles de Andalucía) |
-| Comprobado en producción | **No** |
+| Desplegado en Netlify | **completado** — despliegue **`6ab99baf5b1b2dba307fd3c7`**, publicado el **28/09/2026 a las 00:41 CEST** desde `main@958b6f5`, primer deploy del proyecto enlazado a GitHub (base `docs/landing`, publish `docs/landing/dist`, sin build). Log: «Starting to deploy site from 'docs/landing/dist'» y «2 redirect rules processed. All redirect rules deployed without errors» |
+| Comprobado en producción | **completado, por el propietario**: `<title>` sin «Andalucía»; `/stats/js/script.js` 200 `application/javascript`; `/gracias` 200 `noindex,follow`; `leads-demo` activo en Forms. Esta sesión no ha podido abrir la URL pública |
 | Recepción del contacto | Sin cambios en el formulario: nombre, campos y `action` iguales. La acreditación previa sigue valiendo para la estructura; el asunto del aviso cambia de texto |
 
 ### Hallazgo previo a la adaptación
@@ -480,10 +480,14 @@ anotada en el README.
 `docs/landing/paquete/AlphaRobotica_Landing_Completa.zip`, 21 archivos, **pendiente de desplegar**.
 SHA-256: `e113fb8599e73a2edb02fe30dc4e07cd9a437b22c25faec94a98242d892f1e2b`.
 
-**Vía de despliegue decidida (27/09):** enlazar `alpharobotica-landing` a este repositorio (base
-`docs/landing`, publish `dist`, sin build; `docs/landing/netlify.toml` añadido). Netlify despliega desde `main`
-al enlazar y en cada fusión posterior. **Pendiente real:** que el propietario cree el enlace en el panel de
-Netlify y la comprobación en producción del primer despliegue. Reversión: `6aa7dd28a96ea01c454e27ff`.
+**Vía de despliegue (27–28/09):** `alpharobotica-landing` enlazado a este repositorio por el propietario
+(base `docs/landing`, publish `docs/landing/dist`, sin build; `docs/landing/netlify.toml` solo declara que no hay
+build, PR #21). Netlify no pidió autorización nueva en GitHub: la app ya estaba instalada por el sitio
+principal. Desde ahora cada fusión en `main` que toque `docs/landing/` despliega la landing, y las PR tienen
+deploy preview del proyecto. El explorador del deploy muestra `dist/` y `netlify.toml` porque lista relativo al
+base directory; no hay subcarpeta `dist/dist` (comprobado en `main`) y `/dist/` responde 404.
+
+**Reversión:** Deploys → `6aa7dd28a96ea01c454e27ff` → Publish deploy. **Sin pendientes** de este lote.
 
 ---
 
