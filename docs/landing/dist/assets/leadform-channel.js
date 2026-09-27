@@ -1,7 +1,6 @@
 /* leadform-channel.js · canal preferido del formulario leads-demo.
  * Solo el dato del canal elegido es obligatorio. Nunca teléfono y email a la vez.
- * Si el script no carga, el formulario sigue siendo usable: el teléfono queda
- * obligatorio, que es el comportamiento anterior.
+ * Sin JavaScript, el email queda obligatorio y el teléfono opcional.
  */
 (function () {
   'use strict';
@@ -14,11 +13,15 @@
     if (!tel || !mail || !radios.length) return;
 
     function aplicar() {
-      var canal = 'llamada';
+      var canal = 'email';
       Array.prototype.forEach.call(radios, function (r) { if (r.checked) canal = r.value; });
       var porTel = canal === 'llamada';
       tel.required = porTel;
       mail.required = !porTel;
+      tel.disabled = !porTel;
+      mail.disabled = porTel;
+      tel.parentElement.hidden = !porTel;
+      mail.parentElement.hidden = porTel;
       // Un campo oculto o no aplicable no debe impedir el envio.
       tel.setAttribute('aria-required', String(porTel));
       mail.setAttribute('aria-required', String(!porTel));

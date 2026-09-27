@@ -32,7 +32,7 @@
     var s = document.createElement('section');
     s.className = 'cookie-banner'; s.setAttribute('data-cookie-banner', ''); s.setAttribute('aria-label', 'Preferencias de cookies');
     s.innerHTML = '<div class="cookie-banner__copy"><strong>Privacidad y cookies</strong>' +
-      '<p>Usamos almacenamiento técnico para recordar tu elección. Solo activamos la analítica de uso de Plausible si la aceptas; puedes rechazarla o cambiar tu decisión en cualquier momento. No usamos rastreadores publicitarios.</p>' +
+      '<p>Usamos almacenamiento técnico para recordar tu elección. La analítica de Alpha solo se activa si la aceptas y puedes retirarla en cualquier momento. El vídeo de YouTube se activa por separado al pulsar «Ver vídeo».</p>' +
       '<a href="https://alpharobotica.com/cookies">Política de cookies</a></div>' +
       '<div class="cookie-banner__actions"><button type="button" class="cb-btn cb-reject" data-cookie-reject>Rechazar</button><button type="button" class="cb-btn cb-accept" data-cookie-accept>Aceptar</button></div>';
     document.body.appendChild(s); document.documentElement.classList.add('cookie-open');

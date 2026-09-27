@@ -1,5 +1,5 @@
-/* landing-events.js · v5 (solo con consentimiento analítico) — eventos de funnel de la landing para Plausible (cookieless, first-party).
- * Eventos: cta_demo (enlace a #contacto), cta_whatsapp, cta_email, cta_ficha (enlace a ficha técnica),
+/* landing-events.js · vídeo y valoración (solo con consentimiento analítico).
+ * Eventos: cta_demo, cta_valoracion, cta_contacto, cta_whatsapp, cta_email, cta_ficha,
  *          diag_form_start (primera interacción con el formulario), diag_form_submit (envío del formulario),
  *          form_thanks_view (vista de /gracias; no equivale a recepción en CRM). No-op si Plausible no carga. */
 (function () {
@@ -32,16 +32,22 @@
     }, true);
     document.addEventListener('submit', function (ev) {
       var form = ev.target;
-      if (!form || form.tagName !== 'FORM') return;
-      track('diag_form_submit', { form: form.getAttribute('name') || '' });
-    }, true);
+      if (!form || form.tagName !== 'FORM' || ev.defaultPrevented) return;
+      var request = form.querySelector('[name="solicitud"]');
+      var kind = request && request.value === 'demostracion' ? 'demostracion' : 'valoracion';
+      track('diag_form_submit', { form: form.getAttribute('name') || '', solicitud: kind });
+    });
     document.addEventListener('click', function (ev) {
       var a = ev.target && ev.target.closest ? ev.target.closest('a') : null;
       if (!a) return;
       var href = a.getAttribute('href') || '';
       if (href.indexOf('wa.me') !== -1) { track('cta_whatsapp'); }
       else if (href.indexOf('mailto:') === 0) { track('cta_email'); }
-      else if (href === '#contacto') { track('cta_demo'); }
+      else if (href === '#contacto') {
+        var kind = a.getAttribute('data-solicitud');
+        track(kind === 'valoracion' ? 'cta_valoracion' : kind === 'demostracion' ? 'cta_demo' : 'cta_contacto');
+      }
+      else if (a.hasAttribute('data-interes')) { track('valoracion_interes', { interes: a.getAttribute('data-interes') }); }
       else if (a.classList.contains('ficha')) { track('cta_ficha', { href: href }); }
     }, true);
   });
