@@ -612,6 +612,17 @@ landing abre con los cuatro UTM y el formulario los recoge. Pendientes y decisio
 
 ---
 
+## Lote 15 — Residencias de mayores en la landing de hoteles (rama `landing-residencias`)
+
+Encargo del 28/09/2026: que quien dirige una residencia se sienta aludido, porque la secuencia «Salud-Senior
+MAD-BCN · BP5» de Apollo lleva a esta landing. Solo textos: título, meta y `og:`, kicker, H1, subtítulo, contacto,
+etiqueta del campo (`name="hotel"` intacto), asunto del aviso (hidden y `video-funnel.js`, versión
+`20260928-residencias1`), C40, W3 y `/gracias`; `sitemap.xml` con `lastmod` 2026-09-28. Validado en local: sin
+desbordes a 360/390/768/1366 px, sin objetivos < 44 px, H1 en 5 líneas a 360 px y 3 a 1366 px, asunto dinámico
+correcto en valoración y demostración, UTM de la secuencia recogido. Se despliega al fusionar.
+
+---
+
 ## Resumen por tarea P1–P14
 
 Este resumen sustituye al anterior y coincide con el detalle de los lotes.

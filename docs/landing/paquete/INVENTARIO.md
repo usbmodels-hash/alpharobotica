@@ -1,6 +1,6 @@
 # Inventario del paquete de la landing
 
-**28/09/2026 (Europe/Madrid).** 22 archivos. Landing de hoteles y centros sanitarios con atribución UTM en el formulario y limpieza de UTM no admitidos en la dirección. Se despliega desde GitHub (proyecto alpharobotica-landing) al fusionar en main.
+**28/09/2026 (Europe/Madrid).** 22 archivos. Landing de hoteles, centros sanitarios y residencias con atribución UTM. Se despliega desde GitHub (proyecto alpharobotica-landing) al fusionar en main.
 
 | Ruta pública | Archivo en el ZIP | Tipo de contenido | Bytes | SHA-256 |
 |---|---|---|---:|---|
@@ -18,13 +18,13 @@
 | `/assets/plausible-init.js` | `assets/plausible-init.js` | `text/javascript` | 2470 | `80bcf26f3a3d52b389e785b35c0a45b3672b403edb29c779f33038af1b21dd16` |
 | `/assets/utm-form.js` | `assets/utm-form.js` | `text/javascript` | 2189 | `7005b0a2078abdb39adf4455f5b64d69aaf97e9063d4c73da73f19e3bf39031c` |
 | `/assets/video-funnel.css` | `assets/video-funnel.css` | `text/css` | 6053 | `0391d5c8b7c64e146ac6a645ad885975a95785f16917abe60b567d8948187a5a` |
-| `/assets/video-funnel.js` | `assets/video-funnel.js` | `text/javascript` | 5773 | `6dd47c6f62980d5a10df968509f7054d37d158531bbe1cc9e7b46ac8c59b18ae` |
+| `/assets/video-funnel.js` | `assets/video-funnel.js` | `text/javascript` | 5797 | `16641c064b77dd8f00a343c7edf9118a23cde644ba9000392fbdc9170596e080` |
 | `/favicon-16.png` | `favicon-16.png` | `image/png` | 592 | `67a386912801c489c089c3836034c86861040414b944584a259d7bc154910282` |
 | `/favicon-32.png` | `favicon-32.png` | `image/png` | 1465 | `fe2b39f66eb5a722c00e6e6291094c0d70c4d052b7b7413695dc0a4e2132d582` |
-| `/gracias` | `gracias.html` | `text/html; charset=utf-8` | 3435 | `d7685d01238fa8da04226843565b084312a471ef0a8148fbffb311c55928c303` |
+| `/gracias` | `gracias.html` | `text/html; charset=utf-8` | 3447 | `253300b8e5eb51e08019cd44be3d17d3493d2daf274e177a5e6d4faf2268fa3b` |
 | `/icon-512.png` | `icon-512.png` | `image/png` | 92812 | `382eea3f756893e6ae787d5b28de6e149e46cacc71f36fa38626920e263b4d1d` |
-| `/` | `index.html` | `text/html; charset=utf-8` | 49027 | `2d11f3aafc4c09101d694646fbf20cf75bdd7eaf11a8dea90ac3e813b0fd6874` |
+| `/` | `index.html` | `text/html; charset=utf-8` | 49257 | `7949496783ccb111a42b0a16d4ade80c7eb903effae62a2e9edb4ced93e7fc09` |
 | `/robots.txt` | `robots.txt` | `text/plain; charset=utf-8` | 79 | `4e309df772b280817ae7f527a7f11adb1e87cbaf61e43f77cb206dc21d3e5efe` |
-| `/sitemap.xml` | `sitemap.xml` | `application/xml` | 211 | `be11f6c554a557986f9bceb91d739d2c66f41c501887712c8563e4e1a688f15d` |
+| `/sitemap.xml` | `sitemap.xml` | `application/xml` | 211 | `fc6ed63206d444cb1ecfb0c3ad075284e9b3d3369a9bfcdd2913116b1e51f3c3` |
 
-SHA-256 del ZIP: `ab8addda2036799aa220e8f3593fe61d7e60c34ef7b8d25d677eee36b759ed7b` (360806 bytes).
+SHA-256 del ZIP: `ec350abc60a18be238b60bd8f0021615f2166b1e6819e38c6d4f71ad6cb12b6c` (360876 bytes).
