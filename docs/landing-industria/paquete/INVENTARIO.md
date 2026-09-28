@@ -31,4 +31,4 @@
 
 SHA-256 del ZIP: `1e8863c8cc7bff21993bdc643500e76842f55ef85742e6d31494217c5605f546` (10953545 bytes).
 
-Sin `_redirects`: el proxy de medición se añade cuando exista el sitio de Plausible del subdominio (dependencia D1 del README).
+`_redirects` lleva el proxy de medición hacia el sitio de Plausible `industria.alpharobotica.com` (script `pa-HiYUg-v5guchAkcKLe08u.js`).
