@@ -29,7 +29,7 @@
      sigue usandose en degradados y acentos decorativos. */
   --cta:#B30F6E; --cta-hover:#8E0B57; }
 * { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+html.suave { scroll-behavior:smooth; } /* se activa tras la carga (industria.js): el salto inicial a un ancla es inmediato */
 body { font-family:'Barlow',sans-serif; color:var(--ink); background:#fff; }
 .wrap { max-width:1100px; margin:0 auto; padding:0 20px; }
 h1,h2,h3 { font-family:'Barlow Condensed',sans-serif; }
@@ -85,8 +85,8 @@ header { position:sticky; top:0; z-index:50; background:rgba(10,30,68,.96); back
 .soltxt { flex:1.4; position:relative; z-index:2; }
 .sol h2 { font-weight:800; font-size:clamp(26px,3.6vw,38px); line-height:1.05; margin:10px 0 20px; }
 .solimg { flex:1; position:relative; z-index:2; display:flex; justify-content:center; }
-.solimg.blend { background:var(--navy); border-radius:14px; } .solimg.blend img { max-height:300px; max-width:100%; height:auto; width:auto; mix-blend-mode:screen; }
-.solimg.card img { max-height:300px; max-width:100%; height:auto; width:auto; border-radius:14px; }
+.solimg.blend { background:var(--navy); border-radius:14px; } .solimg.blend img { max-width:100%; width:min(100%, calc(300px * var(--ar, 1))); height:auto; mix-blend-mode:screen; }
+.solimg.card img { max-width:100%; width:min(100%, calc(300px * var(--ar, 1))); height:auto; border-radius:14px; }
 .band { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
 .node { display:flex; flex-direction:column; align-items:center; gap:4px; }
 .node span { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; letter-spacing:.05em; }
@@ -155,7 +155,8 @@ footer a:hover { color:#fff; }
 @media (max-width:760px) {
   footer { padding-bottom:88px; }
   .solhero { flex-direction:column; padding:24px; }
-  .solimg.blend img, .solimg.card img { max-height:220px; }
+  .solimg { align-self:stretch; } /* ancho definido para que la foto reserve su hueco antes de cargar */
+  .solimg.blend img, .solimg.card img { width:min(100%, calc(220px * var(--ar, 1))); }
 }
 @media (max-width:1100px) {
   .nav { position:relative; padding:8px 14px; }
@@ -206,7 +207,7 @@ footer a:hover { color:#fff; }
 .hero h1 { text-wrap:balance; }
 @media (max-width:640px) { .hero-visual { grid-template-columns:1fr; } }
 </style>
-<script defer src="assets/industria.js?v=20260928-industria1"></script>
+<script defer src="assets/industria.js?v=20260929-ancla1"></script>
 </head><body>
 
 <header><div class="nav">
@@ -293,7 +294,7 @@ footer a:hover { color:#fff; }
         <h2>Fregado profesional <em>con frecuencia planificada</em> y resultados registrados</h2>
         <div class="band"><div class="node"><div class="dot d0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3 8 13"/><path d="M5 14l6 3 2-4-5-3z" fill="currentColor" stroke="none"/><path d="M4 20h2M8 21h2M12 20h2"/></svg></div><span>BARRE</span></div><div class="node"><div class="dot d1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h9M4 12h7M4 16h9"/><path d="M16 4v16l5-4V8z" fill="currentColor" stroke="none"/></svg></div><span>ASPIRA</span></div><div class="node"><div class="dot d2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4.5 6 7.5 6 11a6 6 0 1 1-12 0c0-3.5 3-6.5 6-11z"/></svg></div><span>FRIEGA</span></div><div class="node"><div class="dot d3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h9a3 3 0 1 0-3-3M3 14h13a3 3 0 1 1-3 3M3 19h6"/></svg></div><span>SECA</span></div><div class="res">SUELO LISTO · SECO · AL PASO</div></div>
       </div>
-      <div class="solimg blend"><img src="assets/keenon-kleenbot-c40.webp" width="900" height="522" alt="Robot de limpieza profesional KEENON KLEENBOT C40" loading="lazy" decoding="async"></div>
+      <div class="solimg blend"><img src="assets/keenon-kleenbot-c40.webp" style="--ar:1.7241" width="900" height="522" alt="Robot de limpieza profesional KEENON KLEENBOT C40" loading="lazy" decoding="async"></div>
     </div>
     <div class="stats"><div class="st"><b>1.100</b><span>m²/hora</span></div><div class="st"><b>5 h</b><span>fregado · 12 h barrido</span></div><div class="st"><b>10</b><span>sensores: LiDAR, visión estéreo, láser y ultrasonidos</span></div><div class="st"><b>500–4.500</b><span>m² por instalación</span></div><div class="st"><b>24/7</b><span>con Work Station</span></div></div>
     <div class="grid"><div class="bu"><b>Pasillos de reposición y zonas de alto desgaste</b><p>Naves industriales y pasillos de reposición con suelos de alto desgaste: el C40 mantiene el nivel de limpieza con mínima intervención del equipo de mantenimiento.</p></div><div class="bu"><b>Autonomía operativa</b><p>La Work Station recarga la batería, repone agua y detergente y vacía el agua sucia de forma automática; el equipo solo supervisa y gestiona consumibles.</p></div><div class="bu"><b>Turnos y horario nocturno</b><p>Rutas programadas por zonas y horarios: limpia entre turnos o de noche, y cada mañana el resultado está registrado.</p></div><div class="bu"><b>Seguridad 360°</b><p>LiDAR y cámaras detectan personas, carretillas y objetos: el robot reduce la velocidad, se detiene o recalcula la ruta según el entorno.</p></div><div class="bu"><b>Fiabilidad auditable</b><p>Cada pasada queda registrada — mapa, superficie, duración — lista para auditorías y control de calidad.</p></div><div class="bu"><b>Compra o renting</b><p>Sujeto a propuesta tras la valoración, con garantía ampliable y servicio técnico en España.</p></div></div>
@@ -312,7 +313,7 @@ footer a:hover { color:#fff; }
         <h2>Alta capacidad <em>para naves de más de 3.000 m²</em> con mucha carga de limpieza</h2>
         <div class="band"><div class="node"><div class="dot d0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3 8 13"/><path d="M5 14l6 3 2-4-5-3z" fill="currentColor" stroke="none"/><path d="M4 20h2M8 21h2M12 20h2"/></svg></div><span>BARRE</span></div><div class="node"><div class="dot d1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4.5 6 7.5 6 11a6 6 0 1 1-12 0c0-3.5 3-6.5 6-11z"/></svg></div><span>FRIEGA</span></div><div class="node"><div class="dot d2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h9a3 3 0 1 0-3-3M3 14h13a3 3 0 1 1-3 3M3 19h6"/></svg></div><span>SECA</span></div><div class="res">HASTA 2.376 M²/H · EFICIENCIA TEÓRICA</div></div>
       </div>
-      <div class="solimg card"><img src="assets/keenon-kleenbot-c55.webp" width="1600" height="900" alt="Robot de limpieza KEENON KLEENBOT C55" loading="lazy" decoding="async"></div>
+      <div class="solimg card"><img src="assets/keenon-kleenbot-c55.webp" style="--ar:1.7778" width="1600" height="900" alt="Robot de limpieza KEENON KLEENBOT C55" loading="lazy" decoding="async"></div>
     </div>
     <div class="stats"><div class="st"><b>2.376</b><span>m²/h, eficiencia teórica máxima</span></div><div class="st"><b>550 mm</b><span>ancho de fregado</span></div><div class="st"><b>60 / 47 L</b><span>depósitos de agua limpia y sucia</span></div><div class="st"><b>5 h</b><span>autonomía, con cambio de batería en caliente</span></div><div class="st"><b>5 cm</b><span>badenes que supera</span></div></div>
     <div class="grid"><div class="bu"><b>Pensado para gran volumen</b><p>Fábricas, parkings interiores, centros logísticos y superficies con mucha carga de limpieza: el C55 reduce horas de limpieza donde el C40 se queda corto.</p></div><div class="bu"><b>Barrido, fregado y mopa de polvo</b><p>Cubre el ciclo completo en una pasada. 150 kg con batería y 860 × 850 × 1082 mm con squeegee: conviene comprobar pasos y rampas en la valoración.</p></div><div class="bu"><b>Sin paradas por batería</b><p>Cambio de batería en caliente: encadena zonas sin esperar a la recarga de 4 h.</p></div><div class="bu"><b>Seguridad en zonas con tráfico</b><p>Navegación con detección de obstáculos: convive con personal y carretillas en pasillos amplios; la valoración define las zonas y horarios de trabajo.</p></div><div class="bu"><b>Resultados registrados</b><p>Rutas repetibles y cada pasada registrada, para auditorías y para comparar antes y después de la puesta en marcha.</p></div><div class="bu"><b>Compra o renting</b><p>Sujeto a propuesta tras la valoración, con consumibles y soporte gestionados en España.</p></div></div>
@@ -335,7 +336,7 @@ footer a:hover { color:#fff; }
         <h2>Transporte interno: <em>más de 100 kg entre zonas</em>, sin esfuerzo del equipo</h2>
         <div class="band"><div class="node"><div class="dot d0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="12" width="14" height="8" rx="1"/><path d="M12 3v6m0 0-2.5-2.5M12 9l2.5-2.5"/></svg></div><span>CARGA</span></div><div class="node"><div class="dot d1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8 17c5 0 3-9 8-10"/></svg></div><span>NAVEGA</span></div><div class="node"><div class="dot d2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M12 4v16M8 11h1M15 11h1"/></svg></div><span>ENTREGA</span></div><div class="res">CARGA ENTREGADA · 100 KG+</div></div>
       </div>
-      <div class="solimg card"><img src="assets/keenon-s100-estanteria.webp" width="1800" height="1314" alt="Robot logístico KEENON CARRYBOT S100 con estantería de cajas" loading="lazy" decoding="async"></div>
+      <div class="solimg card"><img src="assets/keenon-s100-estanteria.webp" style="--ar:1.3699" width="1800" height="1314" alt="Robot logístico KEENON CARRYBOT S100 con estantería de cajas" loading="lazy" decoding="async"></div>
     </div>
     <div class="stats"><div class="st"><b>100 kg+</b><span>carga máxima</span></div><div class="st"><b>8 h</b><span>autonomía</span></div><div class="st"><b>15 s</b><span>cambio de batería</span></div><div class="st"><b>2×</b><span>LiDAR + triple visión estéreo</span></div><div class="st"><b>Sí</b><span>control de ascensor y montacargas</span></div></div>
     <div class="grid"><div class="bu"><b>Cajas, material y reposición</b><p>Mueve cajas, material y reposición entre almacén, líneas y expediciones en rutas repetitivas, mientras tu equipo se ocupa de lo que aporta valor.</p></div><div class="bu"><b>Estantería configurable</b><p>Estantería incluida y configurable según lo que se transporta: cubetas, cajas o bultos voluminosos.</p></div><div class="bu"><b>Continuidad del servicio</b><p>Batería intercambiable en unos 15 segundos y tres opciones de carga: planifica la continuidad según tu operativa.</p></div><div class="bu"><b>Seguridad 360°</b><p>Evasión de obstáculos en 360°, banda anticolisión y paradas de emergencia.</p></div><div class="bu"><b>Multiplanta</b><p>Control de ascensor integrado: sube y baja plantas con la carga completa, previa validación en la valoración.</p></div><div class="bu"><b>Compra o renting</b><p>Sujeto a propuesta tras la valoración, con estantería estándar incluida.</p></div></div>
@@ -354,7 +355,7 @@ footer a:hover { color:#fff; }
         <h2>Carga pesada: <em>hasta 300 kg por viaje</em>, bajo carros y estanterías</h2>
         <div class="band"><div class="node"><div class="dot d0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="12" width="14" height="8" rx="1"/><path d="M12 3v6m0 0-2.5-2.5M12 9l2.5-2.5"/></svg></div><span>CARGA</span></div><div class="node"><div class="dot d1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8 17c5 0 3-9 8-10"/></svg></div><span>NAVEGA</span></div><div class="node"><div class="dot d2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M12 4v16M8 11h1M15 11h1"/></svg></div><span>ENTREGA</span></div><div class="res">CARRO ELEVADO · HASTA 300 KG</div></div>
       </div>
-      <div class="solimg card"><img src="assets/keenon-s300-cajas.webp" width="1800" height="1079" alt="Robot logístico KEENON CARRYBOT S300 con estantería de cajas" loading="lazy" decoding="async"></div>
+      <div class="solimg card"><img src="assets/keenon-s300-cajas.webp" style="--ar:1.6682" width="1800" height="1079" alt="Robot logístico KEENON CARRYBOT S300 con estantería de cajas" loading="lazy" decoding="async"></div>
     </div>
     <div class="stats"><div class="st"><b>300 kg</b><span>carga máxima, plataforma elevadora</span></div><div class="st"><b>6 h</b><span>autonomía</span></div><div class="st"><b>230 mm</b><span>altura libre del chasis</span></div><div class="st"><b>1.200 × 1.200</b><span>mm, carros y estanterías que eleva</span></div><div class="st"><b>2× LiDAR</b><span>+ visión 3D y VSLAM</span></div></div>
     <div class="grid"><div class="bu"><b>Entra bajo el carro y lo eleva</b><p>Se coloca bajo carros o estanterías móviles de hasta 1.200 × 1.200 mm, los eleva y los lleva a destino: producto terminado, componentes y cajas entre zonas. En bucle, directo o multipunto.</p></div><div class="bu"><b>Rutas repetitivas</b><p>Ideal cuando el mismo trayecto se repite muchas veces al día: recepción → almacén → línea → expediciones.</p></div><div class="bu"><b>Qué comprobamos antes</b><p>Pesos reales, distancias, anchura de paso, puertas, rampas y protocolos internos. Con eso decidimos si encaja S100, S300 o una implantación por fases.</p></div><div class="bu"><b>Qué no hace</b><p>No sustituye carretillas ni mueve palés completos: el límite es de 300 kg por viaje, en interior y sobre suelo liso y seco.</p></div><div class="bu"><b>Compra o renting</b><p>Sujeto a propuesta tras la valoración.</p></div><div class="bu"><b>Soporte en España</b><p>Servicio técnico, consumibles y garantía gestionados en España.</p></div></div>

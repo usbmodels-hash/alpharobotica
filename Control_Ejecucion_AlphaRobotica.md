@@ -647,7 +647,12 @@ recogidos, sin desbordes ni objetivos < 44 px a 360–1366 px.
   Adventure) ni el agente tienen acceso.
 - Buzón antonio@alpharobotica.com: 25/día compartidos, deliverability 92 %, calentamiento 52 %, 2 alertas de
   blocklist. Firma «Integrador oficial KEENON Robotics», distinta de «Distribuidor autorizado» de la landing y la hoja.
-- **Restauración MAD-BCN · BP4:** el propietario decide no activarla por ahora (28/09). Las cifras nuevas del S300 proceden de la pestaña
+- **Restauración MAD-BCN · BP4:** el propietario decide no activarla por ahora (28/09).
+
+**Ancla del enlace de campaña (29/09).** El propietario vio que `…#s300` quedaba algo por debajo de la sección.
+Medido en local: 82 px de más en escritorio y 345 px en móvil, por fotos en diferido sin hueco reservado y por el
+desplazamiento suave compitiendo con el salto. Corregido en la landing industrial (ver su README): `#s300` a 86 px
+desde el primer instante en todos los anchos, también sin JavaScript; clics del menú siguen siendo suaves. Las cifras nuevas del S300 proceden de la pestaña
 «Specs catálogo» de la hoja (catálogo KEENON jun 2026, aportado por el propietario), no verificadas contra el
 catálogo original desde esta sesión.
 

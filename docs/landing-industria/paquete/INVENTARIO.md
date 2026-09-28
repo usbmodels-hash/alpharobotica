@@ -1,6 +1,6 @@
 # Inventario del paquete de la landing
 
-**28/09/2026 (Europe/Madrid).** 25 archivos. Landing industrial alineada con la campaña de Apollo Industria Andalucía (sin piloto, plano y tres datos, S300 con plataforma elevadora). Se despliega desde GitHub (proyecto alpharobotica-industria) al fusionar en main.
+**28/09/2026 (Europe/Madrid).** 25 archivos. Landing industrial alineada con la campaña de Apollo y con anclas estables (fotos con hueco reservado). Se despliega desde GitHub (proyecto alpharobotica-industria) al fusionar en main.
 
 | Ruta pública | Archivo en el ZIP | Tipo de contenido | Bytes | SHA-256 |
 |---|---|---|---:|---|
@@ -8,7 +8,7 @@
 | `/apple-touch-icon.png` | `apple-touch-icon.png` | `image/png` | 16918 | `41eeef7551d8c9924badf778f61f89a588ed2d2f9356d7e0bd3b95f9ec09d2ca` |
 | `/assets/alpha-robotica-logo.png` | `assets/alpha-robotica-logo.png` | `image/png` | 44033 | `07538d3ebd1c0ad72ada674346741bc07e8f2ba1ae450082605510dca30d893a` |
 | `/assets/consent.js` | `assets/consent.js` | `text/javascript` | 3696 | `30e02af774b0f8fddb65419fa4bac9a3f74dbc4b79e626f0502f5502109d30fa` |
-| `/assets/industria.js` | `assets/industria.js` | `text/javascript` | 3094 | `b5d0b9e4a395366b8ceb70ca2e88802cb1399d67b0265782d8f367e822f6dfd1` |
+| `/assets/industria.js` | `assets/industria.js` | `text/javascript` | 4716 | `505c2f01f0b19d833acefc13114940a808d53e61f545983d044075eafabe78e0` |
 | `/assets/keenon-c55-demo-540p.mp4` | `assets/keenon-c55-demo-540p.mp4` | `video/mp4` | 5577393 | `cc4504d85f96fdbca2816f9ef491dd10d9c13d45fe5c633447cbf28e7137bc1e` |
 | `/assets/keenon-c55-video-poster.webp` | `assets/keenon-c55-video-poster.webp` | `image/webp` | 53036 | `772de21733eb2e02419bd8710a40966808c99c3ef7d56c686c8f7c6e58bcc8b1` |
 | `/assets/keenon-kleenbot-c40.webp` | `assets/keenon-kleenbot-c40.webp` | `image/webp` | 11604 | `78c78c09a95929c1da85274e38bfbe982665c42f4d53739242073975b3395516` |
@@ -26,8 +26,8 @@
 | `/favicon-32.png` | `favicon-32.png` | `image/png` | 1465 | `fe2b39f66eb5a722c00e6e6291094c0d70c4d052b7b7413695dc0a4e2132d582` |
 | `/gracias` | `gracias.html` | `text/html; charset=utf-8` | 3454 | `88c7e0077593c14877b9c552bc5f081e3878b1da037bee36fd0b46c70116cade` |
 | `/icon-512.png` | `icon-512.png` | `image/png` | 92812 | `382eea3f756893e6ae787d5b28de6e149e46cacc71f36fa38626920e263b4d1d` |
-| `/` | `index.html` | `text/html; charset=utf-8` | 51630 | `5c6d57afb53c3fbeba44ce14119d26ee1a07597e1cff2f0bdb2b5b379c2d5ebd` |
+| `/` | `index.html` | `text/html; charset=utf-8` | 51961 | `91379baf293cd385d3e3415726cee5895da4460aea6798b1dc7aa170f4c85474` |
 | `/robots.txt` | `robots.txt` | `text/plain; charset=utf-8` | 81 | `a5405fe2836c1a8bf48e54008d7457ec933c6bc55bfcc5b4b2f48699b1149cd9` |
 | `/sitemap.xml` | `sitemap.xml` | `application/xml` | 213 | `39592a3b58bdb0b89a2e85bc31d344091db1e603553ecd5745972979325acb9d` |
 
-SHA-256 del ZIP: `43785a6e695475bb74c0a2c1d429baaa60207aa508947f8a31f21d171b9fd60d` (10954908 bytes).
+SHA-256 del ZIP: `d6d5acd36b2568dcf841ab9c2378f83ae27d0cc4b7fdb1267e7d8045fe776027` (10955693 bytes).
