@@ -117,11 +117,25 @@ solicitud que llega por Netlify Forms y por el aviso de correo dice así de qué
 - Sin JavaScript el formulario sigue enviando, con los campos vacíos.
 - Los campos se conservan al navegar por las anclas de la página, porque la URL mantiene los parámetros.
 
-**Enlaces para apollo.io** (una campaña por secuencia — por ejemplo `hoteles-2026-10` y `sanitario-2026-10`, las dos a esta landing; `utm_content` para el paso o la variante del correo):
+**Enlaces en apollo.io (convención real, 28/09/2026).** Las secuencias ya llevaban UTM antes de este cambio, con
+más detalle que una plantilla genérica: zona y perfil de comprador en `utm_campaign`, y paso y tipo de contenido
+en `utm_content`. Todos los valores cumplen la política de `utm-form.js`.
 
 ```
-https://landing.alpharobotica.com/?utm_source=apollo&utm_medium=email&utm_campaign=hoteles-2026-10&utm_content=paso1
+https://landing.alpharobotica.com/?utm_source=apollo&utm_medium=email&utm_campaign=hoteles_andalucia_bp1&utm_content=e1_video#video
 ```
+
+| Secuencia en Apollo | `utm_campaign` |
+|---|---|
+| Hoteles AND · BP1 Dirección | `hoteles_andalucia_bp1` |
+| Hoteles AND · BP2 Corporativo-Compras-Técnico | `hoteles_andalucia_bp2` |
+| Hoteles AND · BP3 Housekeeping-Rooms | `hoteles_andalucia_bp3` |
+| Hoteles AND · BP4 F&B | `hoteles_andalucia_bp4` |
+| Hoteles MAD-BCN · BP1 Dirección | `hoteles_madbcn_bp1` |
+| Salud-Senior MAD-BCN · BP5 Servicios Generales | `salud_madbcn_bp5` |
+
+Solo el paso 1 de cada secuencia lleva enlace (`utm_content=e1_video`). Las secuencias nuevas deben seguir la
+misma convención: `<publico>_<zona>_bp<N>` y `e<paso>_<contenido>`, en minúsculas.
 
 No usar variables de personalización de Apollo (nombre, email, empresa) dentro de los parámetros UTM.
 
