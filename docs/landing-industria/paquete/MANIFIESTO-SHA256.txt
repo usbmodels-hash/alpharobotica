@@ -1,12 +1,12 @@
 # AlphaRobotica_Landing_Industria.zip — manifiesto SHA-256
 # 28/09/2026 (Europe/Madrid). Rutas relativas a la raiz del ZIP.
-# Landing industrial alineada con la campaña de Apollo Industria Andalucía (sin piloto, plano y tres datos, S300 con plataforma elevadora). Se despliega desde GitHub (proyecto alpharobotica-industria) al fusionar en main.
+# Landing industrial alineada con la campaña de Apollo y con anclas estables (fotos con hueco reservado). Se despliega desde GitHub (proyecto alpharobotica-industria) al fusionar en main.
 
 7e2039533eace0d4c06ee9cca8df4e82d542abaac63e218f83dc68cbfb1d6d51        249  _redirects
 41eeef7551d8c9924badf778f61f89a588ed2d2f9356d7e0bd3b95f9ec09d2ca      16918  apple-touch-icon.png
 07538d3ebd1c0ad72ada674346741bc07e8f2ba1ae450082605510dca30d893a      44033  assets/alpha-robotica-logo.png
 30e02af774b0f8fddb65419fa4bac9a3f74dbc4b79e626f0502f5502109d30fa       3696  assets/consent.js
-b5d0b9e4a395366b8ceb70ca2e88802cb1399d67b0265782d8f367e822f6dfd1       3094  assets/industria.js
+505c2f01f0b19d833acefc13114940a808d53e61f545983d044075eafabe78e0       4716  assets/industria.js
 cc4504d85f96fdbca2816f9ef491dd10d9c13d45fe5c633447cbf28e7137bc1e    5577393  assets/keenon-c55-demo-540p.mp4
 772de21733eb2e02419bd8710a40966808c99c3ef7d56c686c8f7c6e58bcc8b1      53036  assets/keenon-c55-video-poster.webp
 78c78c09a95929c1da85274e38bfbe982665c42f4d53739242073975b3395516      11604  assets/keenon-kleenbot-c40.webp
@@ -24,9 +24,9 @@ a41acff7524c039004c88c42bca6fd7c337991381e98f6c1bfe268d4ba3be681       1857  ass
 fe2b39f66eb5a722c00e6e6291094c0d70c4d052b7b7413695dc0a4e2132d582       1465  favicon-32.png
 88c7e0077593c14877b9c552bc5f081e3878b1da037bee36fd0b46c70116cade       3454  gracias.html
 382eea3f756893e6ae787d5b28de6e149e46cacc71f36fa38626920e263b4d1d      92812  icon-512.png
-5c6d57afb53c3fbeba44ce14119d26ee1a07597e1cff2f0bdb2b5b379c2d5ebd      51630  index.html
+91379baf293cd385d3e3415726cee5895da4460aea6798b1dc7aa170f4c85474      51961  index.html
 a5405fe2836c1a8bf48e54008d7457ec933c6bc55bfcc5b4b2f48699b1149cd9         81  robots.txt
 39592a3b58bdb0b89a2e85bc31d344091db1e603553ecd5745972979325acb9d        213  sitemap.xml
 
-# 25 archivos, 11104033 bytes sin comprimir
-# ZIP: 43785a6e695475bb74c0a2c1d429baaa60207aa508947f8a31f21d171b9fd60d  10954908 bytes  AlphaRobotica_Landing_Industria.zip
+# 25 archivos, 11105986 bytes sin comprimir
+# ZIP: d6d5acd36b2568dcf841ab9c2378f83ae27d0cc4b7fdb1267e7d8045fe776027  10955693 bytes  AlphaRobotica_Landing_Industria.zip

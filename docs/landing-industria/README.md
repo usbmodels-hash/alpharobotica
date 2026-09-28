@@ -105,6 +105,18 @@ esta landing en el email 2 y fija reglas que la landing contradecía. Cambios:
 
 Proceso: plano y tres datos → primera valoración → estudio de sitio → propuesta y puesta en marcha.
 
+## Enlaces con ancla (29/09/2026)
+
+El enlace de campaña `…#s300` llegaba a la sección, pero quedaba 82 px más abajo en escritorio y 345 px en móvil:
+las fotos de producto de las fichas anteriores se cargan en diferido y no reservaban su hueco, así que empujaban
+la sección tras el salto. Corregido:
+- cada foto de ficha reserva su espacio desde el principio (ancho calculado con su proporción, `--ar`); en móvil,
+  la columna de la foto tiene ancho definido. Tamaño visible sin cambios;
+- el desplazamiento suave (`html.suave`) se activa después de la carga, para que el salto inicial sea inmediato;
+- `industria.js` recoloca una vez al terminar la carga y las tipografías, salvo que el visitante ya se haya movido.
+Resultado: `#s300` a 86 px (bajo la cabecera fija) desde el primer instante, a 360/390/768/1366 px, también sin
+JavaScript.
+
 ## Atribución de campaña (UTM) en el formulario
 
 Desde el 28/09/2026 el formulario `leads-demo` lleva cuatro campos ocultos — `utm_source`, `utm_medium`,

@@ -47,6 +47,37 @@
     syncInterest();
   }
 
+  // 3) Enlaces con ancla (por ejemplo #s300 desde los correos de campaña): cuando
+  //    terminan de cargar imágenes y tipografías, la sección puede haberse movido.
+  //    Se recoloca una vez, sin animación, salvo que el visitante ya se haya movido.
+  (function () {
+    // El desplazamiento suave se activa cuando la página ya está cargada y colocada,
+    // para que no compita con el salto inicial al ancla.
+    function suave() { document.documentElement.classList.add('suave'); }
+    var id = '';
+    try { id = decodeURIComponent(window.location.hash.slice(1)); } catch (e) { id = ''; }
+    var destino = id && document.getElementById(id);
+    if (!destino) {
+      if (document.readyState === 'complete') suave(); else window.addEventListener('load', suave, { once: true });
+      return;
+    }
+    var tocado = false;
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (tipo) {
+      window.addEventListener(tipo, function () { tocado = true; }, { once: true, passive: true });
+    });
+    function recolocar() {
+      if (tocado) return;
+      var raiz = document.documentElement, previo = raiz.style.scrollBehavior;
+      raiz.style.scrollBehavior = 'auto';
+      destino.scrollIntoView({ block: 'start' });
+      raiz.style.scrollBehavior = previo;
+    }
+    function alCargar() { recolocar(); window.setTimeout(suave, 0); }
+    if (document.readyState === 'complete') alCargar();
+    else window.addEventListener('load', alCargar, { once: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { window.setTimeout(recolocar, 0); });
+  })();
+
   document.querySelectorAll('.demo[data-video]').forEach(function (demo) {
     var stage = demo.querySelector('.demo-stage');
     var button = demo.querySelector('.demo-load');
