@@ -555,6 +555,33 @@ no había nada publicado en ese subdominio.
 
 ---
 
+## Lote 14 — Atribución de campaña (UTM) en el formulario de las dos landings (rama `landings-utm-formulario`)
+
+Encargo del 28/09/2026, alternativa sin coste a Plausible para medir la campaña de apollo.io: que cada solicitud
+diga de qué campaña viene.
+
+| Plano | Estado |
+|---|---|
+| Implementado | `assets/utm-form.js` (idéntico en las dos landings) y cuatro campos ocultos `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` en `leads-demo` de hoteles e industria |
+| Validado en local | **Sí** — ver abajo |
+| Desplegado | Al fusionar en `main`, los dos proyectos se redespliegan solos |
+| Comprobado en producción | **Pendiente**: que los cuatro campos aparezcan en Netlify Forms de cada proyecto y en el aviso por correo |
+
+Diseño: sin almacenamiento en el navegador y sin envío propio; los valores solo viajan con el formulario, así que
+no depende del aviso de cookies. Política de valores: `^[a-z0-9][a-z0-9._-]{0,59}$` tras pasar a minúsculas;
+lo demás se descarta, para que no entren datos personales por la URL. `consent.js`, `plausible-init.js`,
+`landing-events.js` y `leadform-channel.js` sin cambios.
+
+Comprobaciones (Chromium + servidores locales, receptor simulado, sin envíos reales), en las dos landings:
+valores válidos → los cuatro campos rellenos y en minúsculas · tras saltar a un ancla la URL conserva los
+parámetros y el campo su valor · almacenamiento del navegador: solo la elección de cookies, ninguna clave UTM ·
+envío → `/gracias` con los cuatro campos en el cuerpo · `@`, espacios y URL → descartados (el resto se conserva) ·
+sin UTM → campos vacíos · sin JavaScript envía con campos vacíos · doble pulsación → 1 POST.
+
+Enlaces para apollo.io y reglas de uso en los README de cada landing.
+
+---
+
 ## Resumen por tarea P1–P14
 
 Este resumen sustituye al anterior y coincide con el detalle de los lotes.
