@@ -539,7 +539,15 @@ foco visible · ninguna petición externa salvo las tipografías.
 ### Paquete
 
 `docs/landing-industria/paquete/AlphaRobotica_Landing_Industria.zip` (23 archivos, ~10,9 MB por los dos
-vídeos). Desplegado desde GitHub; ver README. El explorador del deploy muestra `dist/` y `netlify.toml` porque
+vídeos). Desplegado desde GitHub; ver README.
+
+### Hallazgo y corrección en el sitio principal (28/09)
+
+El sitio principal `alpharobotics` publica desde la raíz del repositorio, así que **`https://alpharobotica.com/docs/landing/dist/`
+respondía con la landing de hoteles** (confirmado por el propietario), y `/docs/landing-industria/dist/` con la
+industrial: copias de las landings en el dominio principal desde el 14/09, sin ningún enlace hacia ellas.
+Corrección: regla `/docs/* /404.html 404` en el `_redirects` del sitio principal, colocada al principio del
+archivo (primera coincidencia). Es la única línea que se toca del sitio principal. El explorador del deploy muestra `dist/` y `netlify.toml` porque
 lista el base directory: no hay `dist/dist` en `main` (comprobado) y los 10,6 MB del deploy son los dos vídeos
 MP4, no activos duplicados. **Reversión:** Deploys → `6ab9a713db134853beb52e6a` es el primero válido; antes
 no había nada publicado en ese subdominio.
