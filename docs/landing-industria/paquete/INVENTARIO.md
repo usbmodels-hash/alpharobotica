@@ -1,6 +1,6 @@
 # Inventario del paquete de la landing
 
-**28/09/2026 (Europe/Madrid).** 25 archivos. Landing industrial con atribución UTM en el formulario y limpieza de UTM no admitidos en la dirección. Se despliega desde GitHub (proyecto alpharobotica-industria) al fusionar en main.
+**28/09/2026 (Europe/Madrid).** 25 archivos. Landing industrial alineada con la campaña de Apollo Industria Andalucía (sin piloto, plano y tres datos, S300 con plataforma elevadora). Se despliega desde GitHub (proyecto alpharobotica-industria) al fusionar en main.
 
 | Ruta pública | Archivo en el ZIP | Tipo de contenido | Bytes | SHA-256 |
 |---|---|---|---:|---|
@@ -26,8 +26,8 @@
 | `/favicon-32.png` | `favicon-32.png` | `image/png` | 1465 | `fe2b39f66eb5a722c00e6e6291094c0d70c4d052b7b7413695dc0a4e2132d582` |
 | `/gracias` | `gracias.html` | `text/html; charset=utf-8` | 3454 | `88c7e0077593c14877b9c552bc5f081e3878b1da037bee36fd0b46c70116cade` |
 | `/icon-512.png` | `icon-512.png` | `image/png` | 92812 | `382eea3f756893e6ae787d5b28de6e149e46cacc71f36fa38626920e263b4d1d` |
-| `/` | `index.html` | `text/html; charset=utf-8` | 51304 | `d5a92f5918c5302c2fa6bb225904611489c2edc90105575b19a00c620c9a9f61` |
+| `/` | `index.html` | `text/html; charset=utf-8` | 51630 | `5c6d57afb53c3fbeba44ce14119d26ee1a07597e1cff2f0bdb2b5b379c2d5ebd` |
 | `/robots.txt` | `robots.txt` | `text/plain; charset=utf-8` | 81 | `a5405fe2836c1a8bf48e54008d7457ec933c6bc55bfcc5b4b2f48699b1149cd9` |
 | `/sitemap.xml` | `sitemap.xml` | `application/xml` | 213 | `39592a3b58bdb0b89a2e85bc31d344091db1e603553ecd5745972979325acb9d` |
 
-SHA-256 del ZIP: `1a4dd84b4412981180381614b62d504d1ef36b417b74b1efc4f9e2ca11caa7bf` (10954803 bytes).
+SHA-256 del ZIP: `43785a6e695475bb74c0a2c1d429baaa60207aa508947f8a31f21d171b9fd60d` (10954908 bytes).

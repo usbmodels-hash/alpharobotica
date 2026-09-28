@@ -623,6 +623,19 @@ correcto en valoración y demostración, UTM de la secuencia recogido. Se despli
 
 ---
 
+## Lote 16 — Landing industrial alineada con la campaña de Apollo (rama `landing-industria-campana`)
+
+Revisión del 28/09/2026 de la hoja `Campana_Apollo_Industria_Andalucia_S100_S300_2026.xlsx`. La hoja daba el enlace
+del email 2 como pendiente («la landing actual es de hotel»); ya existe `industria.alpharobotica.com`, pero su
+texto contradecía reglas de la campaña: ofrecía pilotos (cinco menciones), «horas liberadas», decía que no hacía
+falta plano, hablaba de «palés ligeros» y no mostraba la plataforma elevadora del S300. Se alinea (detalle en
+`docs/landing-industria/README.md`). Validado en local: sin términos vetados, enlace de campaña con `#s300` y UTM
+recogidos, sin desbordes ni objetivos < 44 px a 360–1366 px. Las cifras nuevas del S300 proceden de la pestaña
+«Specs catálogo» de la hoja (catálogo KEENON jun 2026, aportado por el propietario), no verificadas contra el
+catálogo original desde esta sesión.
+
+---
+
 ## Resumen por tarea P1–P14
 
 Este resumen sustituye al anterior y coincide con el detalle de los lotes.
