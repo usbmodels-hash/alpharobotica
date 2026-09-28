@@ -1,10 +1,10 @@
 # Inventario del paquete de la landing
 
-**28/09/2026 (Europe/Madrid).** 23 archivos de contenido, todos servidos; sin `_redirects` (ver dependencia D1 del README).
-Landing industrial, desplegada el 28/09/2026 (deploy `6ab9a713db134853beb52e6a`, `industria.alpharobotica.com`).
+**28/09/2026 (Europe/Madrid).** 24 archivos: 23 de contenido más `_redirects`. Landing industrial desplegada en `industria.alpharobotica.com`.
 
 | Ruta pública | Archivo en el ZIP | Tipo de contenido | Bytes | SHA-256 |
 |---|---|---|---:|---|
+| (configuración, no se sirve) | `_redirects` | — | 249 | `7e2039533eace0d4c06ee9cca8df4e82d542abaac63e218f83dc68cbfb1d6d51` |
 | `/apple-touch-icon.png` | `apple-touch-icon.png` | `image/png` | 16918 | `41eeef7551d8c9924badf778f61f89a588ed2d2f9356d7e0bd3b95f9ec09d2ca` |
 | `/assets/alpha-robotica-logo.png` | `assets/alpha-robotica-logo.png` | `image/png` | 44033 | `07538d3ebd1c0ad72ada674346741bc07e8f2ba1ae450082605510dca30d893a` |
 | `/assets/consent.js` | `assets/consent.js` | `text/javascript` | 3696 | `30e02af774b0f8fddb65419fa4bac9a3f74dbc4b79e626f0502f5502109d30fa` |
@@ -29,6 +29,6 @@ Landing industrial, desplegada el 28/09/2026 (deploy `6ab9a713db134853beb52e6a`,
 | `/robots.txt` | `robots.txt` | `text/plain; charset=utf-8` | 81 | `a5405fe2836c1a8bf48e54008d7457ec933c6bc55bfcc5b4b2f48699b1149cd9` |
 | `/sitemap.xml` | `sitemap.xml` | `application/xml` | 213 | `39592a3b58bdb0b89a2e85bc31d344091db1e603553ecd5745972979325acb9d` |
 
-SHA-256 del ZIP: `6ddb85b9ed6e20da508c59e34428b80dbef96010d9127bcdc3bce9bf9739cef3` (10953274 bytes).
+SHA-256 del ZIP: `1e8863c8cc7bff21993bdc643500e76842f55ef85742e6d31494217c5605f546` (10953545 bytes).
 
 Sin `_redirects`: el proxy de medición se añade cuando exista el sitio de Plausible del subdominio (dependencia D1 del README).

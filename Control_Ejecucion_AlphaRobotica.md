@@ -505,7 +505,7 @@ limpieza y logística, en un subdominio propio, para la campaña de apollo.io a 
 | Proyecto de Netlify y subdominio | **completado por el propietario** — `alpharobotica-industria` (equipo Cubotic), base `docs/landing-industria`, publish `docs/landing-industria/dist`, sin build. `industria.alpharobotica.com` con DNS de Netlify (registro creado solo), certificado comodín, Force HTTPS y HSTS de 1 año, igual que hoteles |
 | Desplegado / comprobado en producción | **completado** — despliegue **`6ab9a713db134853beb52e6a`**, `main@d9fa5fb`, 28/09/2026 01:30 CEST. Un primer deploy (`6ab9a4abc138327e0d9b98d8`) salió con la detección de formularios desactivada en el proyecto nuevo; se activó y se relanzó. Comprobado por el propietario: portada 200 con el título correcto; `/gracias` 200 `noindex,follow`; `/stats/js/script.js` 404, esperado hasta D1 |
 | Formulario y aviso por correo | **completado** — `leads-demo` activo con sus campos detectados; aviso por correo a `antonio@alpharobotica.com` |
-| Medición | **pendiente (D1)** — el propietario tiene que iniciar sesión en Plausible, dar de alta `industria.alpharobotica.com` y aportar el script `pa-…`; entonces se añade `dist/_redirects`. Esta sesión no tiene ni puede tener sesión en Plausible |
+| Medición | **configurada, pendiente de comprobar en producción** — sitio `industria.alpharobotica.com` dado de alta en Plausible el 28/09 (Europe/Madrid, sin goals ni integraciones) y `dist/_redirects` con el proxy hacia `pa-HiYUg-v5guchAkcKLe08u.js`. El bloque inline que propone Plausible lo cubre `plausible-init.js`. Observación del alta: en Plausible solo existía el sitio `alpharobotica.com`; no consta uno propio para `landing.alpharobotica.com` |
 | Recepción de contactos | **sin acreditar** |
 
 ### Qué es
