@@ -100,6 +100,10 @@ solicitud que llega por Netlify Forms y por el aviso de correo dice así de qué
   valores solo viajan si el visitante envía el formulario. No depende del aviso de cookies ni de Plausible.
 - Política de valores: minúsculas, letras, números, punto, guion y guion bajo, hasta 60 caracteres. Se descarta
   cualquier otro valor (con `@`, espacios, barras o URL) para que nunca entren datos personales por error.
+- Los parámetros UTM descartados **también se quitan de la dirección de la página** (`history.replaceState`),
+  antes de que arranque la medición: por eso `utm-form.js` es el primer script. Así Plausible no recibe un email
+  u otro dato personal como fuente de campaña, ni siquiera si el visitante ya había aceptado las cookies en una
+  visita anterior. Los valores admitidos se quedan en la dirección y sí llegan a Plausible.
 - Sin JavaScript el formulario sigue enviando, con los campos vacíos.
 - Los campos se conservan al navegar por las anclas de la página, porque la URL mantiene los parámetros.
 
