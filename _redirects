@@ -1,6 +1,8 @@
 # Generated clean URL routes for Alpha Robotics.
 /404 /404.html 200
 /404/ /404.html 200
+# docs/ guarda las fuentes de las landings (proyectos de Netlify aparte); no debe servirse en el dominio principal.
+/docs/* /404.html 404
 /alpha-care /alpha-care.html 200
 /alpha-care/ /alpha-care.html 200
 /aviso-legal /aviso-legal.html 200
