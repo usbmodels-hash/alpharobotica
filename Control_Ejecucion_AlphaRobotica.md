@@ -565,7 +565,9 @@ diga de qué campaña viene.
 | Implementado | `assets/utm-form.js` (idéntico en las dos landings) y cuatro campos ocultos `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` en `leads-demo` de hoteles e industria |
 | Validado en local | **Sí** — ver abajo |
 | Desplegado | Al fusionar en `main`, los dos proyectos se redespliegan solos |
-| Comprobado en producción | **Pendiente**: que los cuatro campos aparezcan en Netlify Forms de cada proyecto y en el aviso por correo |
+| Comprobado en producción | **Sí, por el propietario** (28/09): deploys `6aba331ebce12e0008c10135` (hoteles) y `6aba331e4b076800088ac49b` (industria), `main@0eea666`, 2 reglas de redirect cada uno. 14 campos detectados en `leads-demo` de cada proyecto, con los cuatro UTM (la lista sale del log del deploy, «Detected form fields»; la pantalla de Forms no la muestra). En la página publicada, sin enviar nada: valores válidos rellenos; `utm_source` con `@` descartado. Detección de formularios activa en los dos |
+| Aviso por correo con los UTM | **Pendiente**: se verá en el primer envío real, o con un envío de prueba si el propietario lo autoriza |
+| Corrección posterior | El agente detectó que un valor descartado (p. ej. un email) seguía en la dirección de la página y podía llegar a Plausible si el visitante aceptaba las cookies. `utm-form.js` quita ahora de la dirección los UTM no admitidos y repetidos, y se carga el primero para que la medición arranque con la dirección limpia (rama `landings-utm-limpiar-url`) |
 
 Diseño: sin almacenamiento en el navegador y sin envío propio; los valores solo viajan con el formulario, así que
 no depende del aviso de cookies. Política de valores: `^[a-z0-9][a-z0-9._-]{0,59}$` tras pasar a minúsculas;
