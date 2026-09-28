@@ -17,7 +17,7 @@ repositorio con base directory `docs/landing-industria`.
 | **Subdominio configurado** | **Sí** — `industria.alpharobotica.com`, DNS de Netlify, certificado comodín, Force HTTPS con HSTS de 1 año |
 | **Desplegado / comprobado en producción** | **Sí** — despliegue `6ab9a713db134853beb52e6a` (`main@d9fa5fb`, 28/09/2026 01:30 CEST). Portada 200, `/gracias` 200 `noindex,follow` |
 | Formulario registrado en Netlify | **Sí** — `leads-demo`, aviso por correo a `antonio@alpharobotica.com`. El primer deploy (`6ab9a4ab…`) salió con la detección de formularios desactivada; se activó y se relanzó |
-| Medición (Plausible) | **Configurada, pendiente de comprobar en producción**: sitio `industria.alpharobotica.com` dado de alta en Plausible el 28/09/2026 (Europe/Madrid) y `dist/_redirects` con el proxy hacia su script `pa-HiYUg-v5guchAkcKLe08u.js`. Ver «Comprobación de la medición» |
+| Medición (Plausible) | **Proxy y consentimiento comprobados en producción** (deploy `6aba07fbfcf30a0008435dbf`): script 200 idéntico al de Plausible, 0 peticiones antes de consentir, `pageview` aceptado con 202 tras aceptar. **Recepción en Plausible no acreditable**: el panel está bloqueado por falta de suscripción válida en la cuenta. Ver «Comprobación de la medición» |
 | Recepción de contactos acreditada | **No** |
 
 ## Qué contiene
@@ -77,13 +77,18 @@ sin la parte de YouTube, más la carga bajo demanda de los vídeos.
 | **D2 · Proyecto y dominio** | Pasos 1 y 2 de arriba. Esta sesión no tiene acceso a Netlify ni al DNS |
 | **D3 · Aviso por correo del formulario** | Paso 3 |
 
-## Comprobación de la medición (pendiente, en producción)
+## Comprobación de la medición (28/09/2026, en producción)
 
-1. `https://industria.alpharobotica.com/stats/js/script.js` → 200 con JavaScript (`application/javascript` o
-   `text/javascript`); un 200 con HTML no vale.
-2. Abrir la landing, **aceptar** el aviso de cookies y navegar: en el panel de Plausible del sitio
-   `industria.alpharobotica.com` debe aparecer la visita en tiempo real.
-3. Antes de aceptar (o tras rechazar), la pestaña de red no debe mostrar ninguna petición a `/stats/`.
+| Paso | Resultado |
+|---|---|
+| `/stats/js/script.js` | 200 `application/javascript`, 6.040 bytes, byte a byte igual a `plausible.io/js/pa-HiYUg-v5guchAkcKLe08u.js` |
+| Sin consentimiento y tras «Rechazar» | 0 peticiones a `/stats/`, también con scroll y clics; se guarda `analytics:false` |
+| Tras «Aceptar» | `GET /stats/js/script.js` 200 · `POST /stats/api/event` 202 con un `pageview` para `industria.alpharobotica.com` |
+| Realtime en Plausible | **No comprobable**: «Your dashboard is unavailable. It looks like you don't have a valid subscription for this dashboard». El 202 no prueba que el evento se guarde ni que sea consultable |
+
+Queda por hacer cuando la cuenta de Plausible tenga suscripción válida: ver la visita en Realtime y pulsar
+«I've installed it». Nota: Plausible solo registra la visita cuando la pestaña está visible; una pestaña en
+segundo plano no envía el `pageview`.
 
 ## Reversión
 
