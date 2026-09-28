@@ -630,7 +630,24 @@ del email 2 como pendiente («la landing actual es de hotel»); ya existe `indus
 texto contradecía reglas de la campaña: ofrecía pilotos (cinco menciones), «horas liberadas», decía que no hacía
 falta plano, hablaba de «palés ligeros» y no mostraba la plataforma elevadora del S300. Se alinea (detalle en
 `docs/landing-industria/README.md`). Validado en local: sin términos vetados, enlace de campaña con `#s300` y UTM
-recogidos, sin desbordes ni objetivos < 44 px a 360–1366 px. Las cifras nuevas del S300 proceden de la pestaña
+recogidos, sin desbordes ni objetivos < 44 px a 360–1366 px.
+
+**Configuración en Apollo (28/09, agente con la sesión del propietario; nada activado).**
+- Personas IND-A e IND-B creadas; sin «Industrial Automation». Para llegar a volumen se cambió la sede de la
+  empresa por la ubicación de la persona en Andalucía y se quitaron las 14 palabras clave de inclusión (de 12 a
+  244 empresas). Se retiraron 49 empresas que no encajaban (integradores, transporte y puertos, investigación,
+  inmobiliarias, concesionarios, laboratorios, granel, sedes fuera de Andalucía).
+- Lista «Industria Andalucía · Intralogística · Oct 2026»: 228 contactos (69 IND-A + 159 IND-B), 195 empresas,
+  33 casos A+B. Waterfall desactivado; 228 créditos gastados.
+- Secuencias «ALPHA | Industria AND | IND-A Dirección | 4 toques» e «…IND-B Logística-Producción…», inactivas, con
+  el copy de la hoja, «hasta 2.376 m²/h» y un único enlace (paso 2) a `industria.alpharobotica.com/…#s300` con
+  `utm_campaign=industria_andalucia_inda` / `_indb` y `utm_content=e2_ficha`; comprobados los cuatro UTM.
+- Tanda 1: 80 contactos (24 A + 56 B; alimentación y logística). 61 inscritos; 19 en dominios catch-all sin inscribir.
+- Sin cruzar con el HubSpot de Alpha (cuenta 148817158): ni el conector de esta sesión (cuenta 20102221, Triumph
+  Adventure) ni el agente tienen acceso.
+- Buzón antonio@alpharobotica.com: 25/día compartidos, deliverability 92 %, calentamiento 52 %, 2 alertas de
+  blocklist. Firma «Integrador oficial KEENON Robotics», distinta de «Distribuidor autorizado» de la landing y la hoja.
+- **Restauración MAD-BCN · BP4:** el propietario decide no activarla por ahora (28/09). Las cifras nuevas del S300 proceden de la pestaña
 «Specs catálogo» de la hoja (catálogo KEENON jun 2026, aportado por el propietario), no verificadas contra el
 catálogo original desde esta sesión.
 
