@@ -1,6 +1,6 @@
 # Inventario del paquete de la landing
 
-**28/09/2026 (Europe/Madrid).** 24 archivos: 23 de contenido más `_redirects`. Landing industrial desplegada en `industria.alpharobotica.com`.
+**28/09/2026 (Europe/Madrid).** 25 archivos. Landing industrial con atribución UTM en el formulario. Se despliega desde GitHub (proyecto alpharobotica-industria) al fusionar en main.
 
 | Ruta pública | Archivo en el ZIP | Tipo de contenido | Bytes | SHA-256 |
 |---|---|---|---:|---|
@@ -20,15 +20,14 @@
 | `/assets/landing-events.js` | `assets/landing-events.js` | `text/javascript` | 2933 | `0bc70ec317c79bc787b6ea7a33e05b8710da436fe7f3c93b62e329b56ae778e1` |
 | `/assets/leadform-channel.js` | `assets/leadform-channel.js` | `text/javascript` | 1857 | `a41acff7524c039004c88c42bca6fd7c337991381e98f6c1bfe268d4ba3be681` |
 | `/assets/plausible-init.js` | `assets/plausible-init.js` | `text/javascript` | 2470 | `80bcf26f3a3d52b389e785b35c0a45b3672b403edb29c779f33038af1b21dd16` |
+| `/assets/utm-form.js` | `assets/utm-form.js` | `text/javascript` | 1331 | `0d9416d37d2a00af616bbc9a4aa5bd3383e3aa76b53ddacd34533eff2ba1806d` |
 | `/assets/video-funnel.css` | `assets/video-funnel.css` | `text/css` | 6053 | `0391d5c8b7c64e146ac6a645ad885975a95785f16917abe60b567d8948187a5a` |
 | `/favicon-16.png` | `favicon-16.png` | `image/png` | 592 | `67a386912801c489c089c3836034c86861040414b944584a259d7bc154910282` |
 | `/favicon-32.png` | `favicon-32.png` | `image/png` | 1465 | `fe2b39f66eb5a722c00e6e6291094c0d70c4d052b7b7413695dc0a4e2132d582` |
 | `/gracias` | `gracias.html` | `text/html; charset=utf-8` | 3454 | `88c7e0077593c14877b9c552bc5f081e3878b1da037bee36fd0b46c70116cade` |
 | `/icon-512.png` | `icon-512.png` | `image/png` | 92812 | `382eea3f756893e6ae787d5b28de6e149e46cacc71f36fa38626920e263b4d1d` |
-| `/` | `index.html` | `text/html; charset=utf-8` | 51025 | `3296b640846c323e1b1261aa42ef24c1c371ec5b719094f23e266898c3d77570` |
+| `/` | `index.html` | `text/html; charset=utf-8` | 51305 | `b736f268a1953486e5d5de910503f87054b96497935886a3be693610a9540fab` |
 | `/robots.txt` | `robots.txt` | `text/plain; charset=utf-8` | 81 | `a5405fe2836c1a8bf48e54008d7457ec933c6bc55bfcc5b4b2f48699b1149cd9` |
 | `/sitemap.xml` | `sitemap.xml` | `application/xml` | 213 | `39592a3b58bdb0b89a2e85bc31d344091db1e603553ecd5745972979325acb9d` |
 
-SHA-256 del ZIP: `1e8863c8cc7bff21993bdc643500e76842f55ef85742e6d31494217c5605f546` (10953545 bytes).
-
-`_redirects` lleva el proxy de medición hacia el sitio de Plausible `industria.alpharobotica.com` (script `pa-HiYUg-v5guchAkcKLe08u.js`).
+SHA-256 del ZIP: `9ba30a40e5689ebc5e94926b203bdf9ed633b3ecf62b5b10e6b839509a85abe7` (10954451 bytes).

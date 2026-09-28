@@ -100,6 +100,27 @@ servida es `dist` (`/` responde y `/dist/` da 404).
 Deploys y reversión: **Deploys → despliegue anterior → «Publish deploy»**. Versión previa a esta:
 `6aa7dd28a96ea01c454e27ff`.
 
+## Atribución de campaña (UTM) en el formulario
+
+Desde el 28/09/2026 el formulario `leads-demo` lleva cuatro campos ocultos — `utm_source`, `utm_medium`,
+`utm_campaign` y `utm_content` — que `assets/utm-form.js` rellena con los parámetros de la URL de entrada. Cada
+solicitud que llega por Netlify Forms y por el aviso de correo dice así de qué campaña viene.
+
+- **No guarda nada en el navegador** (ni cookies ni almacenamiento local) y no envía nada por sí mismo: los
+  valores solo viajan si el visitante envía el formulario. No depende del aviso de cookies ni de Plausible.
+- Política de valores: minúsculas, letras, números, punto, guion y guion bajo, hasta 60 caracteres. Se descarta
+  cualquier otro valor (con `@`, espacios, barras o URL) para que nunca entren datos personales por error.
+- Sin JavaScript el formulario sigue enviando, con los campos vacíos.
+- Los campos se conservan al navegar por las anclas de la página, porque la URL mantiene los parámetros.
+
+**Enlaces para apollo.io** (una campaña por secuencia — por ejemplo `hoteles-2026-10` y `sanitario-2026-10`, las dos a esta landing; `utm_content` para el paso o la variante del correo):
+
+```
+https://landing.alpharobotica.com/?utm_source=apollo&utm_medium=email&utm_campaign=hoteles-2026-10&utm_content=paso1
+```
+
+No usar variables de personalización de Apollo (nombre, email, empresa) dentro de los parámetros UTM.
+
 ## Reversión
 
 Panel de `alpharobotica-landing` → Deploys → `6aa7dd28a96ea01c454e27ff` → «Publish deploy».

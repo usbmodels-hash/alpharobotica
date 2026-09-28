@@ -1,7 +1,6 @@
 # AlphaRobotica_Landing_Completa.zip — manifiesto SHA-256
-# 27/09/2026 (Europe/Madrid). Rutas relativas a la raiz del ZIP.
-# Version «hoteles y centros sanitarios · toda España», preparada sobre el despliegue
-# 6aa7dd28a96ea01c454e27ff. Desplegado desde GitHub el 28/09/2026: deploy 6ab99baf5b1b2dba307fd3c7.
+# 28/09/2026 (Europe/Madrid). Rutas relativas a la raiz del ZIP.
+# Landing de hoteles y centros sanitarios con atribución UTM en el formulario. Se despliega desde GitHub (proyecto alpharobotica-landing) al fusionar en main.
 
 248f1b7c56c9bc63deb5c0d281cb700c527c5f57db77be38beb133efe4ca0a58        226  _redirects
 41eeef7551d8c9924badf778f61f89a588ed2d2f9356d7e0bd3b95f9ec09d2ca      16918  apple-touch-icon.png
@@ -15,15 +14,16 @@ a37a1eec891693cbbaaa0c2df92e3429d4727399ff1d42c085a467e35fbb88e6      44628  ass
 a41acff7524c039004c88c42bca6fd7c337991381e98f6c1bfe268d4ba3be681       1857  assets/leadform-channel.js
 7161c21a6ad07c80436c78cb7101a2b1414e994e48cab45ec2997f321e404525     108731  assets/og-landing.jpg
 80bcf26f3a3d52b389e785b35c0a45b3672b403edb29c779f33038af1b21dd16       2470  assets/plausible-init.js
+0d9416d37d2a00af616bbc9a4aa5bd3383e3aa76b53ddacd34533eff2ba1806d       1331  assets/utm-form.js
 0391d5c8b7c64e146ac6a645ad885975a95785f16917abe60b567d8948187a5a       6053  assets/video-funnel.css
 6dd47c6f62980d5a10df968509f7054d37d158531bbe1cc9e7b46ac8c59b18ae       5773  assets/video-funnel.js
 67a386912801c489c089c3836034c86861040414b944584a259d7bc154910282        592  favicon-16.png
 fe2b39f66eb5a722c00e6e6291094c0d70c4d052b7b7413695dc0a4e2132d582       1465  favicon-32.png
 d7685d01238fa8da04226843565b084312a471ef0a8148fbffb311c55928c303       3435  gracias.html
 382eea3f756893e6ae787d5b28de6e149e46cacc71f36fa38626920e263b4d1d      92812  icon-512.png
-f5d72e028f3efc61d4612898a5be5eb227b0afd1d0938ca697b3af4f03f4211c      48748  index.html
+cd63cbdca5409bc971c52f2630ffc145a20365524ab4dd844fe7aa1dfa9c6688      49028  index.html
 4e309df772b280817ae7f527a7f11adb1e87cbaf61e43f77cb206dc21d3e5efe         79  robots.txt
 be11f6c554a557986f9bceb91d739d2c66f41c501887712c8563e4e1a688f15d        211  sitemap.xml
 
-# 21 archivos, 417565 bytes sin comprimir
-# ZIP: e113fb8599e73a2edb02fe30dc4e07cd9a437b22c25faec94a98242d892f1e2b  359551 bytes  AlphaRobotica_Landing_Completa.zip
+# 22 archivos, 419176 bytes sin comprimir
+# ZIP: 8057a9c3044640793c2f4a745b493c13720b38b84ec6a0f92a5c15670ac0316d  360455 bytes  AlphaRobotica_Landing_Completa.zip

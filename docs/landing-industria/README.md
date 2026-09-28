@@ -90,6 +90,27 @@ Queda por hacer cuando la cuenta de Plausible tenga suscripción válida: ver la
 «I've installed it». Nota: Plausible solo registra la visita cuando la pestaña está visible; una pestaña en
 segundo plano no envía el `pageview`.
 
+## Atribución de campaña (UTM) en el formulario
+
+Desde el 28/09/2026 el formulario `leads-demo` lleva cuatro campos ocultos — `utm_source`, `utm_medium`,
+`utm_campaign` y `utm_content` — que `assets/utm-form.js` rellena con los parámetros de la URL de entrada. Cada
+solicitud que llega por Netlify Forms y por el aviso de correo dice así de qué campaña viene.
+
+- **No guarda nada en el navegador** (ni cookies ni almacenamiento local) y no envía nada por sí mismo: los
+  valores solo viajan si el visitante envía el formulario. No depende del aviso de cookies ni de Plausible.
+- Política de valores: minúsculas, letras, números, punto, guion y guion bajo, hasta 60 caracteres. Se descarta
+  cualquier otro valor (con `@`, espacios, barras o URL) para que nunca entren datos personales por error.
+- Sin JavaScript el formulario sigue enviando, con los campos vacíos.
+- Los campos se conservan al navegar por las anclas de la página, porque la URL mantiene los parámetros.
+
+**Enlaces para apollo.io** (una campaña por secuencia; `utm_content` para el paso o la variante del correo):
+
+```
+https://industria.alpharobotica.com/?utm_source=apollo&utm_medium=email&utm_campaign=industria-2026-10&utm_content=paso1
+```
+
+No usar variables de personalización de Apollo (nombre, email, empresa) dentro de los parámetros UTM.
+
 ## Reversión
 
 Deploys → despliegue anterior → «Publish deploy». El primero válido es `6ab9a713db134853beb52e6a`; antes no
