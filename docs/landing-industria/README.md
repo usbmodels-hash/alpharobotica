@@ -90,6 +90,21 @@ Queda por hacer cuando la cuenta de Plausible tenga suscripción válida: ver la
 «I've installed it». Nota: Plausible solo registra la visita cuando la pestaña está visible; una pestaña en
 segundo plano no envía el `pageview`.
 
+## Alineación con la campaña de Apollo «Industria Andalucía · S100/S300» (28/09/2026)
+
+La campaña (hoja `Campana_Apollo_Industria_Andalucia_S100_S300_2026.xlsx`, aportada por el propietario) enlaza a
+esta landing en el email 2 y fija reglas que la landing contradecía. Cambios:
+
+| Regla de la campaña | Cambio en la landing |
+|---|---|
+| Sin piloto; CTA = primera valoración a partir del plano | Fuera las cinco menciones a piloto. Contacto y proceso piden el **plano y tres datos** (qué se mueve, entre qué puntos, cuántas veces al día); el plano puede enviarse por WhatsApp o email |
+| Prohibido «liberar tiempo» | «Horas liberadas» → «horas cubiertas» |
+| No mueve palés completos ni sustituye carretillas | S300 sin «palés ligeros»; bloque «Qué no hace» con el límite de 300 kg por viaje |
+| Solo cifras del catálogo KEENON jun 2026 | S300 con plataforma elevadora, chasis de 230 mm, carros/estanterías de hasta 1.200 × 1.200 mm y doble LiDAR + 3D + VSLAM; se retira «4–6 h de carga», que no está en el catálogo |
+| Compra o renting, sujeto a propuesta | «Cuota mensual» → «Compra o renting, sujeto a propuesta» en las cuatro fichas y el catálogo |
+
+Proceso: plano y tres datos → primera valoración → estudio de sitio → propuesta y puesta en marcha.
+
 ## Atribución de campaña (UTM) en el formulario
 
 Desde el 28/09/2026 el formulario `leads-demo` lleva cuatro campos ocultos — `utm_source`, `utm_medium`,
