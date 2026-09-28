@@ -105,7 +105,7 @@
   function syncRequest() {
     var demo = request.value === 'demostracion';
     submit.textContent = demo ? 'Solicitar demostración →' : 'Solicitar primera valoración →';
-    subject.value = demo ? 'Alpha Robótica · Solicitud de demostración para hotel o centro sanitario' : 'Alpha Robótica · Solicitud de valoración para hotel o centro sanitario';
+    subject.value = demo ? 'Alpha Robótica · Solicitud de demostración para hotel, centro sanitario o residencia' : 'Alpha Robótica · Solicitud de valoración para hotel, centro sanitario o residencia';
   }
   function syncInterest() {
     document.querySelectorAll('[data-interes]').forEach(function (item) {

@@ -100,6 +100,16 @@ servida es `dist` (`/` responde y `/dist/` da 404).
 Deploys y reversión: **Deploys → despliegue anterior → «Publish deploy»**. Versión previa a esta:
 `6aa7dd28a96ea01c454e27ff`.
 
+## Residencias de mayores (28/09/2026)
+
+La secuencia «Salud-Senior» de Apollo lleva también a residencias, así que la landing las nombra junto a hoteles y
+centros sanitarios: título, descripción y `og:`, kicker, H1 («¿Qué tareas puede asumir un robot en tu hotel,
+centro sanitario o residencia?»), subtítulo («…se aplican en centros sanitarios y residencias de mayores»), contacto,
+etiqueta «Hotel / Centro / Residencia / Empresa» (`name="hotel"` sin cambios), asunto del aviso («…para hotel,
+centro sanitario o residencia»), C40 (comedores entre las zonas; auditorías también en residencias), W3 (lencería y
+suministros a planta también en residencias; «huéspedes, pacientes y residentes») y `/gracias`. Sin cambios de
+estructura ni de cableado.
+
 ## Atribución de campaña (UTM) en el formulario
 
 Desde el 28/09/2026 el formulario `leads-demo` lleva cuatro campos ocultos — `utm_source`, `utm_medium`,
