@@ -567,7 +567,7 @@ diga de qué campaña viene.
 | Desplegado | Al fusionar en `main`, los dos proyectos se redespliegan solos |
 | Comprobado en producción | **Sí, por el propietario** (28/09): deploys `6aba331ebce12e0008c10135` (hoteles) y `6aba331e4b076800088ac49b` (industria), `main@0eea666`, 2 reglas de redirect cada uno. 14 campos detectados en `leads-demo` de cada proyecto, con los cuatro UTM (la lista sale del log del deploy, «Detected form fields»; la pantalla de Forms no la muestra). En la página publicada, sin enviar nada: valores válidos rellenos; `utm_source` con `@` descartado. Detección de formularios activa en los dos |
 | Envío de prueba en producción | **Hecho, autorizado por el propietario** (28/09): deploys `6aba41cf6c8b9500086caed2` (hoteles) y `6aba41cfe0c7990008dbc7b7` (industria), `main@0aa9bc5`. Un envío por landing con `utm_campaign=prueba-agente`, nombre «PRUEBA UTM — borrar». Las dos entradas llegaron a Netlify Forms como verificadas (no spam) con los cuatro UTM correctos y el asunto de cada landing |
-| Aviso por correo con los UTM | **Industria: confirmado por el propietario** — el aviso de las 12:47 trae «Utm Source: apollo», «Utm Medium: email», «Utm Campaign: prueba-agente» y «Utm Content: paso1», con el asunto «Solicitud de valoración para nave industrial» y el resto de campos. **Hoteles (12:46): pendiente de confirmar**; mismo formulario y mismo mecanismo, así que se espera igual |
+| Aviso por correo con los UTM | **Industria: confirmado por el propietario** — el aviso de las 12:47 trae «Utm Source: apollo», «Utm Medium: email», «Utm Campaign: prueba-agente» y «Utm Content: paso1», con el asunto «Solicitud de valoración para nave industrial» y el resto de campos. **Hoteles (12:46): confirmado por el propietario**, también con los cuatro UTM. Atribución por formulario cerrada de extremo a extremo en las dos landings |
 | Limpieza de las entradas de prueba | **Pendiente del propietario**: borrar en Forms → leads-demo de cada proyecto solo las entradas «PRUEBA UTM — borrar» del 28/09 (12:46 hoteles, 12:47 industria). El agente no borra datos de forma permanente. En Plausible, la visita de prueba a hoteles pudo registrar un `pageview` con `utm_campaign=prueba-agente`, porque ese navegador ya tenía las cookies aceptadas |
 | Corrección posterior | El agente detectó que un valor descartado (p. ej. un email) seguía en la dirección de la página y podía llegar a Plausible si el visitante aceptaba las cookies. `utm-form.js` quita ahora de la dirección los UTM no admitidos y repetidos, y se carga el primero para que la medición arranque con la dirección limpia (rama `landings-utm-limpiar-url`) |
 
@@ -583,6 +583,32 @@ envío → `/gracias` con los cuatro campos en el cuerpo · `@`, espacios y URL 
 sin UTM → campos vacíos · sin JavaScript envía con campos vacíos · doble pulsación → 1 POST.
 
 Enlaces para apollo.io y reglas de uso en los README de cada landing.
+
+**Inventario de Apollo (28/09, revisado por el agente sin editar nada).** 30 secuencias; 7 «ALPHA» enlazan a
+dominios de Alpha Robótica, todas con 4 pasos de email y enlace solo en el paso 1. Las seis que apuntan a la
+landing de hoteles ya llevaban los cuatro UTM con convención propia (zona y perfil), compatible con la política
+de `utm-form.js`, así que se conservan tal cual:
+
+| Secuencia | Estado | `utm_campaign` |
+|---|---|---|
+| Hoteles AND · BP1 Dirección | Activa | `hoteles_andalucia_bp1` |
+| Hoteles AND · BP2 Corporativo-Compras-Técnico | Activa | `hoteles_andalucia_bp2` |
+| Hoteles AND · BP3 Housekeeping-Rooms | Activa | `hoteles_andalucia_bp3` |
+| Hoteles AND · BP4 F&B | Activa | `hoteles_andalucia_bp4` |
+| Hoteles MAD-BCN · BP1 Dirección | Activa | `hoteles_madbcn_bp1` |
+| Salud-Senior MAD-BCN · BP5 Servicios Generales | Activa | `salud_madbcn_bp5` |
+
+Todas con `utm_content=e1_video` y ancla `#video`. Prueba con «Send me a test email» (hoteles y sanitario): la
+landing abre con los cuatro UTM y el formulario los recoge. Pendientes y decisiones:
+
+- **Restauración MAD-BCN · BP4 Sala** (inactiva) enlaza a `alpharobotica.com/food-beverage`, no a una landing: el
+  formulario del sitio principal no recoge UTM en campos ocultos. Decisión del propietario si se activa.
+- **Industria:** no hay secuencia en Apollo; la plantilla de enlace está en `docs/landing-industria/README.md`.
+- **Dominio de seguimiento `track.alpharobotica.com`:** activo, pero el paso del clic por él no se ha probado
+  (los correos de prueba de Apollo llevan el enlace directo). Quedará acreditado con los primeros clics reales:
+  una solicitud que llegue con `utm_campaign` de una secuencia prueba el recorrido completo.
+- Apollo no añade UTM automáticamente; los envíos de prueba salen del buzón por defecto de Apollo, no de
+  `@alpharobotica.com`, a diferencia de los reales.
 
 ---
 

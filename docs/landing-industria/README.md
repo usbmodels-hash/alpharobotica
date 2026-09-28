@@ -107,10 +107,12 @@ solicitud que llega por Netlify Forms y por el aviso de correo dice así de qué
 - Sin JavaScript el formulario sigue enviando, con los campos vacíos.
 - Los campos se conservan al navegar por las anclas de la página, porque la URL mantiene los parámetros.
 
-**Enlaces para apollo.io** (una campaña por secuencia; `utm_content` para el paso o la variante del correo):
+**Enlaces en apollo.io.** A 28/09/2026 **no hay ninguna secuencia de industria** en Apollo. Cuando se cree, debe
+seguir la convención de las secuencias existentes (`<publico>_<zona>_bp<N>`, `e<paso>_<contenido>`). Esta landing
+**no tiene ancla `#video`**: usar `#contacto` o ninguna. Por ejemplo:
 
 ```
-https://industria.alpharobotica.com/?utm_source=apollo&utm_medium=email&utm_campaign=industria-2026-10&utm_content=paso1
+https://industria.alpharobotica.com/?utm_source=apollo&utm_medium=email&utm_campaign=industria_espana_bp1&utm_content=e1_valoracion#contacto
 ```
 
 No usar variables de personalización de Apollo (nombre, email, empresa) dentro de los parámetros UTM.
