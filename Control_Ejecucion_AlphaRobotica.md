@@ -671,6 +671,22 @@ contrastado línea a línea con el encargo, idéntico salvo el saludo, que usa
 - Entradas de prueba de Netlify Forms (UTM) borradas por el propietario en las dos landings.
 - IND-A e IND-B siguen **inactivas**: la activación es decisión del propietario.
 
+**Retoques finales (29/09, agente).** Aplicados y copiados tras recargar:
+- IND-A paso 1 sin `{{company}}` (ya no queda en ninguna secuencia).
+- IND-A paso 2: la P.D. pasa a una línea con el enlace, antes de «Un saludo,».
+- IND-A paso 4 e IND-B paso 4: «en un par de días»; IND-B paso 4 con una sola despedida.
+- IND-B paso 1: frase «Sin obra» nueva.
+- Un único enlace por secuencia, con sus UTM y `#s300`.
+- Contactos: IND-A 17, IND-B 43 (se saca el contacto @tagler.cl). 0 correos enviados o programados.
+- Cadencia: +30 min, +3, +5, +6 días; lunes a viernes de 10 a 17 h en la hora del destinatario.
+- Apollo añade la línea de baja bilingüe del buzón.
+- La prueba del saludo sin nombre no es posible: Apollo exige nombre al crear contactos.
+- mxtoolbox para alpharobotica.com:
+  - correo en Profesional Hosting (MX `mail.alpharobotica.com`, 45.13.185.84);
+  - SPF, DKIM (selector `default`) y DMARC `p=quarantine` correctos;
+  - dominio en 0 de 68 blacklists;
+  - IP del MX en RATS Dyna; hoy no aparece en anonmails ni s5h.
+
 ---
 
 ## Resumen por tarea P1–P14
