@@ -656,6 +656,21 @@ desde el primer instante en todos los anchos, también sin JavaScript; clics del
 «Specs catálogo» de la hoja (catálogo KEENON jun 2026, aportado por el propietario), no verificadas contra el
 catálogo original desde esta sesión.
 
+**Copy definitivo y estado del buzón (29/09).** El propietario reescribió las dos secuencias con cinco principios
+(escena antes que producto, permiso para decir que no, una sola pregunta, sin relleno comercial, correcciones de la
+hoja aplicadas) y «Gracias por tu tiempo» en todos los cierres. El agente lo cargó en los 8 pasos (4 IND-A + 4 IND-B):
+contrastado línea a línea con el encargo, idéntico salvo el saludo, que usa
+`Hola{{#if first_name}} {{first_name}}{{#endif}},` para contactos sin nombre. Además:
+- Firma del buzón cambiada a «Alpha Robótica · Distribuidor autorizado KEENON Robotics», coherente con landing y
+  hoja. Los correos de hoteles ya programados conservan la firma anterior (no se regeneran).
+- Restauración MAD-BCN reprogramada al 27/10 a las 8:00; Salud-Senior se reanuda el 5/10.
+- Blocklists `spam.dnsbl.anonmails.de` y `all.s5h.net` (desde el 23/09) **sin resolver**: Apollo no muestra la IP de
+  envío, anonmails exige captcha y s5h exige pedirlo desde la IP bloqueada. Acción del propietario.
+- Buzón: deliverability 92 %, calentamiento 52 %, bajas 1,2 % (referencia 0,1 %); 25 envíos/día compartidos por
+  las secuencias activas.
+- Entradas de prueba de Netlify Forms (UTM) borradas por el propietario en las dos landings.
+- IND-A e IND-B siguen **inactivas**: la activación es decisión del propietario.
+
 ---
 
 ## Resumen por tarea P1–P14
