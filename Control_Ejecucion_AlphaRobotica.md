@@ -687,6 +687,21 @@ contrastado línea a línea con el encargo, idéntico salvo el saludo, que usa
   - dominio en 0 de 68 blacklists;
   - IP del MX en RATS Dyna; hoy no aparece en anonmails ni s5h.
 
+**Activación (29–30/09).**
+- Prueba de envío real desde el buzón a Gmail:
+  - SPF, DKIM (`default`) y DMARC dan PASS;
+  - Apollo envía vía Nylas por el SMTP de Profesional Hosting;
+  - sale por `relay6.profesionalhosting.com` (212.63.110.179); otro envío salió por `r4-130` (154.53.134.130);
+  - llegó a Recibidos, aunque Gmail lo marcó «parece sospechoso».
+- Ticket a Profesional Hosting redactado; lo abre el propietario (el área de clientes pide credenciales).
+- Línea de baja del buzón cambiada a «Si prefieres que no te escriba más, pulsa aquí.» (afecta a todas las secuencias).
+- IND-A (17) e IND-B (43) activas desde el 29/09 a las 11:57–11:58, con las cuatro condiciones previas cumplidas.
+- A las 16:35 del 30/09 no había **ningún correo creado** en ninguna de las dos:
+  - paso 1 automático, contactos «Active» en el paso 1, sin tareas ni aprobación manual;
+  - el buzón está saturado por las secuencias de hoteles (límite de 4 por hora y 25 al día, 78 correos programados o retrasados).
+- Se saca a @tagler.cl de todas las listas de Industria (Tanda 1 queda con 79 registros).
+- Contacto «Prueba Entrega» pendiente de borrar por el propietario.
+
 ---
 
 ## Resumen por tarea P1–P14
