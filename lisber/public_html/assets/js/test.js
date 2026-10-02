@@ -124,10 +124,10 @@
       pasos.appendChild(paso);
     });
     notaResultado.textContent = DATOS_TEST.resultados.nota;
-    ir(0);
+    ir(0, false); // al cargar la página no se mueve el foco
   }
 
-  function ir(indice) {
+  function ir(indice, enfocar) {
     actual = indice;
     var lista = pasos.querySelectorAll(".test__paso");
     lista.forEach(function (el, i) {
@@ -137,7 +137,7 @@
     progreso.hidden = false;
     progreso.value = indice;
     var activo = lista[indice];
-    if (activo) {
+    if (activo && enfocar !== false) {
       var titulo = activo.querySelector(".test__pregunta");
       titulo.setAttribute("tabindex", "-1");
       titulo.focus({ preventScroll: false });
