@@ -116,7 +116,7 @@ a:hover { color: var(--pitaya-oscuro); }
 .portada__nota { font-size: .95rem; color: var(--gris); max-width: 34rem; }
 .portada__nota strong { color: var(--azul); }
 .portada__imagen { border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); background: var(--marfil-oscuro); }
-.portada__imagen img { width: 100%; aspect-ratio: 900 / 480; object-fit: cover; }
+.portada__imagen img { width: 100%; aspect-ratio: 1318 / 741; }
 @media (min-width: 768px) {
   .portada__rejilla { grid-template-columns: 1.05fr .95fr; gap: 3rem; }
 }
@@ -251,6 +251,6 @@ span[data-solo-modo][data-visible], a[data-solo-modo][data-visible] { display: i
 }
 
 /* Utilidades */
-.posturas__tarjetas { margin-bottom: 1.5rem; }
+.contenedor--estrecho { max-width: 46rem; }
 .intro--centrado { margin-inline: auto; }
 .margen-arriba { margin-top: 2rem; }
