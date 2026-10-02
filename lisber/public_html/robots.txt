@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /gracias/
+Disallow: /confirmado/
+Disallow: /hola/
+
+Sitemap: https://lisber.eu/sitemap.xml
