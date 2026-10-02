@@ -1,5 +1,6 @@
 # LISBER · Despliegue automático a ProfesionalHosting
-# Cada push a la rama main valida los archivos y sube public_html/ por SFTP.
+# Cada push a la rama main valida los archivos y sube public_html/ por FTPS (puerto 21)
+# a la cuenta FTP «lisber_deploy», que ya empieza dentro de httpdocs (Plesk).
 # Secretos necesarios en GitHub (Settings → Secrets and variables → Actions):
 #   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
 # config.php NO está en el repositorio: se coloca una vez a mano en el servidor.
@@ -55,7 +56,7 @@ jobs:
           protocol: ftps
           port: 21
           local-dir: ./public_html/
-          server-dir: ./public_html/
+          server-dir: ./
           dangerous-clean-slate: false
           exclude: |
             **/.git*
