@@ -1,0 +1,63 @@
+# LISBER · Despliegue automático a ProfesionalHosting
+# Cada push a la rama main valida los archivos y sube public_html/ por SFTP.
+# Secretos necesarios en GitHub (Settings → Secrets and variables → Actions):
+#   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
+# config.php NO está en el repositorio: se coloca una vez a mano en el servidor.
+
+name: Desplegar lisber.eu
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: despliegue-lisber
+  cancel-in-progress: false
+
+jobs:
+  validar:
+    name: Validar
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+      - name: Sintaxis PHP
+        run: |
+          php -l public_html/api/suscribir.php
+          php -l public_html/api/diagnostico.php
+          php -l config.ejemplo.php
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validar HTML
+        run: npx --yes html-validate "public_html/**/*.html"
+      - name: Sin claves en archivos públicos
+        run: |
+          if grep -rn "xkeysib-" public_html; then echo "Clave de API en archivos públicos"; exit 1; fi
+          if [ -f public_html/config.php ] || [ -f config.php ]; then echo "config.php no debe estar en el repositorio"; exit 1; fi
+
+  desplegar:
+    name: Subir a ProfesionalHosting
+    needs: validar
+    runs-on: ubuntu-latest
+    environment: produccion
+    steps:
+      - uses: actions/checkout@v4
+      - name: Subir public_html por SFTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./public_html/
+          server-dir: ./public_html/
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/config.php
